@@ -20,7 +20,10 @@
         <Button Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,164,0,0"/>
         <Button Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="104,164,0,0" Grid.ColumnSpan="2"/>
         <Button Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="90.4,164,0,0"/>
-        <Button Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Margin="0.4,207,0,0" Height="14" Grid.Column="1"/>
+        <Button Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="104,201,0,0" Height="14" Grid.ColumnSpan="2"/>
+        <Button Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Height="14" Grid.Column="1" Margin="22.4,201,0,0"/>
+        <Button Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="90.4,196,0,0"/>
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,196,0,0"/>
 
     </Grid>
 </Window>
