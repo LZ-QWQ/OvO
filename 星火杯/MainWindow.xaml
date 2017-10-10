@@ -7,6 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="122*"/>
+            <ColumnDefinition Width="397*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,88,0,0" Click="Button_Click"/>
+        <Button Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Margin="104,88,0,0"/>
+        <Button Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="90.4,88,0,0"/>
+        <Button Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,126,0,0"/>
+        <Button Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="104,126,0,0" Grid.ColumnSpan="2"/>
+        <Button Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="90.4,126,0,0"/>
+        <Button Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,164,0,0"/>
+        <Button Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="104,164,0,0" Grid.ColumnSpan="2"/>
+        <Button Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="90.4,164,0,0"/>
+        <Button Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Margin="0.4,207,0,0" Height="14" Grid.Column="1"/>
+
     </Grid>
 </Window>
