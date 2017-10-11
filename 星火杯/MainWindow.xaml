@@ -11,19 +11,22 @@
             <ColumnDefinition Width="122*"/>
             <ColumnDefinition Width="397*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,88,0,0" Click="Button_Click"/>
-        <Button Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Margin="104,88,0,0"/>
-        <Button Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="90.4,88,0,0"/>
-        <Button Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,126,0,0"/>
-        <Button Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="104,126,0,0" Grid.ColumnSpan="2"/>
-        <Button Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="90.4,126,0,0"/>
-        <Button Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,164,0,0"/>
-        <Button Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="104,164,0,0" Grid.ColumnSpan="2"/>
-        <Button Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="90.4,164,0,0"/>
-        <Button Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="104,201,0,0" Height="14" Grid.ColumnSpan="2"/>
-        <Button Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Height="14" Grid.Column="1" Margin="22.4,201,0,0"/>
-        <Button Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="90.4,196,0,0"/>
-        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,196,0,0"/>
+        <Button x:Name="button1" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,88,0,0" Click="Button_Click"/>
+        <Button x:Name="button2" Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Margin="104,88,0,0" Click="button2_Click"/>
+        <Button x:Name="button3" Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="90.4,88,0,0" Click="button3_Click"/>
+        <Button x:Name="button4" Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,126,0,0" Click="button4_Click"/>
+        <Button x:Name="button5" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="104,126,0,0" Grid.ColumnSpan="2" Click="button5_Click"/>
+        <Button x:Name="button6" Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="90.4,126,0,0" Click="button6_Click"/>
+        <Button x:Name="button7" Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,164,0,0" Click="button7_Click"/>
+        <Button x:Name="button8" Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="104,164,0,0" Grid.ColumnSpan="2" Click="button8_Click"/>
+        <Button x:Name="button9" Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="90.4,164,0,0" Click="button9_Click"/>
+        <Button x:Name="button_plus" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="104,201,0,0" Height="14" Grid.ColumnSpan="2" Click="button_plus_Click"/>
+        <Button x:Name="button_decreas" Content="-" VerticalAlignment="Top" Height="14" Grid.Column="1" Margin="0,201,339.4,0" HorizontalAlignment="Right" Width="35" Click="button_decreas_Click"/>
+        <Button x:Name="buuton_equal" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="90.4,196,0,0" Click="buuton_equal_Click"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="300" Margin="0,10,0,0" Grid.ColumnSpan="2" TextChanged="textBox1_TextChanged"/>
+        <Button x:Name="DELETE" Content="ESC" HorizontalAlignment="Left" VerticalAlignment="Top" Width="69" Grid.Column="1" Margin="180.4,88,0,0" Click="DELETE_Click"/>
+        <Button x:Name="CHUFA" Content="/" HorizontalAlignment="Left" VerticalAlignment="Top" Width="37" Margin="0,196,0,0" Click="CHUFA_Click"/>
+        <Button x:Name="CHENGFA" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="38" Margin="37,196,0,0" Height="19" Click="CHENGFA_Click"/>
 
     </Grid>
 </Window>
