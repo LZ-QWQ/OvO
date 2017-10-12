@@ -26,53 +26,55 @@ namespace 星火杯
         }
         float temp1 = -1;
         int pos = 0;
-        public void addNum(int num)
+        public void AddNum(int num)
         {
             textBox1.Text = TextBox.TextAlignmentProperty + num.ToString();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button1_Click(object sender, RoutedEventArgs e)
         {
-
+            AddNum(1);
+        }
+        private void Button2_Click(object sender, RoutedEventArgs e)
+        {
+            AddNum(2);
         }
 
-        private void button2_Click(object sender, RoutedEventArgs e)
+
+
+
+        private void Button3_Click(object sender, RoutedEventArgs e)
         {
-            addNum(2);
+            AddNum(3);
         }
 
-        private void button3_Click(object sender, RoutedEventArgs e)
+        private void Button4_Click(object sender, RoutedEventArgs e)
         {
-            addNum(3);
+            AddNum(4);
         }
 
-        private void button4_Click(object sender, RoutedEventArgs e)
+        private void Button5_Click(object sender, RoutedEventArgs e)
         {
-            addNum(4);
+            AddNum(5);
         }
 
-        private void button5_Click(object sender, RoutedEventArgs e)
+        private void Button6_Click(object sender, RoutedEventArgs e)
         {
-            addNum(5);
+            AddNum(6);
         }
 
-        private void button6_Click(object sender, RoutedEventArgs e)
+        private void Button7_Click(object sender, RoutedEventArgs e)
         {
-            addNum(6);
+            AddNum(7);
         }
 
-        private void button7_Click(object sender, RoutedEventArgs e)
+        private void Button8_Click(object sender, RoutedEventArgs e)
         {
-            addNum(7);
+            AddNum(8);
         }
 
-        private void button8_Click(object sender, RoutedEventArgs e)
+        private void Button9_Click(object sender, RoutedEventArgs e)
         {
-            addNum(8);
-        }
-
-        private void button9_Click(object sender, RoutedEventArgs e)
-        {
-            addNum(9);
+            AddNum(9);
         }
 
         private void CHUFA_Click(object sender, RoutedEventArgs e)
@@ -85,25 +87,25 @@ namespace 星火杯
         private void CHENGFA_Click(object sender, RoutedEventArgs e)
         {
             pos = 3;
-            temp1 = Convert.ToInt64(textBox1.Text);
+            temp1 = Convert.ToInt64("textBox1.Text");
             textBox1.Text = "";
         }
 
-        private void button_decreas_Click(object sender, RoutedEventArgs e)
+        private void Button_decreas_Click(object sender, RoutedEventArgs e)
         {
             pos = 2;
             temp1 = Convert.ToInt64(textBox1.Text);
             textBox1.Text = "";
         }
 
-        private void button_plus_Click(object sender, RoutedEventArgs e)
+        private void Button_plus_Click(object sender, RoutedEventArgs e)
         {
             pos = 1;
             temp1 = Convert.ToInt64(textBox1.Text);
             textBox1.Text = "";
         }
 
-        private void buuton_equal_Click(object sender, RoutedEventArgs e)
+        private void Buuton_equal_Click(object sender, RoutedEventArgs e)
         {
             float temp2 = Convert.ToInt64(textBox1.Text);
             switch (pos)
@@ -131,5 +133,9 @@ namespace 星火杯
             textBox1.Text = "0";
             temp1 = 0;
             pos = 0;
+            {
+            }
         }
+    }
+}
     
