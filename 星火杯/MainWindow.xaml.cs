@@ -24,90 +24,78 @@ namespace 星火杯
         {
             InitializeComponent();
         }
-        float temp1 = -1;
-        int pos = 0;
-        public void AddNum(int num)
-        {
-            textBox1.Text = TextBox.TextAlignmentProperty + num.ToString();
-        }
+
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
-            AddNum(1);
+            textBox1.Text += 1;
         }
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
-            AddNum(2);
+            textBox1.Text += 2;
         }
-
-
-
 
         private void Button3_Click(object sender, RoutedEventArgs e)
         {
-            AddNum(3);
+            textBox1.Text += 3;
         }
 
         private void Button4_Click(object sender, RoutedEventArgs e)
         {
-            AddNum(4);
+            textBox1.Text += 4;
         }
 
         private void Button5_Click(object sender, RoutedEventArgs e)
         {
-            AddNum(5);
+            textBox1.Text += 5;
         }
 
         private void Button6_Click(object sender, RoutedEventArgs e)
         {
-            AddNum(6);
+            textBox1.Text += 6;
         }
 
         private void Button7_Click(object sender, RoutedEventArgs e)
         {
-            AddNum(7);
+            textBox1.Text += 7;
         }
 
         private void Button8_Click(object sender, RoutedEventArgs e)
         {
-            AddNum(8);
+            textBox1.Text += 8;
         }
 
         private void Button9_Click(object sender, RoutedEventArgs e)
         {
-            AddNum(9);
+            textBox1.Text += 9;
         }
 
         private void CHUFA_Click(object sender, RoutedEventArgs e)
         {
-            pos = 4;
-            temp1 = Convert.ToInt64(textBox1.Text);
-            textBox1.Text = "";
+            textBox1.Text += "/";
         }
 
         private void CHENGFA_Click(object sender, RoutedEventArgs e)
         {
-            pos = 3;
-            temp1 = Convert.ToInt64("textBox1.Text");
-            textBox1.Text = "";
+            textBox1.Text += "*";
         }
 
         private void Button_decreas_Click(object sender, RoutedEventArgs e)
         {
-            pos = 2;
-            temp1 = Convert.ToInt64(textBox1.Text);
-            textBox1.Text = "";
+            textBox1.Text += "-";
         }
 
         private void Button_plus_Click(object sender, RoutedEventArgs e)
         {
-            pos = 1;
-            temp1 = Convert.ToInt64(textBox1.Text);
-            textBox1.Text = "";
+            textBox1.Text += "+";
         }
 
         private void Buuton_equal_Click(object sender, RoutedEventArgs e)
         {
-            float temp2 = Convert.ToInt64(textBox1.Text);
+            string a="";
+            while(textBox1.Text!=)
+            {
+                if((i!="+")&i!="-"&!=)
+            }
             switch (pos)
 
             {
@@ -135,6 +123,11 @@ namespace 星火杯
             pos = 0;
             {
             }
+        }
+
+        private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            textBox1.Text = "";
         }
     }
 }
