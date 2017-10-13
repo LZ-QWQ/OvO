@@ -25,48 +25,48 @@ namespace 星火杯
             InitializeComponent();
         }
 
-        private void Button1_Click(object sender, RoutedEventArgs e)
+        public void Button1_Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += 1;
+            textBox1.Text += "1";
         }
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += 2;
+            textBox1.Text += "2";
         }
 
         private void Button3_Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += 3;
+            textBox1.Text += "3";
         }
 
         private void Button4_Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += 4;
+            textBox1.Text +="4";
         }
 
         private void Button5_Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += 5;
+            textBox1.Text += "5";
         }
 
         private void Button6_Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += 6;
+            textBox1.Text += "6";
         }
 
         private void Button7_Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += 7;
+            textBox1.Text += "7";
         }
 
         private void Button8_Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += 8;
+            textBox1.Text += "8";
         }
 
         private void Button9_Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += 9;
+            textBox1.Text += "9";
         }
 
         private void CHUFA_Click(object sender, RoutedEventArgs e)
@@ -109,38 +109,45 @@ namespace 星火杯
                     a += x.Substring(i, 1);
                 }
             }
+
+            int A = Convert.ToInt32(a);
+            int B = Convert.ToInt32(b);
             switch (c)
 
             {
                 case "+":
-                    textBox1.Text = Add(a,b).ToString();
+                    textBox2.Text = (Application.Current as App).Add(A,B).ToString();
                     break;
                 case "-":
-                    textBox1.Text = (temp1 - temp2).ToString();
+                    textBox2.Text = (Application.Current as App).Minus(A,B).ToString();
                     break;
-                case 3:
-                    textBox1.Text = (temp1 * temp2).ToString();
+                case "*":
+                    textBox2.Text = (Application.Current as App).Multiply(A, B).ToString();
                     break;
-                case 4:
-                    textBox1.Text = (temp1 / temp2).ToString();
+                case "/":
+                    textBox2.Text = (Application.Current as App).Divide(A, B).ToString();
                     break;
             }
 
 
         }
 
-        private void DELETE_Click(object sender, RoutedEventArgs e)
-        {
-            textBox1.Text = "0";
-            temp1 = 0;
-            pos = 0;
-            {
-            }
-        }
+  
 
         private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
         {
             textBox1.Text = "";
+        }
+
+        private void TextBox2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            textBox2.Text = "";
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Clear();
+            textBox2.Clear();
         }
     }
 

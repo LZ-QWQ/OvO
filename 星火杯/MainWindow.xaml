@@ -22,12 +22,12 @@
         <Button x:Name="Button_plus" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="104,201,0,0" Height="14" Grid.ColumnSpan="2" Click="Button_plus_Click"/>
         <Button x:Name="Button_decreas" Content="-" VerticalAlignment="Top" Height="14" Grid.Column="1" Margin="0,201,339.4,0" HorizontalAlignment="Right" Width="35" Click="Button_decreas_Click"/>
         <Button x:Name="Buuton_equal" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="90.4,196,0,0" Click="Buuton_equal_Click"/>
-        <Button x:Name="DELETE" Content="ESC" HorizontalAlignment="Left" VerticalAlignment="Top" Width="69" Grid.Column="1" Margin="180.4,88,0,0" Click="DELETE_Click"/>
         <Button x:Name="Divide" Content="/" HorizontalAlignment="Left" VerticalAlignment="Top" Width="37" Margin="0,196,0,0" Click="CHUFA_Click"/>
         <Button x:Name="CHENGFA" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="38" Margin="37,196,0,0" Height="19" Click="CHENGFA_Click"/>
         <Button x:Name="Button1" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,88,0,0" Click="Button1_Click"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="371" TextChanged="textBox1_TextChanged" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="371" Margin="0,40,0,0" Grid.ColumnSpan="2" TextChanged="TextBox2_TextChanged"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="345" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="345" Margin="0,43,0,0" Grid.ColumnSpan="2"/>
+        <Button x:Name="Delete" Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="199,88,0,0" VerticalAlignment="Top" Width="75" Click="Delete_Click"/>
 
     </Grid>
 </Window>

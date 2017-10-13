@@ -18,17 +18,17 @@ namespace 星火杯
             return a + b;
         }
 
-        static int Minus(int a, int b)
+        public int Minus(int a, int b)
         {
             return a - b;
         }
 
-        static int Multiply(int a, int b)
+        public int Multiply(int a, int b)
         {
             return a * b;
         }
 
-        static int Divide(int a, int b)
+        public int Divide(int a, int b)
         {
             return a / b;
         }
