@@ -91,18 +91,31 @@ namespace 星火杯
 
         private void Buuton_equal_Click(object sender, RoutedEventArgs e)
         {
-            string a="";
-            while(textBox1.Text!=)
+            string x = textBox1.Text;
+            string a = "";
+            string b = "";
+            string c = "";
+            for(int i=0; i<x.Length; i++)
             {
-                if((i!="+")&i!="-"&!=)
+                if(x.Substring(i,1)==("+")|| x.Substring(i, 1) == ("-")|| x.Substring(i, 1) == ("*")|| x.Substring(i, 1) == ("/"))
+                {
+                    b = a;
+                    a = "";
+                    c += x.Substring(i, 1);
+                }
+
+                else
+                {
+                    a += x.Substring(i, 1);
+                }
             }
-            switch (pos)
+            switch (c)
 
             {
-                case 1:
-                    textBox1.Text = (temp1 + temp2).ToString();
+                case "+":
+                    textBox1.Text = Add(a,b).ToString();
                     break;
-                case 2:
+                case "-":
                     textBox1.Text = (temp1 - temp2).ToString();
                     break;
                 case 3:
@@ -130,5 +143,6 @@ namespace 星火杯
             textBox1.Text = "";
         }
     }
+
 }
     

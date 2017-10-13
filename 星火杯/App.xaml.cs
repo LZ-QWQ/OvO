@@ -13,5 +13,24 @@ namespace 星火杯
     /// </summary>
     public partial class App : Application
     {
+        public int Add(int a, int b)
+        {
+            return a + b;
+        }
+
+        static int Minus(int a, int b)
+        {
+            return a - b;
+        }
+
+        static int Multiply(int a, int b)
+        {
+            return a * b;
+        }
+
+        static int Divide(int a, int b)
+        {
+            return a / b;
+        }
     }
 }

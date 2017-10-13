@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace 星火杯
 {
-    class Class1
+    public class Class1:public
     {
       
-        static int Add(int a,int b)
+        public static int Add(int a,int b)
         {
             return a + b;
         }
