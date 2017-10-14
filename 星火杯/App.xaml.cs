@@ -32,5 +32,10 @@ namespace 星火杯
         {
             return a / b;
         }
+
+        public int Modulo(int a,int b)
+        {
+            return a % b;
+        }
     }
 }
