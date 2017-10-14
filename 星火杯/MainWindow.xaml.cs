@@ -116,10 +116,10 @@ namespace 星火杯
 
             {
                 case "+":
-                    textBox2.Text = (Application.Current as App).Add(A,B).ToString();
+                    textBox2.Text = (Application.Current as Class1).Add(A,B).ToString();
                     break;
                 case "-":
-                    textBox2.Text = (Application.Current as App).Minus(A,B).ToString();
+                    textBox2.Text = (Application.Current as Class1).Minus(A,B).ToString();
                     break;
                 case "*":
                     textBox2.Text = (Application.Current as App).Multiply(A, B).ToString();
