@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Numerics;
+using System.Windows.Controls;
 
 namespace 星火杯
 {
@@ -14,17 +15,17 @@ namespace 星火杯
     /// </summary>
     public partial class App : Application
     {
-        public BigInteger Add(BigInteger a, BigInteger b)
+        public long Add(long a, long b)
         {
             return a + b;
         }
 
-        public BigInteger Minus(BigInteger a, BigInteger b)
+        public long Minus(long a, long b)
         {
             return a - b;
         }
 
-        public BigInteger Multiply(BigInteger a, BigInteger b)
+        public long Multiply(long a, long b)
         {
             return a * b;
         }
@@ -58,5 +59,6 @@ namespace 星火杯
         {
             return a;
         }
-    }
+
+    } 
 }

@@ -29,6 +29,7 @@ namespace 星火杯
         private void Button_0_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "0";
+            
         }
         public void Button1_Click(object sender, RoutedEventArgs e)
         {
@@ -98,6 +99,16 @@ namespace 星火杯
         {
             textBox1.Clear();
             textBox2.Clear();
+        }
+
+        private void Backspace_Click(object sender, RoutedEventArgs e)
+        {
+            if (textBox1.Text == "") ;
+            else
+            {
+                textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - 1);
+            }
+
         }
         #endregion
         private void Buuton_equal_Click(object sender, RoutedEventArgs e)
@@ -205,7 +216,6 @@ namespace 星火杯
                 }
             }
         }
-
 
     }
 

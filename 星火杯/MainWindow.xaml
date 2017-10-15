@@ -29,6 +29,7 @@
         <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="321,88,0,0" VerticalAlignment="Top" Width="75" Click="Delete_Click"/>
         <Button x:Name="Point" Content="." HorizontalAlignment="Left" Margin="321,126,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" Click="Point_Click"/>
         <Button x:Name="Button_0" Content="0" HorizontalAlignment="Left" Margin="321,164,0,0" VerticalAlignment="Top" Width="75" Click="Button_0_Click"/>
+        <Button x:Name="Backspace" Content="Backspace" HorizontalAlignment="Left" Margin="321,196,0,0" VerticalAlignment="Top" Width="75" Click="Backspace_Click"/>
 
     </Grid>
 </Window>
