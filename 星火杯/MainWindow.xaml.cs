@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Numerics;
 
 namespace 星火杯
 {
@@ -24,7 +25,7 @@ namespace 星火杯
         {
             InitializeComponent();
         }
-
+        #region
         public void Button1_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "1";
@@ -89,50 +90,10 @@ namespace 星火杯
             textBox1.Text += "+";
         }
 
-        private void Buuton_equal_Click(object sender, RoutedEventArgs e)
+        private void Point_Click(object sender, RoutedEventArgs e)
         {
-            string x = textBox1.Text;
-            string a = "";
-            string b = "";
-            string c = "";
-            for(int i=0; i<x.Length; i++)
-            {
-                if(x.Substring(i,1)==("+")|| x.Substring(i, 1) == ("-")|| x.Substring(i, 1) == ("*")|| x.Substring(i, 1) == ("/"))
-                {
-                    b = a;
-                    a = "";
-                    c += x.Substring(i, 1);
-                }
-
-                else
-                {
-                    a += x.Substring(i, 1);
-                }
-            }
-
-            int A = Convert.ToInt32(a);
-            int B = Convert.ToInt32(b);
-            switch (c)
-
-            {
-                case "+":
-                    textBox2.Text = (Application.Current as App).Add(A,B).ToString();
-                    break;
-                case "-":
-                    textBox2.Text = (Application.Current as App).Minus(A,B).ToString();
-                    break;
-                case "*":
-                    textBox2.Text = (Application.Current as App).Multiply(A, B).ToString();
-                    break;
-                case "/":
-                    textBox2.Text = (Application.Current as App).Divide(A, B).ToString();
-                    break;
-            }
-
-
+            textBox1.Text += ".";
         }
-
-  
 
         private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -149,6 +110,116 @@ namespace 星火杯
             textBox1.Clear();
             textBox2.Clear();
         }
+
+        #endregion
+        private void Buuton_equal_Click(object sender, RoutedEventArgs e)
+        {
+            string x = textBox1.Text;
+            string a = "";
+            string b = "";
+            string c = "";
+            string d = "";
+            
+            for (int i=0; i<x.Length; i++)
+            {
+
+                if (x.Substring(i, 1) == ("+") || x.Substring(i, 1) == ("-") || x.Substring(i, 1) == ("*") ||
+                    x.Substring(i, 1) == ("/"))
+                {
+                    b = a;
+                    a = "";
+                    c += x.Substring(i, 1);
+                }
+
+                else
+                {
+                    a += x.Substring(i, 1);
+                }
+
+                while (x.Substring(i, 1) == ("."))
+                {
+                    d = ".";
+                    a += ".";
+                 }
+
+                if (x.Contains("+") || x.Contains("-") || x.Contains("*") || x.Contains("/"))
+                    ;
+
+                else
+                {
+                    b = a;
+                }
+            }
+
+            for (int i = 0; i < x.Length; i++)
+            {                
+                if (d == "."||x.Contains("/"))
+                {
+                    double A_d, B_d;
+                    if (a != "" & b != "")
+                    {
+                        A_d = Convert.ToDouble(b);
+                        B_d = Convert.ToDouble(a);
+                    }
+                    else
+                    {
+                        A_d = Convert.ToDouble(b);
+                        B_d = 0;
+                    }
+                    switch (c)
+                    {
+                        case "+":
+                            textBox2.Text = (Application.Current as App).Add_d(A_d, B_d).ToString();
+                            break;
+                        case "-":
+                            textBox2.Text = (Application.Current as App).Minus_d(A_d, B_d).ToString();
+                            break;
+                        case "*":
+                            textBox2.Text = (Application.Current as App).Multiply_d(A_d, B_d).ToString();
+                            break;
+                        case "/":
+                            textBox2.Text = (Application.Current as App).Divide_d(A_d, B_d).ToString();
+                            break;
+                        case "":
+                            textBox2.Text = (Application.Current as App).Nothing_d(A_d).ToString();
+                            break;
+                    }
+                }
+                else
+                {
+                    long A, B;
+                    if (a != "" & b != "")
+                    {
+                        A = Convert.ToInt64(b);
+                        B = Convert.ToInt64(a);
+                    }
+                    else
+                    {
+                        A = Convert.ToInt64(b);
+                        B = 0;
+                    }
+
+                    switch (c)
+                    {
+                        case "+":
+                            textBox2.Text = (Application.Current as App).Add(A, B).ToString();
+                            break;
+                        case "-":
+                            textBox2.Text = (Application.Current as App).Minus(A, B).ToString();
+                            break;
+                        case "*":
+                            textBox2.Text = (Application.Current as App).Multiply(A, B).ToString();
+                            break;
+                        case "":
+                            textBox2.Text = (Application.Current as App).Nothing(A).ToString();
+                            break;
+                    }                      
+
+                }
+            }
+        }
+
+  
     }
 
 }

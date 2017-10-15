@@ -27,6 +27,7 @@
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="345"/>
         <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="345" Margin="0,43,0,0"/>
         <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="321,88,0,0" VerticalAlignment="Top" Width="75" Click="Delete_Click"/>
+        <Button x:Name="Point" Content="." HorizontalAlignment="Left" Margin="321,126,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" Click="Point_Click"/>
 
     </Grid>
 </Window>
