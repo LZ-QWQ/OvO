@@ -21,8 +21,6 @@ namespace 星火杯
 
         public BigInteger Minus(BigInteger a, BigInteger b)
         {
-            if (b == 1)
-                b = 0;
             return a - b;
         }
 
@@ -38,8 +36,6 @@ namespace 星火杯
 
         public double Minus_d(double a, double b)
         {
-            if (b == 1)
-                b = 0;
             return a - b;
         }
 

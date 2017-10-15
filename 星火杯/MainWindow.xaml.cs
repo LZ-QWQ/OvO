@@ -26,6 +26,10 @@ namespace 星火杯
             InitializeComponent();
         }
         #region
+        private void Button_0_Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += "0";
+        }
         public void Button1_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "1";
@@ -34,83 +38,67 @@ namespace 星火杯
         {
             textBox1.Text += "2";
         }
-
         private void Button3_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "3";
         }
-
         private void Button4_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text +="4";
         }
-
         private void Button5_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "5";
         }
-
         private void Button6_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "6";
         }
-
         private void Button7_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "7";
         }
-
         private void Button8_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "8";
         }
-
         private void Button9_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "9";
         }
-
         private void CHUFA_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "/";
         }
-
         private void CHENGFA_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "*";
         }
-
         private void Button_decreas_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "-";
         }
-
         private void Button_plus_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "+";
         }
-
         private void Point_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += ".";
         }
-
         private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
         {
             textBox1.Text = "";
         }
-
         private void TextBox2_TextChanged(object sender, TextChangedEventArgs e)
         {
             textBox2.Text = "";
         }
-
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Clear();
             textBox2.Clear();
         }
-
         #endregion
         private void Buuton_equal_Click(object sender, RoutedEventArgs e)
         {
@@ -136,13 +124,12 @@ namespace 星火杯
                     a += x.Substring(i, 1);
                 }
 
-                while (x.Substring(i, 1) == ("."))
+                if(x.Contains("."))
                 {
                     d = ".";
-                    a += ".";
-                 }
-
-                if (x.Contains("+") || x.Contains("-") || x.Contains("*") || x.Contains("/"))
+                }
+                
+                if ((x.Contains("+") || x.Contains("-") || x.Contains("*") || x.Contains("/")))
                     ;
 
                 else
@@ -219,7 +206,7 @@ namespace 星火杯
             }
         }
 
-  
+
     }
 
 }
