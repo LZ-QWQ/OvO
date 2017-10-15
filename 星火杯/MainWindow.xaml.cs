@@ -29,8 +29,8 @@ namespace 星火杯
         private void Button_0_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "0";
-            
         }
+  
         public void Button1_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "1";

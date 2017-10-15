@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Numerics;
 using System.Windows.Controls;
+using System.Windows.Forms;
 
 namespace 星火杯
 {
     /// <summary>
     /// App.xaml 的交互逻辑
     /// </summary>
-    public partial class App : Application
+    public partial class App : System.Windows.Application
     {
         public long Add(long a, long b)
         {
