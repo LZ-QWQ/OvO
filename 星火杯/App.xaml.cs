@@ -8,14 +8,15 @@ using System.Windows;
 using System.Numerics;
 using System.Windows.Controls;
 using System.Windows.Forms;
-
 namespace 星火杯
 {
     /// <summary>
     /// App.xaml 的交互逻辑
     /// </summary>
+
     public partial class App : System.Windows.Application
     {
+        #region
         public long Add(long a, long b)
         {
             return a + b;
@@ -60,6 +61,10 @@ namespace 星火杯
         {
             return a;
         }
-
-    } 
+        public double Pow_d(double a,double b)
+        {
+            return Math.Pow(a, b);
+        }
+        #endregion
+    }
 }

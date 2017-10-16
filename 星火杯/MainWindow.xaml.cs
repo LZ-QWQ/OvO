@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Numerics;
+using System.Windows.Forms;
+using System.Numerics;
 
 namespace 星火杯
 {
@@ -25,13 +27,14 @@ namespace 星火杯
         {
             InitializeComponent();
         }
+        private Stack<decimal> Opnumber = new Stack<decimal>();
+        private Stack<char> opre = new Stack<char>();
         #region
         private void Button_0_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "0";
         }
-  
-        public void Button1_Click(object sender, RoutedEventArgs e)
+          public void Button1_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "1";
         }
@@ -110,9 +113,79 @@ namespace 星火杯
             }
 
         }
+
+        private void X_Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += "X";
+        }
+
+        private void ___Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += "^";
+        }
+        private void e_Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += Math.E;
+        }
+
+        private void π_Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += Math.PI;
+        }
+
+        private void ln___Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += "ln()";
+        }
+
+        private void log_Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += "log()()";
+        }
+
+        private void lg_Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += "lg()";
+        }
+
+        private void sin___Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += "sin()";
+        }
+
+        private void cos___Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += "cos()";
+        }
+
+        private void tan___Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += "tan()";
+        }
+
+        private void __4_Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += "√";
+        }
+
+        private void __1_Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += "(";
+        }
+
+        private void __2_Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += ")";
+        }
+
+        private void __3_Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += "!";
+        }
         #endregion
         private void Buuton_equal_Click(object sender, RoutedEventArgs e)
         {
+            
             string x = textBox1.Text;
             string a = "";
             string b = "";
@@ -167,19 +240,19 @@ namespace 星火杯
                     switch (c)
                     {
                         case "+":
-                            textBox2.Text = (Application.Current as App).Add_d(A_d, B_d).ToString();
+                            textBox2.Text = (System.Windows.Application.Current as App).Add_d(A_d, B_d).ToString();
                             break;
                         case "-":
-                            textBox2.Text = (Application.Current as App).Minus_d(A_d, B_d).ToString();
+                            textBox2.Text = (System.Windows.Application.Current as App).Minus_d(A_d, B_d).ToString();
                             break;
                         case "*":
-                            textBox2.Text = (Application.Current as App).Multiply_d(A_d, B_d).ToString();
+                            textBox2.Text = (System.Windows.Application.Current as App).Multiply_d(A_d, B_d).ToString();
                             break;
                         case "/":
-                            textBox2.Text = (Application.Current as App).Divide_d(A_d, B_d).ToString();
+                            textBox2.Text = (System.Windows.Application.Current as App).Divide_d(A_d, B_d).ToString();
                             break;
                         case "":
-                            textBox2.Text = (Application.Current as App).Nothing_d(A_d).ToString();
+                            textBox2.Text = (System.Windows.Application.Current as App).Nothing_d(A_d).ToString();
                             break;
                     }
                 }
@@ -200,16 +273,16 @@ namespace 星火杯
                     switch (c)
                     {
                         case "+":
-                            textBox2.Text = (Application.Current as App).Add(A, B).ToString();
+                            textBox2.Text = (System.Windows.Application.Current as App).Add(A, B).ToString();
                             break;
                         case "-":
-                            textBox2.Text = (Application.Current as App).Minus(A, B).ToString();
+                            textBox2.Text = (System.Windows.Application.Current as App).Minus(A, B).ToString();
                             break;
                         case "*":
-                            textBox2.Text = (Application.Current as App).Multiply(A, B).ToString();
+                            textBox2.Text = (System.Windows.Application.Current as App).Multiply(A, B).ToString();
                             break;
                         case "":
-                            textBox2.Text = (Application.Current as App).Nothing(A).ToString();
+                            textBox2.Text = (System.Windows.Application.Current as App).Nothing(A).ToString();
                             break;
                     }                      
 
@@ -217,7 +290,7 @@ namespace 星火杯
             }
         }
 
+       
     }
-
 }
     

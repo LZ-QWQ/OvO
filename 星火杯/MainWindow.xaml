@@ -23,13 +23,27 @@
         <Button x:Name="Buuton_equal" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="212,196,0,0" Click="Buuton_equal_Click"/>
         <Button x:Name="Divide" Content="/" HorizontalAlignment="Left" VerticalAlignment="Top" Width="37" Margin="0,196,0,0" Click="CHUFA_Click"/>
         <Button x:Name="CHENGFA" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="38" Margin="37,196,0,0" Height="19" Click="CHENGFA_Click"/>
-        <Button x:Name="Button1" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,88,0,0" Click="Button1_Click"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="345" IsEnabled="False" Cursor="SizeAll"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="345" Margin="0,43,0,0" IsEnabled="False"/>
+        <Button x:Name="Button1" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,88,0,0" Click="Button1_Click" KeyDown="Button1_KeyDown"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="517" Cursor="SizeAll" IsEnabled="False" />
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="517" Margin="0,43,0,0" IsEnabled="False"/>
         <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="321,88,0,0" VerticalAlignment="Top" Width="75" Click="Delete_Click"/>
         <Button x:Name="Point" Content="." HorizontalAlignment="Left" Margin="321,126,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" Click="Point_Click"/>
         <Button x:Name="Button_0" Content="0" HorizontalAlignment="Left" Margin="321,164,0,0" VerticalAlignment="Top" Width="75" Click="Button_0_Click"/>
         <Button x:Name="Backspace" Content="Backspace" HorizontalAlignment="Left" Margin="321,196,0,0" VerticalAlignment="Top" Width="75" Click="Backspace_Click"/>
+        <Button x:Name="sin__" Content="sin" HorizontalAlignment="Left" Margin="103,232,0,0" VerticalAlignment="Top" Width="75" Click="sin___Click"/>
+        <Button x:Name="e" Content="e" HorizontalAlignment="Left" Margin="0,232,0,0" VerticalAlignment="Top" Width="75" Click="e_Click"/>
+        <Button x:Name="cos__" Content="cos" HorizontalAlignment="Left" Margin="212,232,0,0" VerticalAlignment="Top" Width="75" Click="cos___Click"/>
+        <Button x:Name="tan__" Content="tan" HorizontalAlignment="Left" Margin="321,232,0,0" VerticalAlignment="Top" Width="75" Click="tan___Click"/>
+        <Button x:Name="ln__" Content="ln" HorizontalAlignment="Left" Margin="0,272,0,0" VerticalAlignment="Top" Width="75" Click="ln___Click"/>
+        <Button x:Name="log" Content="log" HorizontalAlignment="Left" Margin="103,272,0,0" VerticalAlignment="Top" Width="75" Click="log_Click"/>
+        <Button x:Name="__" Content="^" HorizontalAlignment="Left" Margin="212,272,0,0" VerticalAlignment="Top" Width="75" Click="___Click"/>
+        <Button x:Name="__1" Content="(" HorizontalAlignment="Left" Margin="321,272,0,0" VerticalAlignment="Top" Width="34" Click="__1_Click"/>
+        <Button x:Name="__2" Content=")" HorizontalAlignment="Left" Margin="355,272,0,0" VerticalAlignment="Top" Width="30" Click="__2_Click"/>
+        <Button x:Name="π" Content="π" HorizontalAlignment="Left" Margin="420,232,0,0" VerticalAlignment="Top" Width="75" Click="π_Click"/>
+        <Button x:Name="__3" Content="！" HorizontalAlignment="Left" Margin="420,272,0,0" VerticalAlignment="Top" Width="75" Click="__3_Click"/>
+        <Button x:Name="__4" Content="√" HorizontalAlignment="Left" Margin="420,201,0,0" VerticalAlignment="Top" Width="75" Click="__4_Click"/>
+        <Button x:Name="X" Content="X" HorizontalAlignment="Left" Margin="420,164,0,0" VerticalAlignment="Top" Width="75" Click="X_Click"/>
+        <Button x:Name="lg" Content="lg" HorizontalAlignment="Left" Margin="420,126,0,0" VerticalAlignment="Top" Width="75" Click="lg_Click"/>
 
     </Grid>
 </Window>
