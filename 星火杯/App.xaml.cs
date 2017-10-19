@@ -65,6 +65,13 @@ namespace 星火杯
         {
             return Math.Pow(a, b);
         }
+        public static int judge(char c)
+        {
+            if (c == '+' || c == '-')
+                return 1;
+            else (c == '*' || c == '/')
+                return 2;
+        }
         #endregion
     }
 }

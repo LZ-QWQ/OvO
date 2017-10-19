@@ -1,20 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Numerics;
-using System.Windows.Forms;
-using System.Numerics;
 
 namespace 星火杯
 {
@@ -27,8 +14,9 @@ namespace 星火杯
         {
             InitializeComponent();
         }
-        private Stack<decimal> Opnumber = new Stack<decimal>();
-        private Stack<char> opre = new Stack<char>();
+        private Stack<decimal> 数 = new Stack<decimal>();
+        private Stack<char> 运算符 = new Stack<char>();
+        App App1=new App();
         #region
         private void Button_0_Click(object sender, RoutedEventArgs e)
         {
@@ -185,9 +173,33 @@ namespace 星火杯
         #endregion
         private void Buuton_equal_Click(object sender, RoutedEventArgs e)
         {
-            
             string x = textBox1.Text;
-            string a = "";
+            int a,b;
+            char c,y,z;
+            for (int i = 0; i < x.Length; i++)
+            {
+
+                if (x.Substring(i, 1) == ("+") || x.Substring(i, 1) == ("-") || x.Substring(i, 1) == ("*") ||
+                    x.Substring(i, 1) == ("/"))
+                {
+                    b = i - 1;
+                    a = Convert.ToInt16(x.Substring(0, b));
+                    数.Push(a);
+                    while (Convert.ToString(运算符) != "")
+                    {
+                        y = Convert.ToChar(x.Substring(i, 1));
+                        z = 运算符.Peek();
+                        if (App.judge(y)>=App.judge(z))
+                        {
+                            数Pop
+                        }
+                    }
+                    运算符.Push(c = Convert.ToChar(x.Substring(i, 1)));
+                    
+                }
+
+            }
+           
             string b = "";
             string c = "";
             string d = "";
