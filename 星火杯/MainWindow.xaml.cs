@@ -26,15 +26,18 @@ namespace 星火杯
         }
         public static double Compute(double leftnum,double rightnum,char temp)
         {
+            double temp_;
             switch (temp)
             {
-                case '+': return leftnum + rightnum;
+                case '+': temp_ = (leftnum + rightnum);
+                    return temp_;
                 case '-': return leftnum - rightnum;
                 case '*': return leftnum * rightnum;
                 case '/': return leftnum / rightnum;
                 case '%': return leftnum % rightnum;
                 case '^': return Math.Pow(leftnum, rightnum);
-                default: return 0;
+                default:
+                    return 0;
             }
         }
         static bool Isoperator(char op)
@@ -218,8 +221,9 @@ namespace 星火杯
             string tempnum ;
             if (expression[0] == '-')
                 expression = "0" + expression;
-            for (int i = 0, j; i < expression.Length; i++)//逐字读取
+            for (int i = 0; i < expression.Length;)//逐字读取
             {
+                int j = i;
                 temp_1 = expression[i];
                 if (operators.Count != 0)
                     temp_2 = operators.Peek();
@@ -235,7 +239,7 @@ namespace 星火杯
                     {
                         while (Isoperator(temp_2)&&operators_judge[temp_1] <= operators_judge[temp_2])
                         {
-                            result.Enqueue(operators.Pop());
+                            result.Enqueue(temp_2);
                             if (operators.Count==0)
                                 break;
                             else
@@ -253,35 +257,35 @@ namespace 星火杯
                     else
                     {
                         tempnum = "";
-                        j = i;
                         while (j<expression.Length&&(expression[j] == '.' ||
-                            expression[j] == '0'|| expression[j] == '1'))
+                            expression[j] >= '0'&& expression[j] <= '9'))
                         {
                             temp_4 = expression[j];
                             tempnum = tempnum + temp_4.ToString();
-                            j = j + 1;
-                            i = i + 1;
+                            j++;
+                            i = j - 1;
                         }
-                        result.Enqueue(tempnum);
+                        result.Enqueue(Convert.ToDouble(tempnum));
                     }
                 }
+                i++;
             }
             while (operators.Count > 0)
             {
-                temp_1 = operators.Peek();
+                temp_1 = operators.Pop();
                 result.Enqueue(temp_1);
             }
             return result;
         }
         static double Calculate(string expression)
         {
-            Queue<object> result = Transform(expression);
-            Stack<double> operand = new Stack<double>();
-            double leftnum, rightnum;
-            object temp;
-            while (result.Count > 0)
+            Queue<object> result_ = Transform(expression);
+            Stack<double> operand=new Stack<double>();
+            double leftnum = 0, rightnum = 0;
+            object temp=0;
+            while (result_.Count > 0)
             {
-                temp = result.Dequeue();
+                temp = result_.Dequeue();
                 if (temp is char)
                 {
                     rightnum = operand.Pop();
@@ -290,7 +294,7 @@ namespace 星火杯
                 }
                 else
                 {
-                    operand.Push(double.Parse(temp.ToString()));
+                    operand.Push(Convert.ToDouble(temp));
                 }
             }
             return operand.Pop();
