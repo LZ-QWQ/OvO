@@ -14,10 +14,9 @@ namespace 星火杯
         {
             InitializeComponent();
         }
-        public static Dictionary<char, int> operators_judge = null;
+        public static Dictionary<char, int> operators_judge;
         static void Calculator()
         {
-            operators_judge = new Dictionary<char, int>();
             operators_judge.Add('+', 0);
             operators_judge.Add('-', 0);
             operators_judge.Add('*', 1);
@@ -207,7 +206,7 @@ namespace 星火杯
         {
             string expression;
             expression = textBox1.Text;
-            textBox2.Text = Calculate(expression).ToString();
+            textBox2.Text =Calculate(expression).ToString();
 
         }
 
@@ -216,16 +215,16 @@ namespace 星火杯
             Queue<object> result = new Queue<object>();
             Stack<char> operators = new Stack<char>();
             char temp_1, temp_2, temp_3,temp_4;
-            string tempnum = "";
+            string tempnum ;
             if (expression[0] == '-')
-                expression = '0' + expression;
+                expression = "0" + expression;
             for (int i = 0, j; i < expression.Length; i++)//逐字读取
             {
                 temp_1 = expression[i];
                 if (operators.Count != 0)
                     temp_2 = operators.Peek();
                 else
-                    temp_2 = new char();
+                    temp_2 =' ';
                 if (temp_1 == '(')
                 {
                     operators.Push(temp_1);
@@ -253,22 +252,24 @@ namespace 星火杯
                     }
                     else
                     {
-                        tempnum = temp_1.ToString();
+                        tempnum = "";
                         j = i;
-                        while (j < expression.Length && (expression[j] == '.' ||
+                        while (j<expression.Length&&(expression[j] == '.' ||
                             expression[j] == '0'|| expression[j] == '1'))
                         {
                             temp_4 = expression[j];
                             tempnum += temp_4.ToString();
+                            j++;
                         }
+                        i = j;
                         result.Enqueue(tempnum);
                     }
                 }
-                while (operators.Count > 0)
-                {
-                    temp_1 = operators.Peek();
-                    result.Enqueue(temp_1);              
-                }
+            }
+            while (operators.Count > 0)
+            {
+                temp_1 = operators.Peek();
+                result.Enqueue(temp_1);
             }
             return result;
         }
