@@ -258,10 +258,10 @@ namespace 星火杯
                             expression[j] == '0'|| expression[j] == '1'))
                         {
                             temp_4 = expression[j];
-                            tempnum += temp_4.ToString();
-                            j++;
+                            tempnum = tempnum + temp_4.ToString();
+                            j = j + 1;
+                            i = i + 1;
                         }
-                        i = j;
                         result.Enqueue(tempnum);
                     }
                 }
