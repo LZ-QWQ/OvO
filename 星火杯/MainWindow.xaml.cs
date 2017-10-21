@@ -14,7 +14,7 @@ namespace 星火杯
         {
             InitializeComponent();
         }
-        public static Dictionary<char, int> operators_judge;
+        public static Dictionary<char, int> operators_judge = new Dictionary<char, int>();
         static void Calculator()
         {
             operators_judge.Add('+', 0);
@@ -239,7 +239,7 @@ namespace 星火杯
                     {
                         while (Isoperator(temp_2)&&operators_judge[temp_1] <= operators_judge[temp_2])
                         {
-                            result.Enqueue(temp_2);
+                            result.Enqueue(operators.Pop());
                             if (operators.Count==0)
                                 break;
                             else
