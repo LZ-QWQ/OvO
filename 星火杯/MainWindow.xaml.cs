@@ -24,8 +24,6 @@ namespace 星火杯
             operators_judge.Add('%', 1);
             operators_judge.Add('/', 1);
             operators_judge.Add('^', 2);
-            operators_judge.Add('!', 2);
-            operators_judge.Add('√', 2);
         }
         public static double Compute(double leftnum,double rightnum,char temp)
         {
@@ -234,7 +232,7 @@ namespace 星火杯
                 }
                 else
                 {
-                    if (Isoperator(temp_1)&&temp_2==new char ())
+                    if (Isoperator(temp_1))
                     {
                         while (Isoperator(temp_2)&&operators_judge[temp_1] <= operators_judge[temp_2])
                         {
@@ -269,10 +267,7 @@ namespace 星火杯
                 while (operators.Count > 0)
                 {
                     temp_1 = operators.Peek();
-                    if (temp_1 != '#')
-                    {
-                        result.Enqueue(temp_1);
-                    }                    
+                    result.Enqueue(temp_1);              
                 }
             }
             return result;
