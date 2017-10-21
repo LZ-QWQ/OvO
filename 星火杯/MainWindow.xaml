@@ -112,7 +112,7 @@
         <Button x:Name="Button4" Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,126,0,0" Click="Button4_Click"/>
         <Button x:Name="Button5" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="104,126,0,0" Click="Button5_Click"/>
         <Button x:Name="Button6" Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="212,126,0,0" Click="Button6_Click"/>
-        <Button x:Name="Button7" Content="7" VerticalAlignment="Top" Margin="-260.4,-14.187,702.4,0" Click="Button7_Click"/>
+        <Button x:Name="Button7" Content="7" VerticalAlignment="Top" Margin="96,346,346,0" Click="Button7_Click"/>
         <Button x:Name="Button8" Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="104,164,0,0" Click="Button8_Click"/>
         <Button x:Name="Button9" Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="212,164,0,0" Click="Button9_Click"/>
         <Button x:Name="Button_plus" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="104,201,0,0" Height="14" Click="Button_plus_Click"/>

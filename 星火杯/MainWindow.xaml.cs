@@ -14,16 +14,6 @@ namespace 星火杯
         {
             InitializeComponent();
         }
-        public static Dictionary<char, int> operators_judge = new Dictionary<char, int>();
-        static void Calculator()
-        {
-            operators_judge.Add('+', 0);
-            operators_judge.Add('-', 0);
-            operators_judge.Add('*', 1);
-            operators_judge.Add('%', 1);
-            operators_judge.Add('/', 1);
-            operators_judge.Add('^', 2);
-        }
         public static double Compute(double leftnum,double rightnum,char temp)
         {
             double temp_;
@@ -215,6 +205,13 @@ namespace 星火杯
 
         static Queue<object> Transform (string expression)
         {
+            Dictionary<char, int> operators_judge = new Dictionary<char, int>();
+            operators_judge.Add('+', 0);
+            operators_judge.Add('-', 0);
+            operators_judge.Add('*', 1);
+            operators_judge.Add('%', 1);
+            operators_judge.Add('/', 1);
+            operators_judge.Add('^', 2);
             Queue<object> result = new Queue<object>();
             Stack<char> operators = new Stack<char>();
             char temp_1, temp_2, temp_3,temp_4;
