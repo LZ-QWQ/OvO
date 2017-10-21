@@ -23,7 +23,7 @@
         <Button x:Name="Buuton_equal" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="212,196,0,0" Click="Buuton_equal_Click"/>
         <Button x:Name="Divide" Content="/" HorizontalAlignment="Left" VerticalAlignment="Top" Width="37" Margin="0,196,0,0" Click="CHUFA_Click"/>
         <Button x:Name="CHENGFA" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="38" Margin="37,196,0,0" Height="19" Click="CHENGFA_Click"/>
-        <Button x:Name="Button1" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,88,0,0" Click="Button1_Click" KeyDown="Button1_KeyDown"/>
+        <Button x:Name="Button1" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,88,0,0" Click="Button1_Click"/>
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="517" Cursor="SizeAll" IsEnabled="False" />
         <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="517" Margin="0,43,0,0" IsEnabled="False"/>
         <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="321,88,0,0" VerticalAlignment="Top" Width="75" Click="Delete_Click"/>
@@ -44,6 +44,7 @@
         <Button x:Name="__4" Content="√" HorizontalAlignment="Left" Margin="420,201,0,0" VerticalAlignment="Top" Width="75" Click="__4_Click"/>
         <Button x:Name="X" Content="X" HorizontalAlignment="Left" Margin="420,164,0,0" VerticalAlignment="Top" Width="75" Click="X_Click"/>
         <Button x:Name="lg" Content="lg" HorizontalAlignment="Left" Margin="420,126,0,0" VerticalAlignment="Top" Width="75" Click="lg_Click"/>
+        <Button x:Name="__5" Content="%" HorizontalAlignment="Left" Margin="420,88,0,0" VerticalAlignment="Top" Width="75" Click="__5_Click"/>
 
     </Grid>
 </Window>

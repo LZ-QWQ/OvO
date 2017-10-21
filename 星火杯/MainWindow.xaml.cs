@@ -14,10 +14,40 @@ namespace 星火杯
         {
             InitializeComponent();
         }
-        private Stack<decimal> 数 = new Stack<decimal>();
-        private Stack<char> 运算符 = new Stack<char>();
-        App App1=new App();
-        #region
+        public static Dictionary<char, int> operators_judge = null;
+        static void Calculator()
+        {
+            operators_judge = new Dictionary<char, int>();
+            operators_judge.Add('+', 0);
+            operators_judge.Add('-', 0);
+            operators_judge.Add('*', 1);
+            operators_judge.Add('%', 1);
+            operators_judge.Add('/', 1);
+            operators_judge.Add('^', 2);
+            operators_judge.Add('!', 2);
+            operators_judge.Add('√', 2);
+        }
+        public static double Compute(double leftnum,double rightnum,char temp)
+        {
+            switch (temp)
+            {
+                case '+': return leftnum + rightnum;
+                case '-': return leftnum - rightnum;
+                case '*': return leftnum * rightnum;
+                case '/': return leftnum / rightnum;
+                case '%': return leftnum % rightnum;
+                case '^': return Math.Pow(leftnum, rightnum);
+                default: return 0;
+            }
+        }
+        static bool Isoperator(char op)
+        {
+            if (op == '+' || op == '-' || op == '*' || op == '/' || op == '%'||op=='^')
+                return true;
+            else
+                return false;
+        }
+        #region Button
         private void Button_0_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "0";
@@ -99,7 +129,6 @@ namespace 星火杯
             {
                 textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - 1);
             }
-
         }
 
         private void X_Click(object sender, RoutedEventArgs e)
@@ -170,139 +199,106 @@ namespace 星火杯
         {
             textBox1.Text += "!";
         }
+
+        private void __5_Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text = "%";
+        }
         #endregion
         private void Buuton_equal_Click(object sender, RoutedEventArgs e)
         {
-            string x = textBox1.Text;
-            int a,b;
-            char c,y,z;
-            for (int i = 0; i < x.Length; i++)
-            {
+            string expression;
+            expression = textBox1.Text;
+            textBox2.Text = Calculate(expression).ToString();
 
-                if (x.Substring(i, 1) == ("+") || x.Substring(i, 1) == ("-") || x.Substring(i, 1) == ("*") ||
-                    x.Substring(i, 1) == ("/"))
-                {
-                    b = i - 1;
-                    a = Convert.ToInt16(x.Substring(0, b));
-                    数.Push(a);
-                    while (Convert.ToString(运算符) != "")
-                    {
-                        y = Convert.ToChar(x.Substring(i, 1));
-                        z = 运算符.Peek();
-                        if (App.judge(y)>=App.judge(z))
-                        {
-                            数Pop
-                        }
-                    }
-                    运算符.Push(c = Convert.ToChar(x.Substring(i, 1)));
-                    
-                }
-
-            }
-           
-            string b = "";
-            string c = "";
-            string d = "";
-            
-            for (int i=0; i<x.Length; i++)
-            {
-
-                if (x.Substring(i, 1) == ("+") || x.Substring(i, 1) == ("-") || x.Substring(i, 1) == ("*") ||
-                    x.Substring(i, 1) == ("/"))
-                {
-                    b = a;
-                    a = "";
-                    c += x.Substring(i, 1);
-                }
-
-                else
-                {
-                    a += x.Substring(i, 1);
-                }
-
-                if(x.Contains("."))
-                {
-                    d = ".";
-                }
-                
-                if ((x.Contains("+") || x.Contains("-") || x.Contains("*") || x.Contains("/")))
-                    ;
-
-                else
-                {
-                    b = a;
-                }
-            }
-
-            for (int i = 0; i < x.Length; i++)
-            {                
-                if (d == "."||x.Contains("/"))
-                {
-                    double A_d, B_d;
-                    if (a != "" & b != "")
-                    {
-                        A_d = Convert.ToDouble(b);
-                        B_d = Convert.ToDouble(a);
-                    }
-                    else
-                    {
-                        A_d = Convert.ToDouble(b);
-                        B_d = 0;
-                    }
-                    switch (c)
-                    {
-                        case "+":
-                            textBox2.Text = (System.Windows.Application.Current as App).Add_d(A_d, B_d).ToString();
-                            break;
-                        case "-":
-                            textBox2.Text = (System.Windows.Application.Current as App).Minus_d(A_d, B_d).ToString();
-                            break;
-                        case "*":
-                            textBox2.Text = (System.Windows.Application.Current as App).Multiply_d(A_d, B_d).ToString();
-                            break;
-                        case "/":
-                            textBox2.Text = (System.Windows.Application.Current as App).Divide_d(A_d, B_d).ToString();
-                            break;
-                        case "":
-                            textBox2.Text = (System.Windows.Application.Current as App).Nothing_d(A_d).ToString();
-                            break;
-                    }
-                }
-                else
-                {
-                    long A, B;
-                    if (a != "" & b != "")
-                    {
-                        A = Convert.ToInt64(b);
-                        B = Convert.ToInt64(a);
-                    }
-                    else
-                    {
-                        A = Convert.ToInt64(b);
-                        B = 0;
-                    }
-
-                    switch (c)
-                    {
-                        case "+":
-                            textBox2.Text = (System.Windows.Application.Current as App).Add(A, B).ToString();
-                            break;
-                        case "-":
-                            textBox2.Text = (System.Windows.Application.Current as App).Minus(A, B).ToString();
-                            break;
-                        case "*":
-                            textBox2.Text = (System.Windows.Application.Current as App).Multiply(A, B).ToString();
-                            break;
-                        case "":
-                            textBox2.Text = (System.Windows.Application.Current as App).Nothing(A).ToString();
-                            break;
-                    }                      
-
-                }
-            }
         }
 
-       
+        static Queue<object> Transform (string expression)
+        {
+            Queue<object> result = new Queue<object>();
+            Stack<char> operators = new Stack<char>();
+            char temp_1, temp_2, temp_3,temp_4;
+            string tempnum = "";
+            if (expression[0] == '-')
+                expression = '0' + expression;
+            for (int i = 0, j; i < expression.Length; i++)//逐字读取
+            {
+                temp_1 = expression[i];
+                if (operators.Count != 0)
+                    temp_2 = operators.Peek();
+                else
+                    temp_2 = new char();
+                if (temp_1 == '(')
+                {
+                    operators.Push(temp_1);
+                }
+                else
+                {
+                    if (Isoperator(temp_1)&&temp_2==new char ())
+                    {
+                        while (Isoperator(temp_2)&&operators_judge[temp_1] <= operators_judge[temp_2])
+                        {
+                            result.Enqueue(operators.Pop());
+                            if (operators.Count==0)
+                                break;
+                            else
+                                temp_2 = operators.Peek();
+                        }
+                        operators.Push(temp_1);
+                    }
+                    else if (temp_1 == ')')
+                    {
+                        while (operators.Count > 1 && (temp_3 = operators.Pop()) != '(')
+                        {
+                            result.Enqueue(temp_3);
+                        }
+                    }
+                    else
+                    {
+                        tempnum = temp_1.ToString();
+                        j = i;
+                        while (j < expression.Length && (expression[j] == '.' ||
+                            expression[j] == '0'|| expression[j] == '1'))
+                        {
+                            temp_4 = expression[j];
+                            tempnum += temp_4.ToString();
+                        }
+                        result.Enqueue(tempnum);
+                    }
+                }
+                while (operators.Count > 0)
+                {
+                    temp_1 = operators.Peek();
+                    if (temp_1 != '#')
+                    {
+                        result.Enqueue(temp_1);
+                    }                    
+                }
+            }
+            return result;
+        }
+        static double Calculate(string expression)
+        {
+            Queue<object> result = Transform(expression);
+            Stack<double> operand = new Stack<double>();
+            double leftnum, rightnum;
+            object temp;
+            while (result.Count > 0)
+            {
+                temp = result.Dequeue();
+                if (temp is char)
+                {
+                    rightnum = operand.Pop();
+                    leftnum = operand.Pop();
+                    operand.Push(Compute(leftnum, rightnum, (char)temp));
+                }
+                else
+                {
+                    operand.Push(double.Parse(temp.ToString()));
+                }
+            }
+            return operand.Pop();
+        }
     }
 }
     
