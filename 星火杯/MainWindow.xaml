@@ -50,6 +50,58 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="80">
+                            <Ellipse Fill="#FFDEDEF6" Height="60" Margin="0" Stroke="Black" VerticalAlignment="Top" Width="Auto"/>
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="35.55,22.38" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true"/>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle3" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="80">
+                            <Ellipse Fill="#FFDEDEF6" HorizontalAlignment="Left" Height="60" Stroke="Black" VerticalAlignment="Top" Width="80" Margin="712.4,246,-712.4,-246"/>
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="752.605,267.6,-677.795,-231.24" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Height="23.64"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true"/>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid Margin="0,0,3.6,-1.2">
         <Grid.ColumnDefinitions>
@@ -60,12 +112,12 @@
         <Button x:Name="Button4" Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,126,0,0" Click="Button4_Click"/>
         <Button x:Name="Button5" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="104,126,0,0" Click="Button5_Click"/>
         <Button x:Name="Button6" Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="212,126,0,0" Click="Button6_Click"/>
-        <Button x:Name="Button7" Content="7" VerticalAlignment="Top" Margin="10,313,432,0" Click="Button7_Click"/>
+        <Button x:Name="Button7" Content="7" VerticalAlignment="Top" Margin="-260.4,-14.187,702.4,0" Click="Button7_Click"/>
         <Button x:Name="Button8" Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="104,164,0,0" Click="Button8_Click"/>
         <Button x:Name="Button9" Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="212,164,0,0" Click="Button9_Click"/>
         <Button x:Name="Button_plus" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="104,201,0,0" Height="14" Click="Button_plus_Click"/>
-        <Button x:Name="Button_decreas" Content="-" VerticalAlignment="Top" Height="14" Margin="0,201,454,0" HorizontalAlignment="Right" Width="35" Click="Button_decreas_Click"/>
-        <Button x:Name="Buuton_equal" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="46.2" Margin="542.8,369.5,0,0" Click="Buuton_equal_Click" Height="43.16" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="Button_decreas" Content="-" VerticalAlignment="Top" Height="60" Margin="-240.6,61,721.8,0" HorizontalAlignment="Right" Width="80" Click="Button_decreas_Click" Style="{DynamicResource ButtonStyle3}"/>
+        <Button x:Name="Buuton_equal" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="542.8,369.5,0,0" Click="Buuton_equal_Click" Height="60" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource ButtonStyle2}">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="-1"/>
