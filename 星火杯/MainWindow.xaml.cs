@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,13 +15,11 @@ namespace 星火杯
         {
             InitializeComponent();
         }
-        public static double Compute(double leftnum,double rightnum,char temp)
+        public static double Compute(double leftnum,double rightnum,char temp)//可转换成波兰表达式的计算
         {
-            double temp_;
             switch (temp)
             {
-                case '+': temp_ = (leftnum + rightnum);
-                    return temp_;
+                case '+': return leftnum + rightnum;
                 case '-': return leftnum - rightnum;
                 case '*': return leftnum * rightnum;
                 case '/': return leftnum / rightnum;
@@ -30,7 +29,17 @@ namespace 星火杯
                     return 0;
             }
         }
-        static bool Isoperator(char op)
+        public static double Factorial(double i)//阶乘
+        {
+            double j=1;
+            for (; i>1;)
+            {
+                j *= i;
+                i--;
+            }
+            return j;
+        }
+        static bool Isoperator(char op)//判断是否为操作符
         {
             if (op == '+' || op == '-' || op == '*' || op == '/' || op == '%'||op=='^')
                 return true;
@@ -199,13 +208,25 @@ namespace 星火杯
         {
             string expression;
             expression = textBox1.Text;
+            if (expression.IndexOf("!") >= 0)//判断阶乘并计算再丢回去
+            {
+                int i;
+                double temp_2;
+                string temp_1;
+                int temp = expression.IndexOf("!");
+                for (i = temp-1; i >= 0 && (expression[i] == '.' || expression[i] >= '0' && expression[i] <= '9');i--) ;
+                i++;
+                temp_1 = expression.Substring(i, temp - i);
+                temp_2 = Factorial(Convert.ToDouble(temp_1));
+                expression = expression.Replace(temp_1 + "!", temp_2.ToString());
+            }
             textBox2.Text = Calculate(expression).ToString();
 
-            if (expression.IndexOf("sin") >= 0 || expression.IndexOf("cos") >= 0 || expression.IndexOf("tan") >= 0 ||
+            /*if (expression.IndexOf("sin") >= 0 || expression.IndexOf("cos") >= 0 || expression.IndexOf("tan") >= 0 ||
                 expression.IndexOf("log") >= 0 || expression.IndexOf("ln") >= 0 || expression.IndexOf("lg") >= 0)
             {
 
-            }
+            }*/
         }
         static Queue<object> Transform (string expression)
         {
