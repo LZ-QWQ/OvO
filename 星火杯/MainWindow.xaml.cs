@@ -199,10 +199,14 @@ namespace 星火杯
         {
             string expression;
             expression = textBox1.Text;
-            textBox2.Text =Calculate(expression).ToString();
+            textBox2.Text = Calculate(expression).ToString();
 
+            if (expression.IndexOf("sin") >= 0 || expression.IndexOf("cos") >= 0 || expression.IndexOf("tan") >= 0 ||
+                expression.IndexOf("log") >= 0 || expression.IndexOf("ln") >= 0 || expression.IndexOf("lg") >= 0)
+            {
+
+            }
         }
-
         static Queue<object> Transform (string expression)
         {
             Dictionary<char, int> operators_judge = new Dictionary<char, int>();
@@ -246,7 +250,7 @@ namespace 星火杯
                     }
                     else if (temp_1 == ')')
                     {
-                        while (operators.Count > 1 && (temp_3 = operators.Pop()) != '(')
+                        while (operators.Count > 0 && (temp_3 = operators.Pop()) != '(')
                         {
                             result.Enqueue(temp_3);
                         }
