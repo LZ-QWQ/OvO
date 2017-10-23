@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace 星火杯
 {
@@ -206,20 +208,45 @@ namespace 星火杯
         #endregion
         private void Buuton_equal_Click(object sender, RoutedEventArgs e)
         {
+            
             string expression;
             expression = textBox1.Text;
-            if (expression.IndexOf("!") >= 0)//判断阶乘并计算再丢回去
+            for (; expression.IndexOf("!") >= 0;)//判断阶乘并计算再丢回去
             {
                 int i;
                 double temp_2;
-                string temp_1;
+                string temp_1,temp_3;
                 int temp = expression.IndexOf("!");
-                for (i = temp-1; i >= 0 && (expression[i] == '.' || expression[i] >= '0' && expression[i] <= '9');i--) ;
-                i++;
-                temp_1 = expression.Substring(i, temp - i);
-                temp_2 = Factorial(Convert.ToDouble(temp_1));
-                expression = expression.Replace(temp_1 + "!", temp_2.ToString());
-            }
+                if (expression[temp - 1] == ')')
+                {
+                    for (i = temp - 1; i >= 0 && expression[i] != '(';)//待引入多重括号下的阶乘（目测循环一下？）
+                    {
+                        i--;
+                    }
+                    temp_1 = expression.Substring(i+1, temp - i-2);
+                    temp_2 = Factorial(Convert.ToDouble(Calculate(temp_1)));
+                    temp_3 = expression.Substring(i, temp-i+1);
+                    expression = expression.Replace(temp_3, temp_2.ToString());
+                }
+                else
+                {
+                    for (i = temp - 1; i >= 0 && (expression[i] == '.' || expression[i] >= '0' && expression[i] <= '9'); i--) ;
+                    i++;
+                    temp_1 = expression.Substring(i, temp - i);
+                    temp_2 = Factorial(Convert.ToDouble(temp_1));
+                    expression = expression.Replace(temp_1 + "!", temp_2.ToString());
+                }
+            }//阶乘
+           /* if (expression.IndexOf("X^") >= 0)
+            {
+                for(int i = 0; i < expression.Length; i++)
+                {
+                    if (expression[i] >= '0' && expression[i] <= '9')
+                    {
+
+                    }
+                }
+            }*/
             textBox2.Text = Calculate(expression).ToString();
 
             /*if (expression.IndexOf("sin") >= 0 || expression.IndexOf("cos") >= 0 || expression.IndexOf("tan") >= 0 ||
