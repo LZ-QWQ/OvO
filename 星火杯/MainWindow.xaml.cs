@@ -317,16 +317,11 @@ namespace 星火杯
                                     break;
                                 }
                             }
-                            if (expressions.Contains(Polynomial.exponent=temp_0))
+                            if (expressions.Contains(delegate Polynomial expression{return Polynomial.exponent==temp_0))
                             {
 
                             }
-                            expressions.Add(new Polynomial
-                            {
-                                exponent = temp_0,
-                                coefficient = temp_0_d,
-                                expression = expression.Substring(i, r - 1 - i)
-                            });
+
                             i = r + 1;
                         }
                     }
