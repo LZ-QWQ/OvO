@@ -17,7 +17,7 @@ namespace 星火杯
         {
             InitializeComponent();
         }
-        public static double Compute(double leftnum,double rightnum,char temp)//可转换成波兰表达式的计算
+        public static double Compute(double leftnum,double rightnum,char temp)//逆波兰表达式计算
         {
             switch (temp)
             {
@@ -206,9 +206,26 @@ namespace 星火杯
             textBox1.Text = "%";
         }
         #endregion
-        private void Buuton_equal_Click(object sender, RoutedEventArgs e)
+        struct Polynomial
         {
-            
+            public int exponent;
+            public double coefficient;
+            string expression;
+        }
+        class SortExpressionByExpoent : IComparer<Polynomial>
+        {
+            public int Compare(Polynomial x,Polynomial y)
+            {
+                if (x.exponent > y.exponent)
+                    return 1;
+                if (x.exponent < y.exponent)
+                    return -1;
+                else
+                    return 0;
+            }
+        }
+        private void Buuton_equal_Click(object sender, RoutedEventArgs e)//等于
+        {
             string expression;
             expression = textBox1.Text;
             for (; expression.IndexOf("!") >= 0;)//判断阶乘并计算再丢回去
@@ -237,16 +254,30 @@ namespace 星火杯
                     expression = expression.Replace(temp_1 + "!", temp_2.ToString());
                 }
             }//阶乘
-           /* if (expression.IndexOf("X^") >= 0)
+            if (expression.IndexOf("X^") >= 0)//多项式
             {
-                for(int i = 0; i < expression.Length; i++)
+                SortedSet<Polynomial> expressions = new SortedSet<Polynomial>(new SortExpressionByExpoent());
+                int temp_0;
+                double temp_0_d;
+                string temp_0_s=null;
+                for (int i = 0; i < expression.Length; i++)
                 {
-                    if (expression[i] >= '0' && expression[i] <= '9')
+                    if (expression[i] == '(')
+                        i++;
+                    for(int j=i; expression[j] >= '0' && expression[j] <= '9'||expression[j]=='.'||expression[j]=='e'||
+                        expression[j]=='π';)
                     {
-
+                        temp_0_s += expression[j];
+                        j++;
+                        if (expression[j] == 'X')
+                        {
+                            i = j;
+                            break;
+                        }                            
                     }
+                    for(int r=j;expression)
                 }
-            }*/
+            }
             textBox2.Text = Calculate(expression).ToString();
 
             /*if (expression.IndexOf("sin") >= 0 || expression.IndexOf("cos") >= 0 || expression.IndexOf("tan") >= 0 ||
@@ -255,7 +286,7 @@ namespace 星火杯
 
             }*/
         }
-        static Queue<object> Transform (string expression)
+        static Queue<object> Transform (string expression)//中缀转后缀
         {
             Dictionary<char, int> operators_judge = new Dictionary<char, int>();
             operators_judge.Add('+', 0);
