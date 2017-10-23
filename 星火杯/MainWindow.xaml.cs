@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
@@ -206,23 +207,11 @@ namespace 星火杯
             textBox1.Text = "%";
         }
         #endregion
-        struct Polynomial
+        public struct Polynomial
         {
             public int exponent;
             public double coefficient;
-            string expression;
-        }
-        class SortExpressionByExpoent : IComparer<Polynomial>
-        {
-            public int Compare(Polynomial x,Polynomial y)
-            {
-                if (x.exponent > y.exponent)
-                    return 1;
-                if (x.exponent < y.exponent)
-                    return -1;
-                else
-                    return 0;
-            }
+            public string expression;
         }
         private void Buuton_equal_Click(object sender, RoutedEventArgs e)//等于
         {
@@ -236,13 +225,20 @@ namespace 星火杯
                 int temp = expression.IndexOf("!");
                 if (expression[temp - 1] == ')')
                 {
-                    for (i = temp - 1; i >= 0 && expression[i] != '(';)//待引入多重括号下的阶乘（目测循环一下？）
+                    int x=new int() , y, j = temp-1;
+                    while (j < expression.Length)
                     {
-                        i--;
+                        if (expression[j] == ')')
+                            x++;
+                        else if (expression[j] == '(')
+                            x--;
+                        if (x == 0)
+                            break;
+                        j--;
                     }
-                    temp_1 = expression.Substring(i+1, temp - i-2);
+                    temp_1 = expression.Substring(j+1, temp-j-2);
                     temp_2 = Factorial(Convert.ToDouble(Calculate(temp_1)));
-                    temp_3 = expression.Substring(i, temp-i+1);
+                    temp_3 = expression.Substring(j, temp-j+1);
                     expression = expression.Replace(temp_3, temp_2.ToString());
                 }
                 else
@@ -256,26 +252,84 @@ namespace 星火杯
             }//阶乘
             if (expression.IndexOf("X^") >= 0)//多项式
             {
-                SortedSet<Polynomial> expressions = new SortedSet<Polynomial>(new SortExpressionByExpoent());
-                int temp_0;
-                double temp_0_d;
-                string temp_0_s=null;
-                for (int i = 0; i < expression.Length; i++)
+                List<Polynomial> expressions = new List<Polynomial>();
+                int temp_0 = new int();
+                double temp_0_d = new double();
+                string temp_0_s=null,temp_1_s=null;
+                for (int i = 0,j,r; i < expression.Length;)
                 {
-                    if (expression[i] == '(')
-                        i++;
-                    for(int j=i; expression[j] >= '0' && expression[j] <= '9'||expression[j]=='.'||expression[j]=='e'||
-                        expression[j]=='π';)
+                    for (; expression[i] != ')';)
                     {
-                        temp_0_s += expression[j];
-                        j++;
-                        if (expression[j] == 'X')
+                        if (expression[i] == '(')
+                            i++;
+                        for (j = i; expression[j] >= '0' && expression[j] <= '9' || expression[j] == '.' || expression[j] == 'e' ||
+                            expression[j] == 'π';)
                         {
-                            i = j;
-                            break;
-                        }                            
+                            temp_0_s += expression[j];
+                            j++;
+                            if (expression[j] == 'X')
+                            {
+                                temp_0 = Convert.ToInt32(temp_0_s);
+                                break;
+                            }
+                        }
+                        if (expression[j + 1] == '^') ;
+                        for (r = j+2; expression[r] >= '0' || expression[r] <= '9';)
+                        {
+                            temp_1_s += expression[r];
+                            r++;
+                            if (Isoperator(expression[r]))
+                            {
+                                temp_0_d = Convert.ToDouble(temp_1_s);
+                                break;
+                            }
+                        }
+                        expressions.Add(new Polynomial { exponent = temp_0, coefficient = temp_0_d,
+                            expression =expression.Substring(i,r-1-i)});
+                        i = r + 1;
                     }
-                    for(int r=j;expression)
+                    if (expression[i] == ')')
+                    {
+                        i = i + 2;
+                        for (; expression[i] != ')';)
+                        {
+                            if (expression[i] == '(')
+                                i++;
+                            for (j = i; expression[j] >= '0' && expression[j] <= '9' || expression[j] == '.' || expression[j] == 'e' ||
+                                expression[j] == 'π';)
+                            {
+                                temp_0_s += expression[j];
+                                j++;
+                                if (expression[j] == 'X')
+                                {
+                                    temp_0 = Convert.ToInt32(temp_0_s);
+                                    break;
+                                }
+                            }
+                            if (expression[j + 1] == '^') ;
+                            for (r = j + 2; expression[r] >= '0' || expression[r] <= '9';)
+                            {
+                                temp_1_s += expression[r];
+                                r++;
+                                if (Isoperator(expression[r]))
+                                {
+                                    temp_0_d = Convert.ToDouble(temp_1_s);
+                                    break;
+                                }
+                            }
+                            if (expressions.Contains(Polynomial.exponent=temp_0))
+                            {
+
+                            }
+                            expressions.Add(new Polynomial
+                            {
+                                exponent = temp_0,
+                                coefficient = temp_0_d,
+                                expression = expression.Substring(i, r - 1 - i)
+                            });
+                            i = r + 1;
+                        }
+                    }
                 }
             }
             textBox2.Text = Calculate(expression).ToString();
