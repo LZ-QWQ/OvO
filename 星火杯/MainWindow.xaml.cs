@@ -154,7 +154,7 @@ namespace 星火杯
 
         private void ln___Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += "ln()";
+            textBox1.Text += "ln(";
         }
 
         private void log_Click(object sender, RoutedEventArgs e)
@@ -212,6 +212,18 @@ namespace 星火杯
             public int exponent;
             public double coefficient;
             public string expression;
+        }
+        class Sort_the_expression : ICom
+        {
+            public int CompareTo(Polynomial x,Polynomial y)
+            {
+                if (x.exponent > y.exponent)
+                    return 1;
+                else if (x.exponent < y.exponent)
+                    return -1;
+                else
+                    return 0;
+            }
         }
         private void Buuton_equal_Click(object sender, RoutedEventArgs e)//等于
         {
@@ -317,16 +329,21 @@ namespace 星火杯
                                     break;
                                 }
                             }
-                            if (expressions.Contains(delegate Polynomial expression{return Polynomial.exponent==temp_0))
+                            if (expressions.Contains(new Polynomial { exponent=temp_0}))
                             {
 
                             }
 
                             i = r + 1;
                         }
+                        expressions.Sort();
                     }
                 }
             }
+            for (; expression.IndexOf("sin") >= 0;)
+            {
+
+            }//sin函数
             textBox2.Text = Calculate(expression).ToString();
 
             /*if (expression.IndexOf("sin") >= 0 || expression.IndexOf("cos") >= 0 || expression.IndexOf("tan") >= 0 ||
