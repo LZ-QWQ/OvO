@@ -18,37 +18,6 @@ namespace 星火杯
         {
             InitializeComponent();
         }
-        public static double Compute(double leftnum,double rightnum,char temp)//逆波兰表达式计算
-        {
-            switch (temp)
-            {
-                case '+': return leftnum + rightnum;
-                case '-': return leftnum - rightnum;
-                case '*': return leftnum * rightnum;
-                case '/': return leftnum / rightnum;
-                case '%': return leftnum % rightnum;
-                case '^': return Math.Pow(leftnum, rightnum);
-                default:
-                    return 0;
-            }
-        }
-        public static double Factorial(double i)//阶乘
-        {
-            double j=1;
-            for (; i>1;)
-            {
-                j *= i;
-                i--;
-            }
-            return j;
-        }
-        static bool Isoperator(char op)//判断是否为操作符
-        {
-            if (op == '+' || op == '-' || op == '*' || op == '/' || op == '%'||op=='^')
-                return true;
-            else
-                return false;
-        }
         #region Button
         private void Button_0_Click(object sender, RoutedEventArgs e)
         {
@@ -144,12 +113,12 @@ namespace 星火杯
         }
         private void e_Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += Math.E;
+            textBox1.Text += "e";
         }
 
         private void π_Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += Math.PI;
+            textBox1.Text += "π";
         }
 
         private void ln___Click(object sender, RoutedEventArgs e)
@@ -159,27 +128,27 @@ namespace 星火杯
 
         private void log_Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += "log()()";
+            textBox1.Text += "log((";
         }
 
         private void lg_Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += "lg()";
+            textBox1.Text += "lg(";
         }
 
         private void sin___Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += "sin()";
+            textBox1.Text += "sin(";
         }
 
         private void cos___Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += "cos()";
+            textBox1.Text += "cos(";
         }
 
         private void tan___Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += "tan()";
+            textBox1.Text += "tan(";
         }
 
         private void __4_Click(object sender, RoutedEventArgs e)
@@ -213,7 +182,7 @@ namespace 星火杯
             public double coefficient;
             public string expression;
         }
-        class Sort_the_expression : ICom
+        class Sort_the_expression
         {
             public int CompareTo(Polynomial x,Polynomial y)
             {
@@ -229,6 +198,36 @@ namespace 星火杯
         {
             string expression;
             expression = textBox1.Text;
+            for (; expression.IndexOf("e") >= 0;)
+            {
+                expression = expression.Replace("e", Math.E.ToString());
+            }//转换E
+            for (; expression.IndexOf("π") >= 0;)
+            {
+                expression = expression.Replace("π", Math.PI.ToString());
+            }//转换π
+            for (; expression.IndexOf("sin") >= 0;)
+            {
+                string temp_1, temp_3;
+                double temp_2;
+                int temp = expression.IndexOf("sin");
+                int x = new int(), j = temp + 3;
+                while (j < expression.Length)
+                {
+                    if (expression[j] == '(')
+                        x++;
+                    else if (expression[j] == ')')
+                        x--;
+                    if (x == 0)
+                        break;
+                    j++;
+                }
+                temp_1 = expression.Substring(temp + 3, j-temp-2);
+                temp_2 = Math.Sin(Calculate(temp_1));
+                temp_3 = expression.Substring(temp, j - temp+1);
+                expression = expression.Replace(temp_3, temp_2.ToString());
+            }//sin函数   这里有个很大很大的问题！！！！！
+
             for (; expression.IndexOf("!") >= 0;)//判断阶乘并计算再丢回去
             {
                 int i;
@@ -237,7 +236,7 @@ namespace 星火杯
                 int temp = expression.IndexOf("!");
                 if (expression[temp - 1] == ')')
                 {
-                    int x=new int() , y, j = temp-1;
+                    int x=new int(), j = temp-1;
                     while (j < expression.Length)
                     {
                         if (expression[j] == ')')
@@ -274,8 +273,7 @@ namespace 星火杯
                     {
                         if (expression[i] == '(')
                             i++;
-                        for (j = i; expression[j] >= '0' && expression[j] <= '9' || expression[j] == '.' || expression[j] == 'e' ||
-                            expression[j] == 'π';)
+                        for (j = i; expression[j] >= '0' && expression[j] <= '9' || expression[j] == '.';)
                         {
                             temp_0_s += expression[j];
                             j++;
@@ -340,10 +338,7 @@ namespace 星火杯
                     }
                 }
             }
-            for (; expression.IndexOf("sin") >= 0;)
-            {
 
-            }//sin函数
             textBox2.Text = Calculate(expression).ToString();
 
             /*if (expression.IndexOf("sin") >= 0 || expression.IndexOf("cos") >= 0 || expression.IndexOf("tan") >= 0 ||
@@ -383,10 +378,10 @@ namespace 星火杯
                 {
                     if (Isoperator(temp_1))
                     {
-                        while (Isoperator(temp_2)&&operators_judge[temp_1] <= operators_judge[temp_2])
+                        while (Isoperator(temp_2) && operators_judge[temp_1] <= operators_judge[temp_2])
                         {
                             result.Enqueue(operators.Pop());
-                            if (operators.Count==0)
+                            if (operators.Count == 0)
                                 break;
                             else
                                 temp_2 = operators.Peek();
@@ -403,8 +398,12 @@ namespace 星火杯
                     else
                     {
                         tempnum = "";
-                        while (j<expression.Length&&(expression[j] == '.' ||
-                            expression[j] >= '0'&& expression[j] <= '9'))
+                        while (j < expression.Length && (expression[j] == '.' || 
+                            expression[j] == 'E' && expression[j + 1]=='-'|| 
+                            expression[j] == 'E' && expression[j + 1] == '+'||
+                            expression[j] == '+' && expression[j - 1] == 'E'||
+                            expression[j] == '-' && expression[j - 1] == 'E'||
+                            expression[j] >= '0' && expression[j] <= '9'))
                         {
                             temp_4 = expression[j];
                             tempnum = tempnum + temp_4.ToString();
@@ -444,6 +443,37 @@ namespace 星火杯
                 }
             }
             return operand.Pop();
+        }
+        public static double Compute(double leftnum, double rightnum, char temp)//逆波兰表达式计算
+        {
+            switch (temp)
+            {
+                case '+': return leftnum + rightnum;
+                case '-': return leftnum - rightnum;
+                case '*': return leftnum * rightnum;
+                case '/': return leftnum / rightnum;
+                case '%': return leftnum % rightnum;
+                case '^': return Math.Pow(leftnum, rightnum);
+                default:
+                    return 0;
+            }
+        }
+        public static double Factorial(double i)//阶乘
+        {
+            double j = 1;
+            for (; i > 1;)
+            {
+                j *= i;
+                i--;
+            }
+            return j;
+        }
+        static bool Isoperator(char op)//判断是否为操作符
+        {
+            if (op == '+' || op == '-' || op == '*' || op == '/' || op == '%' || op == '^')
+                return true;
+            else
+                return false;
         }
     }
 }
