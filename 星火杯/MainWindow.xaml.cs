@@ -227,7 +227,48 @@ namespace 星火杯
                 temp_3 = expression.Substring(temp, j - temp+1);
                 expression = expression.Replace(temp_3, temp_2.ToString());
             }//sin函数   这里有个很大很大的问题！！！！！
-
+            for (; expression.IndexOf("cos") >= 0;)
+            {
+                string temp_1, temp_3;
+                double temp_2;
+                int temp = expression.IndexOf("cos");
+                int x = new int(), j = temp + 3;
+                while (j < expression.Length)
+                {
+                    if (expression[j] == '(')
+                        x++;
+                    else if (expression[j] == ')')
+                        x--;
+                    if (x == 0)
+                        break;
+                    j++;
+                }
+                temp_1 = expression.Substring(temp + 3, j - temp - 2);
+                temp_2 = Math.Cos(Calculate(temp_1));
+                temp_3 = expression.Substring(temp, j - temp + 1);
+                expression = expression.Replace(temp_3, temp_2.ToString());
+            }//cos函数
+            for (; expression.IndexOf("tan") >= 0;)
+            {
+                string temp_1, temp_3;
+                double temp_2;
+                int temp = expression.IndexOf("tan");
+                int x = new int(), j = temp + 3;
+                while (j < expression.Length)
+                {
+                    if (expression[j] == '(')
+                        x++;
+                    else if (expression[j] == ')')
+                        x--;
+                    if (x == 0)
+                        break;
+                    j++;
+                }
+                temp_1 = expression.Substring(temp + 3, j - temp - 2);
+                temp_2 = Math.Cos(Calculate(temp_1));
+                temp_3 = expression.Substring(temp, j - temp + 1);
+                expression = expression.Replace(temp_3, temp_2.ToString());
+            }//tan函数
             for (; expression.IndexOf("!") >= 0;)//判断阶乘并计算再丢回去
             {
                 int i;
