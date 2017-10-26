@@ -265,7 +265,7 @@ namespace 星火杯
                     j++;
                 }
                 temp_1 = expression.Substring(temp + 3, j - temp - 2);
-                temp_2 = Math.Cos(Calculate(temp_1));
+                temp_2 = Math.Tan(Calculate(temp_1));
                 temp_3 = expression.Substring(temp, j - temp + 1);
                 expression = expression.Replace(temp_3, temp_2.ToString());
             }//tan函数
@@ -308,7 +308,7 @@ namespace 星火杯
                 double temp_2;
                 string temp_1, temp_3;
                 int temp = expression.IndexOf("√");
-                if (expression[temp + 1] == '（')
+                if (expression[temp + 1] == '(')
                 {
                     int x = 0, j = temp + 1;
                     while (j < expression.Length)
@@ -321,20 +321,42 @@ namespace 星火杯
                             break;
                         j++;
                     }
-                    temp_1 = expression.Substring(temp+1,j-temp);
-                    temp_2 = Factorial(Convert.ToDouble(Calculate(temp_1)));
-                    temp_3 = expression.Substring(temp,j );
+                    temp_1 = expression.Substring(temp + 1, j - temp);
+                    temp_2 = Math.Sqrt((Convert.ToDouble(Calculate(temp_1))));
+                    temp_3 = expression.Substring(temp,j-temp);
                     expression = expression.Replace(temp_3, temp_2.ToString());
                 }
                 else
                 {
-                    for (i = temp - 1; i >= 0 && (expression[i] == '.' || expression[i] >= '0' && expression[i] <= '9'); i--) ;
-                    i++;
-                    temp_1 = expression.Substring(i, temp - i);
-                    temp_2 = Factorial(Convert.ToDouble(temp_1));
-                    expression = expression.Replace(temp_1 + "!", temp_2.ToString());
+                    for (i = temp+1 ;i<expression.Length&&(expression[i] == '.' || expression[i] >= '0' && expression[i] <= '9');)
+                        i++;
+                    temp_1 = expression.Substring(temp + 1, i-temp-1);
+                    temp_2 = Math.Sqrt((Convert.ToDouble(temp_1)));
+                    temp_3 = expression.Substring(temp, i - temp);
+                    expression = expression.Replace(temp_3, temp_2.ToString());
                 }
             }//开根
+            for (; expression.IndexOf("lg") >= 0;)
+            {
+                string temp_1, temp_3;
+                double temp_2;
+                int temp = expression.IndexOf("lg");
+                int x = new int(), j = temp + 2;
+                while (j < expression.Length)
+                {
+                    if (expression[j] == '(')
+                        x++;
+                    else if (expression[j] == ')')
+                        x--;
+                    if (x == 0)
+                        break;
+                    j++;
+                }
+                temp_1 = expression.Substring(temp + 2, j - temp - 1);
+                temp_2 = Math.Log10(Calculate(temp_1));
+                temp_3 = expression.Substring(temp, j - temp);
+                expression = expression.Replace(temp_3, temp_2.ToString());
+            }//lg函数
             if (expression.IndexOf("X^") >= 0)//多项式
             {
                 List<Polynomial> expressions = new List<Polynomial>();
@@ -411,7 +433,7 @@ namespace 星火杯
                         expressions.Sort();
                     }
                 }
-            }
+            }//多项式
 
             textBox2.Text = Calculate(expression).ToString();
 
@@ -434,8 +456,24 @@ namespace 星火杯
             Stack<char> operators = new Stack<char>();
             char temp_1, temp_2, temp_3,temp_4;
             string tempnum ;
-            if (expression[0] == '-')
-                expression = "0" + expression;
+            if (expression.IndexOf('-') > 0)
+            {
+                while()
+                while (Isoperator(expression[expression.IndexOf('-') - 1]))
+                {
+                    char temp = expression[expression.IndexOf('-') - 1];
+                    switch (temp)
+                    {
+                        case '+':
+                            expression = expression.Insert(expression.IndexOf('-'), "0");
+                            break;
+                        default:
+                            break;
+                    }
+                    if (expression.IndexOf('-') < 0)
+                        break;
+                }
+            }
             for (int i = 0; i < expression.Length;)//逐字读取
             {
                 int j = i;
