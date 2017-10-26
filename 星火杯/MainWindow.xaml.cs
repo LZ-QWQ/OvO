@@ -182,7 +182,7 @@ namespace 星火杯
             public double coefficient;
             public string expression;
         }
-        class Sort_the_expression
+        /*class Sort_the_expression
         {
             public int CompareTo(Polynomial x,Polynomial y)
             {
@@ -193,7 +193,7 @@ namespace 星火杯
                 else
                     return 0;
             }
-        }
+        }*/
         private void Buuton_equal_Click(object sender, RoutedEventArgs e)//等于
         {
             string expression;
@@ -302,6 +302,39 @@ namespace 星火杯
                     expression = expression.Replace(temp_1 + "!", temp_2.ToString());
                 }
             }//阶乘
+            for (; expression.IndexOf("√") >= 0;)//开根
+            {
+                int i;
+                double temp_2;
+                string temp_1, temp_3;
+                int temp = expression.IndexOf("√");
+                if (expression[temp + 1] == '（')
+                {
+                    int x = 0, j = temp + 1;
+                    while (j < expression.Length)
+                    {
+                        if (expression[j] == '(')
+                            x++;
+                        else if (expression[j] == ')')
+                            x--;
+                        if (x == 0)
+                            break;
+                        j++;
+                    }
+                    temp_1 = expression.Substring(temp+1,j-temp);
+                    temp_2 = Factorial(Convert.ToDouble(Calculate(temp_1)));
+                    temp_3 = expression.Substring(temp,j );
+                    expression = expression.Replace(temp_3, temp_2.ToString());
+                }
+                else
+                {
+                    for (i = temp - 1; i >= 0 && (expression[i] == '.' || expression[i] >= '0' && expression[i] <= '9'); i--) ;
+                    i++;
+                    temp_1 = expression.Substring(i, temp - i);
+                    temp_2 = Factorial(Convert.ToDouble(temp_1));
+                    expression = expression.Replace(temp_1 + "!", temp_2.ToString());
+                }
+            }//开根
             if (expression.IndexOf("X^") >= 0)//多项式
             {
                 List<Polynomial> expressions = new List<Polynomial>();
