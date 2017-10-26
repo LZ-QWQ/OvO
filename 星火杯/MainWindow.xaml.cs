@@ -456,9 +456,10 @@ namespace 星火杯
             Stack<char> operators = new Stack<char>();
             char temp_1, temp_2, temp_3,temp_4;
             string tempnum ;
+            if (expression[0] == '-')
+                expression = "0" + expression;
             if (expression.IndexOf('-') > 0)
             {
-                while()
                 while (Isoperator(expression[expression.IndexOf('-') - 1]))
                 {
                     char temp = expression[expression.IndexOf('-') - 1];
