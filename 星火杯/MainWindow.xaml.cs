@@ -222,9 +222,9 @@ namespace 星火杯
                         break;
                     j++;
                 }
-                temp_1 = expression.Substring(temp + 3, j-temp-2);
+                temp_1 = expression.Substring(temp + 3, j - temp - 2);
                 temp_2 = Math.Sin(Calculate(temp_1));
-                temp_3 = expression.Substring(temp, j - temp+1);
+                temp_3 = expression.Substring(temp, j - temp + 1);
                 expression = expression.Replace(temp_3, temp_2.ToString());
             }//sin函数   这里有个很大很大的问题！！！！！
             for (; expression.IndexOf("cos") >= 0;)
@@ -273,11 +273,11 @@ namespace 星火杯
             {
                 int i;
                 double temp_2;
-                string temp_1,temp_3;
+                string temp_1, temp_3;
                 int temp = expression.IndexOf("!");
                 if (expression[temp - 1] == ')')
                 {
-                    int x=new int(), j = temp-1;
+                    int x = new int(), j = temp - 1;
                     while (j < expression.Length)
                     {
                         if (expression[j] == ')')
@@ -288,9 +288,9 @@ namespace 星火杯
                             break;
                         j--;
                     }
-                    temp_1 = expression.Substring(j+1, temp-j-2);
+                    temp_1 = expression.Substring(j + 1, temp - j - 2);
                     temp_2 = Factorial(Convert.ToDouble(Calculate(temp_1)));
-                    temp_3 = expression.Substring(j, temp-j+1);
+                    temp_3 = expression.Substring(j, temp - j + 1);
                     expression = expression.Replace(temp_3, temp_2.ToString());
                 }
                 else
@@ -323,14 +323,14 @@ namespace 星火杯
                     }
                     temp_1 = expression.Substring(temp + 1, j - temp);
                     temp_2 = Math.Sqrt((Convert.ToDouble(Calculate(temp_1))));
-                    temp_3 = expression.Substring(temp,j-temp);
+                    temp_3 = expression.Substring(temp, j - temp);
                     expression = expression.Replace(temp_3, temp_2.ToString());
                 }
                 else
                 {
-                    for (i = temp+1 ;i<expression.Length&&(expression[i] == '.' || expression[i] >= '0' && expression[i] <= '9');)
+                    for (i = temp + 1; i < expression.Length && (expression[i] == '.' || expression[i] >= '0' && expression[i] <= '9');)
                         i++;
-                    temp_1 = expression.Substring(temp + 1, i-temp-1);
+                    temp_1 = expression.Substring(temp + 1, i - temp - 1);
                     temp_2 = Math.Sqrt((Convert.ToDouble(temp_1)));
                     temp_3 = expression.Substring(temp, i - temp);
                     expression = expression.Replace(temp_3, temp_2.ToString());
@@ -362,8 +362,8 @@ namespace 星火杯
                 List<Polynomial> expressions = new List<Polynomial>();
                 int temp_0 = new int();
                 double temp_0_d = new double();
-                string temp_0_s=null,temp_1_s=null;
-                for (int i = 0,j,r; i < expression.Length;)
+                string temp_0_s = null, temp_1_s = null;
+                for (int i = 0, j, r; i < expression.Length;)
                 {
                     for (; expression[i] != ')';)
                     {
@@ -380,7 +380,7 @@ namespace 星火杯
                             }
                         }
                         if (expression[j + 1] == '^') ;
-                        for (r = j+2; expression[r] >= '0' || expression[r] <= '9';)
+                        for (r = j + 2; expression[r] >= '0' || expression[r] <= '9';)
                         {
                             temp_1_s += expression[r];
                             r++;
@@ -391,7 +391,7 @@ namespace 星火杯
                             }
                         }
                         expressions.Add(new Polynomial { exponent = temp_0, coefficient = temp_0_d,
-                            expression =expression.Substring(i,r-1-i)});
+                            expression = expression.Substring(i, r - 1 - i) });
                         i = r + 1;
                     }
                     if (expression[i] == ')')
@@ -423,7 +423,7 @@ namespace 星火杯
                                     break;
                                 }
                             }
-                            if (expressions.Contains(new Polynomial { exponent=temp_0}))
+                            if (expressions.Contains(new Polynomial { exponent = temp_0 }))
                             {
 
                             }
@@ -434,7 +434,28 @@ namespace 星火杯
                     }
                 }
             }//多项式
-
+            if (expression.IndexOf('-') >= 0)
+            {
+                int i = 0;
+                if (expression.IndexOf('-') == 0)
+                    expression = "0" + expression;
+                while (expression[expression.IndexOf('-', i)] > 0 && Isoperator(expression[expression.IndexOf('-', i) - 1]))
+                {
+                    char temp = expression[expression.IndexOf('-') - 1];
+                    switch (temp)
+                    {
+                        case '+':
+                            expression = expression.Insert(expression.IndexOf('-'), "0");
+                            break;
+                        default:
+                            break;
+                    }
+                    i = expression.IndexOf('-', i) + 1;
+                    if (expression.IndexOf('-', i) < 0)
+                        break;
+                }
+            }
+            //干掉那些负号的影响！！
             textBox2.Text = Calculate(expression).ToString();
 
             /*if (expression.IndexOf("sin") >= 0 || expression.IndexOf("cos") >= 0 || expression.IndexOf("tan") >= 0 ||
@@ -456,25 +477,6 @@ namespace 星火杯
             Stack<char> operators = new Stack<char>();
             char temp_1, temp_2, temp_3,temp_4;
             string tempnum ;
-            if (expression[0] == '-')
-                expression = "0" + expression;
-            if (expression.IndexOf('-') > 0)
-            {
-                while (Isoperator(expression[expression.IndexOf('-') - 1]))
-                {
-                    char temp = expression[expression.IndexOf('-') - 1];
-                    switch (temp)
-                    {
-                        case '+':
-                            expression = expression.Insert(expression.IndexOf('-'), "0");
-                            break;
-                        default:
-                            break;
-                    }
-                    if (expression.IndexOf('-') < 0)
-                        break;
-                }
-            }
             for (int i = 0; i < expression.Length;)//逐字读取
             {
                 int j = i;
