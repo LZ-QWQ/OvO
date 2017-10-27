@@ -64,7 +64,7 @@
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="80">
                             <Ellipse Fill="#FFDEDEF6" Height="60" Margin="0" Stroke="Black" VerticalAlignment="Top" Width="Auto"/>
-                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="35.55,22.38" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="29,12,30,22.38" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsDefaulted" Value="true"/>
@@ -89,8 +89,8 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="80">
-                            <Ellipse Fill="#FFDEDEF6" HorizontalAlignment="Left" Height="60" Stroke="Black" VerticalAlignment="Top" Width="80" Margin="712.4,246,-712.4,-246"/>
-                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="752.605,267.6,-677.795,-231.24" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Height="23.64"/>
+                            <Ellipse Fill="#FFDEDEF6" HorizontalAlignment="Left" Height="60" Stroke="Black" VerticalAlignment="Top" Width="80" Margin="712.4,237,-712.4,-240"/>
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="746,244,-678,-225" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Height="23.64"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsDefaulted" Value="true"/>
@@ -116,8 +116,8 @@
         <Button x:Name="Button8" Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="104,164,0,0" Click="Button8_Click"/>
         <Button x:Name="Button9" Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="212,164,0,0" Click="Button9_Click"/>
         <Button x:Name="Button_plus" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="104,201,0,0" Height="14" Click="Button_plus_Click"/>
-        <Button x:Name="Button_decreas" Content="-" VerticalAlignment="Top" Height="60" Margin="-159.6,76,713,0" HorizontalAlignment="Right" Width="80" Click="Button_decreas_Click" Style="{DynamicResource ButtonStyle3}" RenderTransformOrigin="0.5,0.5" FontSize="24"/>
-        <Button x:Name="Buuton_equal" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555.6,381.5,-0.6,0" Click="Buuton_equal_Click" Height="60" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource ButtonStyle2}">
+        <Button x:Name="Button_decreas" Content="-" VerticalAlignment="Top" Height="60" Margin="-154.8,85.24,709.8,0" HorizontalAlignment="Right" Width="80" Click="Button_decreas_Click" Style="{DynamicResource ButtonStyle3}" RenderTransformOrigin="0.5,0.5" FontSize="24"/>
+        <Button x:Name="Buuton_equal" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555.6,381.5,-0.6,0" Click="Buuton_equal_Click" Height="60" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource ButtonStyle2}" FontSize="24">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="-1"/>
