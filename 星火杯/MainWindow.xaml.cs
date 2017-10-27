@@ -397,15 +397,15 @@ namespace 星火杯
                 int i = j;
                 while (i < expression.Length)
                 {
-                    if (expression[j] == '(')
+                    if (expression[i] == '(')
                         x++;
-                    else if (expression[j] == ')')
+                    else if (expression[i] == ')')
                         x--;
                     if (x == 0)
                         break;
                     i++;
                 }
-                temp_1 = expression.Substring(temp + 3, j - temp - 1);
+                temp_1 = expression.Substring(temp + 3, j - temp - 2);
                 temp_4 = expression.Substring(j + 1, i - j);
                 temp_2 = Math.Log(Calculate(temp_1),Calculate(temp_4));
                 temp_3 = expression.Substring(temp, i - temp);
