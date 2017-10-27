@@ -102,6 +102,84 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="ButtonStyle4" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="80">
+                            <Ellipse Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="60" Stroke="Black" VerticalAlignment="Top" Width="80"/>
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="26,12,26,9" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true"/>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle5" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="80">
+                            <Ellipse Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="60" Stroke="Black" VerticalAlignment="Top" Width="80"/>
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="-4,14,-3,23" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true"/>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle6" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="80">
+                            <Ellipse Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="60" Stroke="Black" VerticalAlignment="Top" Width="80"/>
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="32.26,14.76" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true"/>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid Margin="0,0,3.6,-1.2">
         <Grid.ColumnDefinitions>
@@ -115,7 +193,7 @@
         <Button x:Name="Button7" Content="7" VerticalAlignment="Top" Margin="96,346,346,0" Click="Button7_Click"/>
         <Button x:Name="Button8" Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="104,164,0,0" Click="Button8_Click"/>
         <Button x:Name="Button9" Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="212,164,0,0" Click="Button9_Click"/>
-        <Button x:Name="Button_plus" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="104,201,0,0" Height="14" Click="Button_plus_Click"/>
+        <Button x:Name="Button_plus" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,258,0,-6" Height="60" Click="Button_plus_Click" Style="{DynamicResource ButtonStyle5}" FontSize="24"/>
         <Button x:Name="Buuton_equal" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555.6,381.5,-0.6,0" Click="Buuton_equal_Click" Height="60" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource ButtonStyle2}" FontSize="24">
             <Button.RenderTransform>
                 <TransformGroup>
@@ -147,10 +225,10 @@
         <Button x:Name="π" Content="π" HorizontalAlignment="Left" Margin="420,232,0,0" VerticalAlignment="Top" Width="75" Click="π_Click"/>
         <Button x:Name="__3" Content="！" HorizontalAlignment="Left" Margin="420,272,0,0" VerticalAlignment="Top" Width="75" Click="__3_Click"/>
         <Button x:Name="__4" Content="√" HorizontalAlignment="Left" Margin="420,201,0,0" VerticalAlignment="Top" Width="75" Click="__4_Click"/>
-        <Button x:Name="X" Content="X" HorizontalAlignment="Left" Margin="420,164,0,0" VerticalAlignment="Top" Width="75" Click="X_Click"/>
+        <Button x:Name="X" Content="X" HorizontalAlignment="Left" Margin="555,196,0,0" VerticalAlignment="Top" Width="80" Click="X_Click" FontSize="24" Height="60" Style="{DynamicResource ButtonStyle6}"/>
         <Button x:Name="lg" Content="lg" HorizontalAlignment="Left" Margin="420,126,0,0" VerticalAlignment="Top" Width="75" Click="lg_Click"/>
         <Button x:Name="__5" Content="%" HorizontalAlignment="Left" Margin="420,88,0,0" VerticalAlignment="Top" Width="75" Click="__5_Click"/>
-        <Button x:Name="Buttom_subtraction" Content="-" HorizontalAlignment="Left" Margin="535,346,0,0" VerticalAlignment="Top" Width="75" Click="Buttom_subtraction_Click"/>
+        <Button x:Name="Buttom_subtraction" Content="-" HorizontalAlignment="Left" Margin="555,320,0,0" VerticalAlignment="Top" Width="80" Click="Buttom_subtraction_Click" Height="60" Style="{DynamicResource ButtonStyle4}" FontSize="24"/>
 
     </Grid>
 </Window>
