@@ -116,8 +116,8 @@
         <Button x:Name="Button8" Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="104,164,0,0" Click="Button8_Click"/>
         <Button x:Name="Button9" Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="212,164,0,0" Click="Button9_Click"/>
         <Button x:Name="Button_plus" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="104,201,0,0" Height="14" Click="Button_plus_Click"/>
-        <Button x:Name="Button_decreas" Content="-" VerticalAlignment="Top" Height="60" Margin="-240.6,61,721.8,0" HorizontalAlignment="Right" Width="80" Click="Button_decreas_Click" Style="{DynamicResource ButtonStyle3}"/>
-        <Button x:Name="Buuton_equal" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="542.8,369.5,0,0" Click="Buuton_equal_Click" Height="60" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource ButtonStyle2}">
+        <Button x:Name="Button_decreas" Content="-" VerticalAlignment="Top" Height="60" Margin="-159.6,76,713,0" HorizontalAlignment="Right" Width="80" Click="Button_decreas_Click" Style="{DynamicResource ButtonStyle3}" RenderTransformOrigin="0.5,0.5" FontSize="24"/>
+        <Button x:Name="Buuton_equal" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555.6,381.5,-0.6,0" Click="Buuton_equal_Click" Height="60" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource ButtonStyle2}">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="-1"/>
