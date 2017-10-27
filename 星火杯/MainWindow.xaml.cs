@@ -128,7 +128,7 @@ namespace 星火杯
 
         private void log_Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text += "log((";
+            textBox1.Text += "log(";
         }
 
         private void lg_Click(object sender, RoutedEventArgs e)
@@ -394,7 +394,8 @@ namespace 星火杯
                         break;
                     j++;
                 }
-                while (j < expression.Length)
+                int i = j;
+                while (i < expression.Length)
                 {
                     if (expression[j] == '(')
                         x++;
@@ -402,12 +403,12 @@ namespace 星火杯
                         x--;
                     if (x == 0)
                         break;
-                    j++;
+                    i++;
                 }
                 temp_1 = expression.Substring(temp + 3, j - temp - 1);
-                temp_4=expression.Substring()
-                temp_2 = Math.Log10(Calculate(temp_1));
-                temp_3 = expression.Substring(temp, j - temp);
+                temp_4 = expression.Substring(j + 1, i - j);
+                temp_2 = Math.Log(Calculate(temp_1),Calculate(temp_4));
+                temp_3 = expression.Substring(temp, i - temp);
                 expression = expression.Replace(temp_3, temp_2.ToString());
             }//log函数
             if (expression.IndexOf("X^") >= 0)//多项式
