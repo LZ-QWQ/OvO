@@ -394,7 +394,7 @@ namespace 星火杯
                         break;
                     j++;
                 }
-                int i = j;
+                int i = j + 1;
                 while (i < expression.Length)
                 {
                     if (expression[i] == '(')
@@ -408,7 +408,7 @@ namespace 星火杯
                 temp_1 = expression.Substring(temp + 3, j - temp - 2);
                 temp_4 = expression.Substring(j + 1, i - j);
                 temp_2 = Math.Log(Calculate(temp_1),Calculate(temp_4));
-                temp_3 = expression.Substring(temp, i - temp);
+                temp_3 = expression.Substring(temp, i - temp + 1);
                 expression = expression.Replace(temp_3, temp_2.ToString());
             }//log函数
             if (expression.IndexOf("X^") >= 0)//多项式
