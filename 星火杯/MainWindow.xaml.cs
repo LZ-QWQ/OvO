@@ -518,7 +518,7 @@ namespace 星火杯
                                     if ((j>=expression.Length)|| Isoperator(expression[j]))
                                         break;
                                 }
-                                expression = expression.Insert(j - 1, ")");
+                                expression = expression.Insert(j, ")");
                                 break;
                             default:
                                 break;
