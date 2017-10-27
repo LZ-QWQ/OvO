@@ -357,6 +357,59 @@ namespace 星火杯
                 temp_3 = expression.Substring(temp, j - temp);
                 expression = expression.Replace(temp_3, temp_2.ToString());
             }//lg函数
+            for (; expression.IndexOf("ln") >= 0;)
+            {
+                string temp_1, temp_3;
+                double temp_2;
+                int temp = expression.IndexOf("ln");
+                int x = new int(), j = temp + 2;
+                while (j < expression.Length)
+                {
+                    if (expression[j] == '(')
+                        x++;
+                    else if (expression[j] == ')')
+                        x--;
+                    if (x == 0)
+                        break;
+                    j++;
+                }
+                temp_1 = expression.Substring(temp + 2, j - temp - 1);
+                temp_2 = Math.Log(Calculate(temp_1));
+                temp_3 = expression.Substring(temp, j - temp);
+                expression = expression.Replace(temp_3, temp_2.ToString());
+            }//ln函数
+            for (; expression.IndexOf("log") >= 0;)
+            {
+                string temp_1, temp_3,temp_4;
+                double temp_2;
+                int temp = expression.IndexOf("log");
+                int x = new int(), j = temp + 3;
+                while (j < expression.Length)
+                {
+                    if (expression[j] == '(')
+                        x++;
+                    else if (expression[j] == ')')
+                        x--;
+                    if (x == 0)
+                        break;
+                    j++;
+                }
+                while (j < expression.Length)
+                {
+                    if (expression[j] == '(')
+                        x++;
+                    else if (expression[j] == ')')
+                        x--;
+                    if (x == 0)
+                        break;
+                    j++;
+                }
+                temp_1 = expression.Substring(temp + 3, j - temp - 1);
+                temp_4=expression.Substring()
+                temp_2 = Math.Log10(Calculate(temp_1));
+                temp_3 = expression.Substring(temp, j - temp);
+                expression = expression.Replace(temp_3, temp_2.ToString());
+            }//log函数
             if (expression.IndexOf("X^") >= 0)//多项式
             {
                 List<Polynomial> expressions = new List<Polynomial>();
@@ -434,35 +487,33 @@ namespace 星火杯
                     }
                 }
             }//多项式
-            if (expression.IndexOf('-') >= 0)
+            /*if (expression.IndexOf("-") >= 0)
             {
-                int i = 0;
-                if (expression.IndexOf('-') == 0)
+                if (expression.IndexOf("-") == 0)
                     expression = "0" + expression;
-                while (expression[expression.IndexOf('-', i)] > 0 && Isoperator(expression[expression.IndexOf('-', i) - 1]))
+                for (int i=0; expression.IndexOf("-", i) > 0;)
                 {
-                    char temp = expression[expression.IndexOf('-') - 1];
-                    switch (temp)
+                    if (Isoperator(expression[expression.IndexOf("-", i) - 1]))
                     {
-                        case '+':
-                            expression = expression.Insert(expression.IndexOf('-'), "0");
-                            break;
-                        default:
-                            break;
+                        char temp = expression[expression.IndexOf("-",i) - 1];
+                        switch (temp)
+                        {
+                            case '+':
+                                expression = expression.Insert(expression.IndexOf("-",i), "0");
+                                break;
+                            case '-':
+                                expression = expression.Replace("--", "+");
+                                break;
+                            default:
+                                break;
+                        }
                     }
                     i = expression.IndexOf('-', i) + 1;
-                    if (expression.IndexOf('-', i) < 0)
-                        break;
                 }
             }
-            //干掉那些负号的影响！！
+            //干掉那些负号的影响！！*/
             textBox2.Text = Calculate(expression).ToString();
 
-            /*if (expression.IndexOf("sin") >= 0 || expression.IndexOf("cos") >= 0 || expression.IndexOf("tan") >= 0 ||
-                expression.IndexOf("log") >= 0 || expression.IndexOf("ln") >= 0 || expression.IndexOf("lg") >= 0)
-            {
-
-            }*/
         }
         static Queue<object> Transform (string expression)//中缀转后缀
         {
