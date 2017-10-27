@@ -67,7 +67,7 @@ namespace 星火杯
         {
             textBox1.Text += "*";
         }
-        private void Button_decreas_Click(object sender, RoutedEventArgs e)
+        private void Buttom_subtraction_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "-";
         }
@@ -642,6 +642,8 @@ namespace 星火杯
             else
                 return false;
         }
+
+
     }
 }
     
