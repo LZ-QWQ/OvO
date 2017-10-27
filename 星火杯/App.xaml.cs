@@ -12,11 +12,6 @@ namespace 星火杯
     /// <summary>
     /// App.xaml 的交互逻辑
     /// </summary>
-
-    public partial class App : System.Windows.Application
-    {
-
-    }
     public partial class App : Application
     {
         public App()
@@ -26,12 +21,12 @@ namespace 星火杯
         }
         void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            MessageBox.Show("当前应用程序遇到一些问题", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("当前应用程序遇到一些问题~~~请重新输入", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
             e.Handled = true;//告诉运行时，该异常被处理了，不再作为UnhandledException抛出了。 
         }
         void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            MessageBox.Show("当前应用程序遇到一些问题，操作已经终止", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("当前应用程序遇到一些问题~~~操作已经终止", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

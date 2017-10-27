@@ -183,7 +183,7 @@ namespace 星火杯
             public double coefficient;
             public string expression;
         }
-        /*class Sort_the_expression
+        class Sort_the_expression
         {
             public int CompareTo(Polynomial x,Polynomial y)
             {
@@ -194,7 +194,7 @@ namespace 星火杯
                 else
                     return 0;
             }
-        }*/
+        }
         private void Buuton_equal_Click(object sender, RoutedEventArgs e)//等于
         {
             string expression;
@@ -290,7 +290,7 @@ namespace 星火杯
                         j--;
                     }
                     temp_1 = expression.Substring(j + 1, temp - j - 2);
-                    temp_2 = Factorial(Convert.ToDouble(Calculate(temp_1)));
+                    temp_2 = Factorial(Convert.ToInt64(Calculate(temp_1)));
                     temp_3 = expression.Substring(j, temp - j + 1);
                     expression = expression.Replace(temp_3, temp_2.ToString());
                 }
@@ -299,7 +299,7 @@ namespace 星火杯
                     for (i = temp - 1; i >= 0 && (expression[i] == '.' || expression[i] >= '0' && expression[i] <= '9'); i--) ;
                     i++;
                     temp_1 = expression.Substring(i, temp - i);
-                    temp_2 = Factorial(Convert.ToDouble(temp_1));
+                    temp_2 = Factorial(Convert.ToInt64(temp_1));
                     expression = expression.Replace(temp_1 + "!", temp_2.ToString());
                 }
             }//阶乘
@@ -520,6 +520,17 @@ namespace 星火杯
                                 }
                                 expression = expression.Insert(j, ")");
                                 break;
+                            case '/':
+                                expression = expression.Insert(expression.IndexOf("-", i), "(0");
+                                int r = expression.IndexOf("-", i) + 1;
+                                while (true)
+                                {
+                                    r++;
+                                    if ((r >= expression.Length) || Isoperator(expression[r]))
+                                        break;
+                                }
+                                expression = expression.Insert(r, ")");
+                                break;
                             default:
                                 break;
                         }
@@ -640,7 +651,7 @@ namespace 星火杯
                     return 0;
             }
         }
-        public static double Factorial(double i)//阶乘
+        public static double Factorial(long i)//阶乘
         {
             double j = 1;
             for (; i > 1;)
