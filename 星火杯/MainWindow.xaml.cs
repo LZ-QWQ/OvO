@@ -660,8 +660,7 @@ namespace 星火杯
             }
             //干掉那些负号的影响！
             textBox2.Text = Calculate(expression).ToString();
-        }
- 
+        }       
     }
 }
     
