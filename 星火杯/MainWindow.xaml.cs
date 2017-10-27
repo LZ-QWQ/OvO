@@ -511,9 +511,14 @@ namespace 星火杯
                                 break;
                             case '*':
                                 expression = expression.Insert(expression.IndexOf("-", i), "(0");
-                                int j = expression.IndexOf("-", i);
-                                
-
+                                int j = expression.IndexOf("-", i)+1;
+                                while (true)
+                                {
+                                    j++;
+                                    if ((j>=expression.Length)|| Isoperator(expression[j]))
+                                        break;
+                                }
+                                expression = expression.Insert(j - 1, ")");
                                 break;
                             default:
                                 break;
