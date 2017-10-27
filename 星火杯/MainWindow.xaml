@@ -242,7 +242,7 @@
         <Button x:Name="Button4" Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="316,262,0,0" Click="Button4_Click" FontSize="24" Height="60"/>
         <Button x:Name="Button5" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="395,262,0,0" Click="Button5_Click" FontSize="24" Height="60"/>
         <Button x:Name="Button6" Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="475,262,0,0" Click="Button6_Click" Height="60" FontSize="24"/>
-        <Button x:Name="Button7" Content="7" VerticalAlignment="Top" Margin="316,202,239,0" Click="Button7_Click" Width="80" Height="60" FontSize="24"/>
+        <Button x:Name="Button7" Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="316,202,239,0" Click="Button7_Click" Width="80" Height="60" FontSize="24"/>
         <Button x:Name="Button8" Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="395,202,0,0" Click="Button8_Click" Height="60" FontSize="24"/>
         <Button x:Name="Button9" Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="475,202,0,0" Click="Button9_Click" Height="60" FontSize="24"/>
         <Button x:Name="Button_plus" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,262,0,-6" Height="60" Click="Button_plus_Click" Style="{DynamicResource ButtonStyle5}" FontSize="24"/>
