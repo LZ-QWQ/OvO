@@ -503,8 +503,17 @@ namespace 星火杯
                             case '+':
                                 expression = expression.Insert(expression.IndexOf("-",i), "0");
                                 break;
+                            case '(':
+                                expression = expression.Insert(expression.IndexOf("-", i), "0");
+                                break;
                             case '-':
                                 expression = expression.Replace("--", "+");
+                                break;
+                            case '*':
+                                expression = expression.Insert(expression.IndexOf("-", i), "(0");
+                                int j= expression.IndexOf("-", i)
+                                do (j++)
+
                                 break;
                             default:
                                 break;
