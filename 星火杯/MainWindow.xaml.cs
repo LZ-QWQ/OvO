@@ -67,13 +67,14 @@ namespace 星火杯
         {
             textBox1.Text += "*";
         }
-        private void Buttom_subtraction_Click(object sender, RoutedEventArgs e)
-        {
-            textBox1.Text += "-";
-        }
+
         private void Button_plus_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "+";
+        }
+        private void Buttom_subtraction_Click(object sender, RoutedEventArgs e)
+        {
+            textBox1.Text += "-";
         }
         private void Point_Click(object sender, RoutedEventArgs e)
         {
@@ -488,7 +489,7 @@ namespace 星火杯
                     }
                 }
             }//多项式
-            /*if (expression.IndexOf("-") >= 0)
+            if (expression.IndexOf("-") >= 0)
             {
                 if (expression.IndexOf("-") == 0)
                     expression = "0" + expression;
@@ -512,7 +513,7 @@ namespace 星火杯
                     i = expression.IndexOf('-', i) + 1;
                 }
             }
-            //干掉那些负号的影响！！*/
+            //干掉那些负号的影响！
             textBox2.Text = Calculate(expression).ToString();
 
         }
@@ -610,7 +611,7 @@ namespace 星火杯
                 }
             }
             return operand.Pop();
-        }
+        }//计算！！！
         public static double Compute(double leftnum, double rightnum, char temp)//逆波兰表达式计算
         {
             switch (temp)
@@ -642,8 +643,6 @@ namespace 星火杯
             else
                 return false;
         }
-
-
     }
 }
     
