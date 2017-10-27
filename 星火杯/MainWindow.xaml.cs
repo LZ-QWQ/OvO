@@ -5,6 +5,8 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
+using System.Windows.Input;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace 星火杯
@@ -19,11 +21,11 @@ namespace 星火杯
             InitializeComponent();
         }
         #region Button
-        private void Button_0_Click(object sender, RoutedEventArgs e)
+        private void _0_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "0";
         }
-          public void Button1_Click(object sender, RoutedEventArgs e)
+        public void Button1_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "1";
         }
@@ -183,19 +185,133 @@ namespace 星火杯
             public double coefficient;
             public string expression;
         }
-        class Sort_the_expression
+        static Queue<object> Transform (string expression)//中缀转后缀
         {
-            public int CompareTo(Polynomial x,Polynomial y)
+            Dictionary<char, int> operators_judge = new Dictionary<char, int>();
+            operators_judge.Add('+', 0);
+            operators_judge.Add('-', 0);
+            operators_judge.Add('*', 1);
+            operators_judge.Add('%', 1);
+            operators_judge.Add('/', 1);
+            operators_judge.Add('^', 2);
+            Queue<object> result = new Queue<object>();
+            Stack<char> operators = new Stack<char>();
+            char temp_1, temp_2, temp_3,temp_4;
+            string tempnum ;
+            for (int i = 0; i < expression.Length;)//逐字读取
             {
-                if (x.exponent > y.exponent)
-                    return 1;
-                else if (x.exponent < y.exponent)
-                    return -1;
+                int j = i;
+                temp_1 = expression[i];
+                if (operators.Count != 0)
+                    temp_2 = operators.Peek();
                 else
+                    temp_2 =' ';
+                if (temp_1 == '(')
+                {
+                    operators.Push(temp_1);
+                }
+                else
+                {
+                    if (Isoperator(temp_1))
+                    {
+                        while (Isoperator(temp_2) && operators_judge[temp_1] <= operators_judge[temp_2])
+                        {
+                            result.Enqueue(operators.Pop());
+                            if (operators.Count == 0)
+                                break;
+                            else
+                                temp_2 = operators.Peek();
+                        }
+                        operators.Push(temp_1);
+                    }
+                    else if (temp_1 == ')')
+                    {
+                        while (operators.Count > 0 && (temp_3 = operators.Pop()) != '(')
+                        {
+                            result.Enqueue(temp_3);
+                        }
+                    }
+                    else
+                    {
+                        tempnum = "";
+                        while (j < expression.Length && (expression[j] == '.' || 
+                            expression[j] == 'E' && expression[j + 1]=='-'|| 
+                            expression[j] == 'E' && expression[j + 1] == '+'||
+                            expression[j] == '+' && expression[j - 1] == 'E'||
+                            expression[j] == '-' && expression[j - 1] == 'E'||
+                            expression[j] >= '0' && expression[j] <= '9'))
+                        {
+                            temp_4 = expression[j];
+                            tempnum = tempnum + temp_4.ToString();
+                            j++;
+                            i = j - 1;
+                        }
+                        result.Enqueue(Convert.ToDouble(tempnum));
+                    }
+                }
+                i++;
+            }
+            while (operators.Count > 0)
+            {
+                temp_1 = operators.Pop();
+                result.Enqueue(temp_1);
+            }
+            return result;
+        }
+        static double Calculate(string expression)
+        {
+            Queue<object> result_ = Transform(expression);
+            Stack<double> operand=new Stack<double>();
+            double leftnum = 0, rightnum = 0;
+            object temp=0;
+            while (result_.Count > 0)
+            {
+                temp = result_.Dequeue();
+                if (temp is char)
+                {
+                    rightnum = operand.Pop();
+                    leftnum = operand.Pop();
+                    operand.Push(Compute(leftnum, rightnum, (char)temp));
+                }
+                else
+                {
+                    operand.Push(Convert.ToDouble(temp));
+                }
+            }
+            return operand.Pop();
+        }//计算！！！
+        public static double Compute(double leftnum, double rightnum, char temp)//逆波兰表达式计算
+        {
+            switch (temp)
+            {
+                case '+': return leftnum + rightnum;
+                case '-': return leftnum - rightnum;
+                case '*': return leftnum * rightnum;
+                case '/': return leftnum / rightnum;
+                case '%': return leftnum % rightnum;
+                case '^': return Math.Pow(leftnum, rightnum);
+                default:
                     return 0;
             }
         }
-        private void Buuton_equal_Click(object sender, RoutedEventArgs e)//等于
+        public static double Factorial(long i)//阶乘
+        {
+            double j = 1;
+            for (; i > 1;)
+            {
+                j *= i;
+                i--;
+            }
+            return j;
+        }
+        static bool Isoperator(char op)//判断是否为操作符
+        {
+            if (op == '+' || op == '-' || op == '*' || op == '/' || op == '%' || op == '^')
+                return true;
+            else
+                return false;
+        }
+        private void Equal_Click(object sender, RoutedEventArgs e)//等于
         {
             string expression;
             expression = textBox1.Text;
@@ -381,7 +497,7 @@ namespace 星火杯
             }//ln函数
             for (; expression.IndexOf("log") >= 0;)
             {
-                string temp_1, temp_3,temp_4;
+                string temp_1, temp_3, temp_4;
                 double temp_2;
                 int temp = expression.IndexOf("log");
                 int x = new int(), j = temp + 3;
@@ -408,7 +524,7 @@ namespace 星火杯
                 }
                 temp_1 = expression.Substring(temp + 3, j - temp - 2);
                 temp_4 = expression.Substring(j + 1, i - j);
-                temp_2 = Math.Log(Calculate(temp_1),Calculate(temp_4));
+                temp_2 = Math.Log(Calculate(temp_1), Calculate(temp_4));
                 temp_3 = expression.Substring(temp, i - temp + 1);
                 expression = expression.Replace(temp_3, temp_2.ToString());
             }//log函数
@@ -445,8 +561,12 @@ namespace 星火杯
                                 break;
                             }
                         }
-                        expressions.Add(new Polynomial { exponent = temp_0, coefficient = temp_0_d,
-                            expression = expression.Substring(i, r - 1 - i) });
+                        expressions.Add(new Polynomial
+                        {
+                            exponent = temp_0,
+                            coefficient = temp_0_d,
+                            expression = expression.Substring(i, r - 1 - i)
+                        });
                         i = r + 1;
                     }
                     if (expression[i] == ')')
@@ -493,15 +613,15 @@ namespace 星火杯
             {
                 if (expression.IndexOf("-") == 0)
                     expression = "0" + expression;
-                for (int i=0; expression.IndexOf("-", i) > 0;)
+                for (int i = 0; expression.IndexOf("-", i) > 0;)
                 {
                     if (Isoperator(expression[expression.IndexOf("-", i) - 1]))
                     {
-                        char temp = expression[expression.IndexOf("-",i) - 1];
+                        char temp = expression[expression.IndexOf("-", i) - 1];
                         switch (temp)
                         {
                             case '+':
-                                expression = expression.Insert(expression.IndexOf("-",i), "0");
+                                expression = expression.Insert(expression.IndexOf("-", i), "0");
                                 break;
                             case '(':
                                 expression = expression.Insert(expression.IndexOf("-", i), "0");
@@ -511,11 +631,11 @@ namespace 星火杯
                                 break;
                             case '*':
                                 expression = expression.Insert(expression.IndexOf("-", i), "(0");
-                                int j = expression.IndexOf("-", i)+1;
+                                int j = expression.IndexOf("-", i) + 1;
                                 while (true)
                                 {
                                     j++;
-                                    if ((j>=expression.Length)|| Isoperator(expression[j]))
+                                    if ((j >= expression.Length) || Isoperator(expression[j]))
                                         break;
                                 }
                                 expression = expression.Insert(j, ")");
@@ -540,134 +660,8 @@ namespace 星火杯
             }
             //干掉那些负号的影响！
             textBox2.Text = Calculate(expression).ToString();
-
         }
-        static Queue<object> Transform (string expression)//中缀转后缀
-        {
-            Dictionary<char, int> operators_judge = new Dictionary<char, int>();
-            operators_judge.Add('+', 0);
-            operators_judge.Add('-', 0);
-            operators_judge.Add('*', 1);
-            operators_judge.Add('%', 1);
-            operators_judge.Add('/', 1);
-            operators_judge.Add('^', 2);
-            Queue<object> result = new Queue<object>();
-            Stack<char> operators = new Stack<char>();
-            char temp_1, temp_2, temp_3,temp_4;
-            string tempnum ;
-            for (int i = 0; i < expression.Length;)//逐字读取
-            {
-                int j = i;
-                temp_1 = expression[i];
-                if (operators.Count != 0)
-                    temp_2 = operators.Peek();
-                else
-                    temp_2 =' ';
-                if (temp_1 == '(')
-                {
-                    operators.Push(temp_1);
-                }
-                else
-                {
-                    if (Isoperator(temp_1))
-                    {
-                        while (Isoperator(temp_2) && operators_judge[temp_1] <= operators_judge[temp_2])
-                        {
-                            result.Enqueue(operators.Pop());
-                            if (operators.Count == 0)
-                                break;
-                            else
-                                temp_2 = operators.Peek();
-                        }
-                        operators.Push(temp_1);
-                    }
-                    else if (temp_1 == ')')
-                    {
-                        while (operators.Count > 0 && (temp_3 = operators.Pop()) != '(')
-                        {
-                            result.Enqueue(temp_3);
-                        }
-                    }
-                    else
-                    {
-                        tempnum = "";
-                        while (j < expression.Length && (expression[j] == '.' || 
-                            expression[j] == 'E' && expression[j + 1]=='-'|| 
-                            expression[j] == 'E' && expression[j + 1] == '+'||
-                            expression[j] == '+' && expression[j - 1] == 'E'||
-                            expression[j] == '-' && expression[j - 1] == 'E'||
-                            expression[j] >= '0' && expression[j] <= '9'))
-                        {
-                            temp_4 = expression[j];
-                            tempnum = tempnum + temp_4.ToString();
-                            j++;
-                            i = j - 1;
-                        }
-                        result.Enqueue(Convert.ToDouble(tempnum));
-                    }
-                }
-                i++;
-            }
-            while (operators.Count > 0)
-            {
-                temp_1 = operators.Pop();
-                result.Enqueue(temp_1);
-            }
-            return result;
-        }
-        static double Calculate(string expression)
-        {
-            Queue<object> result_ = Transform(expression);
-            Stack<double> operand=new Stack<double>();
-            double leftnum = 0, rightnum = 0;
-            object temp=0;
-            while (result_.Count > 0)
-            {
-                temp = result_.Dequeue();
-                if (temp is char)
-                {
-                    rightnum = operand.Pop();
-                    leftnum = operand.Pop();
-                    operand.Push(Compute(leftnum, rightnum, (char)temp));
-                }
-                else
-                {
-                    operand.Push(Convert.ToDouble(temp));
-                }
-            }
-            return operand.Pop();
-        }//计算！！！
-        public static double Compute(double leftnum, double rightnum, char temp)//逆波兰表达式计算
-        {
-            switch (temp)
-            {
-                case '+': return leftnum + rightnum;
-                case '-': return leftnum - rightnum;
-                case '*': return leftnum * rightnum;
-                case '/': return leftnum / rightnum;
-                case '%': return leftnum % rightnum;
-                case '^': return Math.Pow(leftnum, rightnum);
-                default:
-                    return 0;
-            }
-        }
-        public static double Factorial(long i)//阶乘
-        {
-            double j = 1;
-            for (; i > 1;)
-            {
-                j *= i;
-                i--;
-            }
-            return j;
-        }
-        static bool Isoperator(char op)//判断是否为操作符
-        {
-            if (op == '+' || op == '-' || op == '*' || op == '/' || op == '%' || op == '^')
-                return true;
-            else
-                return false;
-        }
+ 
     }
 }
     
