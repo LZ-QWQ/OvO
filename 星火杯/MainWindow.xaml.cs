@@ -185,9 +185,9 @@ namespace 星火杯
             public double coefficient;
             public string expression;
 
-            public int Compare(Polynomial x, Polynomial y)
+            int IComparer<Polynomial>.Compare(Polynomial x, Polynomial y)
             {
-                return x.exponent.CompareTo(y.exponent);//升序
+                return x.exponent.CompareTo(y.exponent);
             }
         }
         static Queue<object> Transform (string expression)//中缀转后缀
@@ -539,45 +539,46 @@ namespace 星火杯
                 int temp_0 = new int();
                 double temp_0_d = new double();
                 string temp_0_s = null, temp_1_s = null;
+                char temp;
                 for (int i = 0, j, r; i < expression.Length;)
                 {
-                    for (; expression[i] != ')';)
-                    {
-                        if (expression[i] == '(')
+                    if (expression[i] == '+')
+                        ;
+                    if (expression[i] == '(')
                             i++;
-                        for (j = i; expression[j] >= '0' && expression[j] <= '9' || expression[j] == '.';)
+                    for (j = i; expression[j] >= '0' && expression[j] <= '9' || expression[j] == '.';)
+                    {
+                        temp_0_s += expression[j];
+                        j++;
+                        if (expression[j] == 'X')
                         {
-                            temp_0_s += expression[j];
-                            j++;
-                            if (expression[j] == 'X')
-                            {
-                                temp_0 = Convert.ToInt32(temp_0_s);
-                                break;
-                            }
+                            temp_0 = Convert.ToInt32(temp_0_s);
+                            break;
                         }
-                        if (expression[j + 1] == '^') ;
-                        for (r = j + 2; expression[r] >= '0' || expression[r] <= '9';)
-                        {
-                            temp_1_s += expression[r];
-                            r++;
-                            if (Isoperator(expression[r]))
-                            {
-                                temp_0_d = Convert.ToDouble(temp_1_s);
-                                break;
-                            }
-                        }
-                        expressions.Add(new Polynomial
-                        {
-                            exponent = temp_0,
-                            coefficient = temp_0_d,
-                            expression = expression.Substring(i, r - 1 - i)
-                        });
-                        i = r + 1;
                     }
+                    if (expression[j + 1] == '^') ;
+                    for (r = j + 2; expression[r] >= '0' || expression[r] <= '9';)
+                    {
+                        temp_1_s += expression[r];
+                        r++;
+                        if (Isoperator(expression[r]))
+                        {
+                            temp_0_d = Convert.ToDouble(temp_1_s);
+                            break;
+                        }
+                    }
+                    expressions.Add(new Polynomial
+                    {
+                        exponent = temp_0,
+                        coefficient = temp_0_d,
+                        expression = expression.Substring(i, r - 1 - i)
+                    });
+                    i = r + 1;
                     if (expressions.Contains(new Polynomial { exponent = temp_0 }))
                     {
-
+                        expressions[0].coefficient += temp_0;
                     }
+                    expressions.Sort();
                 }
             }//多项式
             if (expression.IndexOf("-") >= 0)
