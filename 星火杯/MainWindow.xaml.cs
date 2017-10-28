@@ -179,11 +179,16 @@ namespace 星火杯
             textBox1.Text = "%";
         }
         #endregion
-        public struct Polynomial
+        class Polynomial:IComparer<Polynomial>
         {
             public int exponent;
             public double coefficient;
             public string expression;
+
+            public int Compare(Polynomial x, Polynomial y)
+            {
+                return x.exponent.CompareTo(y.exponent);//升序
+            }
         }
         static Queue<object> Transform (string expression)//中缀转后缀
         {
@@ -569,43 +574,9 @@ namespace 星火杯
                         });
                         i = r + 1;
                     }
-                    if (expression[i] == ')')
+                    if (expressions.Contains(new Polynomial { exponent = temp_0 }))
                     {
-                        i = i + 2;
-                        for (; expression[i] != ')';)
-                        {
-                            if (expression[i] == '(')
-                                i++;
-                            for (j = i; expression[j] >= '0' && expression[j] <= '9' || expression[j] == '.' || expression[j] == 'e' ||
-                                expression[j] == 'π';)
-                            {
-                                temp_0_s += expression[j];
-                                j++;
-                                if (expression[j] == 'X')
-                                {
-                                    temp_0 = Convert.ToInt32(temp_0_s);
-                                    break;
-                                }
-                            }
-                            if (expression[j + 1] == '^') ;
-                            for (r = j + 2; expression[r] >= '0' || expression[r] <= '9';)
-                            {
-                                temp_1_s += expression[r];
-                                r++;
-                                if (Isoperator(expression[r]))
-                                {
-                                    temp_0_d = Convert.ToDouble(temp_1_s);
-                                    break;
-                                }
-                            }
-                            if (expressions.Contains(new Polynomial { exponent = temp_0 }))
-                            {
 
-                            }
-
-                            i = r + 1;
-                        }
-                        expressions.Sort();
                     }
                 }
             }//多项式
@@ -657,8 +628,7 @@ namespace 星火杯
                     }
                     i = expression.IndexOf('-', i) + 1;
                 }
-            }
-            //干掉那些负号的影响！
+            }//干掉那些负号的影响！
             textBox2.Text = Calculate(expression).ToString();
         }       
     }
