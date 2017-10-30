@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:星火杯"
         mc:Ignorable="d"
-        Title="MainWindow" Height="471.5" Width="645">
+        Title="MainWindow" Height="471.5" Width="645" KeyDown="Window_KeyDown">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -233,33 +233,33 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Margin="0,0,3.6,-1.2">
+    <Grid Margin="0,0,2,-1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="Button2" Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="395,322,0,0" Click="Button2_Click" FontSize="24" Height="60"/>
-        <Button x:Name="Button3" Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="475,322,0,0" Click="Button3_Click" Height="60" FontSize="24"/>
-        <Button x:Name="Button4" Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="316,262,0,0" Click="Button4_Click" FontSize="24" Height="60"/>
-        <Button x:Name="Button5" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="395,262,0,0" Click="Button5_Click" FontSize="24" Height="60"/>
-        <Button x:Name="Button6" Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="475,262,0,0" Click="Button6_Click" Height="60" FontSize="24"/>
-        <Button x:Name="Button7" Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="316,202,239,0" Click="Button7_Click" Width="80" Height="60" FontSize="24"/>
-        <Button x:Name="Button8" Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="395,202,0,0" Click="Button8_Click" Height="60" FontSize="24"/>
-        <Button x:Name="Button9" Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="475,202,0,0" Click="Button9_Click" Height="60" FontSize="24"/>
-        <Button x:Name="Button_plus" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,262,0,-6" Height="60" Click="Button_plus_Click" Style="{DynamicResource ButtonStyle5}" FontSize="24"/>
-        <Button x:Name="Divide" Content="/" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,82,0,0" Click="CHUFA_Click" Height="60" FontSize="24" Style="{DynamicResource ButtonStyle8}"/>
-        <Button x:Name="CHENGFA" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,142,0,0" Height="60" Click="CHENGFA_Click" FontSize="24" Style="{DynamicResource ButtonStyle7}"/>
-        <Button x:Name="Button1" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="316,321.76,0,0" Click="Button1_Click" Height="60" FontSize="24"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="36" TextWrapping="Wrap" VerticalAlignment="Top" Width="517" Margin="60.8,0,0,0" FontSize="24" IsEnabled="False" />
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" VerticalAlignment="Top" Width="517" Margin="60.8,36,0,0" IsEnabled="False" FontSize="24"/>
-        <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="395,142,0,0" VerticalAlignment="Top" Width="80" Click="Delete_Click" FontSize="24" Height="60"/>
-        <Button x:Name="Point" Content="." HorizontalAlignment="Left" Margin="475,382,0,0" VerticalAlignment="Top" Width="80" IsDefault="True" Click="Point_Click" Height="60" FontSize="24"/>
-        <Button x:Name="Backspace" Content="Backspace" HorizontalAlignment="Left" Margin="316,142,0,0" VerticalAlignment="Top" Width="80" Click="Backspace_Click" Height="60"/>
-        <Button x:Name="sin__" Content="sin" HorizontalAlignment="Left" Margin="76,322,0,0" VerticalAlignment="Top" Width="80" Click="sin___Click" Height="60" FontSize="24"/>
-        <Button x:Name="e" Content="e" HorizontalAlignment="Left" Margin="236,322,0,0" VerticalAlignment="Top" Width="80" Click="e_Click" Height="60" FontSize="24"/>
-        <Button x:Name="cos__" Content="cos" HorizontalAlignment="Left" Margin="156,321.76,0,0" VerticalAlignment="Top" Width="80" Click="cos___Click" Height="60" FontSize="24"/>
-        <Button x:Name="tan__" Content="tan" HorizontalAlignment="Left" Margin="156,381.76,0,0" VerticalAlignment="Top" Width="80" Click="tan___Click" Height="60" FontSize="24"/>
-        <Button x:Name="ln__" Content="ln" HorizontalAlignment="Left" Margin="236,262,0,0" VerticalAlignment="Top" Width="80" Click="ln___Click" Height="60" FontSize="24"/>
-        <Button x:Name="log" Content="log" HorizontalAlignment="Left" Margin="76,202,0,0" VerticalAlignment="Top" Width="80" Click="log_Click" Height="60" FontSize="24" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="Button2" Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="395,322,0,0" Click="Button2_Click" FontSize="24" Height="60" Focusable="False"/>
+        <Button x:Name="Button3" Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="475,322,0,0" Click="Button3_Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="Button4" Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="316,262,0,0" Click="Button4_Click" FontSize="24" Height="60" Focusable="False"/>
+        <Button x:Name="Button5" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="395,262,0,0" Click="Button5_Click" FontSize="24" Height="60" Focusable="False"/>
+        <Button x:Name="Button6" Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="475,262,0,0" Click="Button6_Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="Button7" Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="316,202,239,0" Click="Button7_Click" Width="80" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="Button8" Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="395,202,0,0" Click="Button8_Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="Button9" Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="475,202,0,0" Click="Button9_Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="Button_plus" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,262,0,-6" Height="60" Click="Button_plus_Click" Style="{DynamicResource ButtonStyle5}" FontSize="24" Focusable="False"/>
+        <Button x:Name="Divide" Content="/" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,82,0,0" Click="CHUFA_Click" Height="60" FontSize="24" Style="{DynamicResource ButtonStyle8}" Focusable="False"/>
+        <Button x:Name="CHENGFA" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,142,0,0" Height="60" Click="CHENGFA_Click" FontSize="24" Style="{DynamicResource ButtonStyle7}" Focusable="False"/>
+        <Button x:Name="Button1" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="316,321.76,0,0" Click="Button1_Click" Height="60" FontSize="24" Focusable="False"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="36" TextWrapping="Wrap" VerticalAlignment="Top" Width="517" Margin="60.8,0,0,0" FontSize="24" IsEnabled="False" Focusable="False" />
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" VerticalAlignment="Top" Width="517" Margin="60.8,36,0,0" IsEnabled="False" FontSize="24" Focusable="False"/>
+        <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="395,142,0,0" VerticalAlignment="Top" Width="80" Click="Delete_Click" FontSize="24" Height="60" Focusable="False"/>
+        <Button x:Name="Point" Content="." HorizontalAlignment="Left" Margin="475,382,0,0" VerticalAlignment="Top" Width="80" Click="Point_Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="Backspace" Content="Backspace" HorizontalAlignment="Left" Margin="316,142,0,0" VerticalAlignment="Top" Width="80" Click="Backspace_Click" Height="60" Focusable="False"/>
+        <Button x:Name="sin__" Content="sin" HorizontalAlignment="Left" Margin="76,322,0,0" VerticalAlignment="Top" Width="80" Click="sin___Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="e" Content="e" HorizontalAlignment="Left" Margin="236,322,0,0" VerticalAlignment="Top" Width="80" Click="e_Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="cos__" Content="cos" HorizontalAlignment="Left" Margin="156,321.76,0,0" VerticalAlignment="Top" Width="80" Click="cos___Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="tan__" Content="tan" HorizontalAlignment="Left" Margin="156,381.76,0,0" VerticalAlignment="Top" Width="80" Click="tan___Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="ln__" Content="ln" HorizontalAlignment="Left" Margin="236,262,0,0" VerticalAlignment="Top" Width="80" Click="ln___Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="log" Content="log" HorizontalAlignment="Left" Margin="76,202,0,0" VerticalAlignment="Top" Width="80" Click="log_Click" Height="60" FontSize="24" RenderTransformOrigin="0.5,0.5" Focusable="False">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -269,18 +269,18 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="__" Content="^" HorizontalAlignment="Left" Margin="76,262,0,0" VerticalAlignment="Top" Width="80" Click="___Click" Height="60" FontSize="24"/>
-        <Button x:Name="__1" Content="(" HorizontalAlignment="Left" Margin="156,202,0,0" VerticalAlignment="Top" Width="80" Click="__1_Click" Height="60" FontSize="24"/>
-        <Button x:Name="__2" Content=")" HorizontalAlignment="Left" Margin="236,202,0,0" VerticalAlignment="Top" Width="80" Click="__2_Click" Height="60" FontSize="24"/>
-        <Button x:Name="π" Content="π" HorizontalAlignment="Left" Margin="235,382,0,0" VerticalAlignment="Top" Width="80" Click="π_Click" Height="60" FontSize="24"/>
-        <Button x:Name="__3" Content="！" HorizontalAlignment="Left" Margin="19.8,98.52,0,0" VerticalAlignment="Top" Width="75" Click="__3_Click" FontSize="24"/>
-        <Button x:Name="__4" Content="√" HorizontalAlignment="Left" Margin="76,381.76,0,0" VerticalAlignment="Top" Width="80" Click="__4_Click" Height="60" FontSize="24"/>
-        <Button x:Name="X" Content="X" HorizontalAlignment="Left" Margin="555,202,0,0" VerticalAlignment="Top" Width="80" Click="X_Click" FontSize="24" Height="60" Style="{DynamicResource ButtonStyle6}"/>
-        <Button x:Name="lg" Content="lg" HorizontalAlignment="Left" Margin="156,262,0,0" VerticalAlignment="Top" Width="80" Click="lg_Click" Height="60" FontSize="24"/>
-        <Button x:Name="__5" Content="%" HorizontalAlignment="Left" Margin="475,142,0,0" VerticalAlignment="Top" Width="80" Click="__5_Click" FontSize="24" Height="60"/>
-        <Button x:Name="Buttom_subtraction" Content="-" HorizontalAlignment="Left" Margin="555,322,0,0" VerticalAlignment="Top" Width="80" Click="Buttom_subtraction_Click" Height="60" Style="{DynamicResource ButtonStyle4}" FontSize="24"/>
-        <Button x:Name="_0" Content="0" HorizontalAlignment="Left" Margin="333,387,0,0" VerticalAlignment="Top" Width="115" Height="45" Click="_0_Click"/>
-        <Button x:Name="Equal" Content="=" HorizontalAlignment="Left" Margin="566,397,0,0" VerticalAlignment="Top" Width="57" Height="35" Click="Equal_Click" KeyDown="Equal_KeyDown"/>
+        <Button x:Name="__" Content="^" HorizontalAlignment="Left" Margin="76,262,0,0" VerticalAlignment="Top" Width="80" Click="___Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="__1" Content="(" HorizontalAlignment="Left" Margin="156,202,0,0" VerticalAlignment="Top" Width="80" Click="__1_Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="__2" Content=")" HorizontalAlignment="Left" Margin="236,202,0,0" VerticalAlignment="Top" Width="80" Click="__2_Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="π" Content="π" HorizontalAlignment="Left" Margin="235,382,0,0" VerticalAlignment="Top" Width="80" Click="π_Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="__3" Content="！" HorizontalAlignment="Left" Margin="19.8,98.52,0,0" VerticalAlignment="Top" Width="75" Click="__3_Click" FontSize="24" Focusable="False"/>
+        <Button x:Name="__4" Content="√" HorizontalAlignment="Left" Margin="76,381.76,0,0" VerticalAlignment="Top" Width="80" Click="__4_Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="X" Content="X" HorizontalAlignment="Left" Margin="555,202,0,0" VerticalAlignment="Top" Width="80" Click="X_Click" FontSize="24" Height="60" Style="{DynamicResource ButtonStyle6}" Focusable="False"/>
+        <Button x:Name="lg" Content="lg" HorizontalAlignment="Left" Margin="156,262,0,0" VerticalAlignment="Top" Width="80" Click="lg_Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="__5" Content="%" HorizontalAlignment="Left" Margin="475,142,0,0" VerticalAlignment="Top" Width="80" Click="__5_Click" FontSize="24" Height="60" Focusable="False"/>
+        <Button x:Name="Buttom_subtraction" Content="-" HorizontalAlignment="Left" Margin="555,322,0,0" VerticalAlignment="Top" Width="80" Click="Buttom_subtraction_Click" Height="60" Style="{DynamicResource ButtonStyle4}" FontSize="24" Focusable="False"/>
+        <Button x:Name="_0" Content="0" HorizontalAlignment="Left" Margin="333,387,0,0" VerticalAlignment="Top" Width="115" Height="45" Click="_0_Click" Focusable="False"/>
+        <Button x:Name="Equal" Content="=" HorizontalAlignment="Left" Margin="566,397,0,0" VerticalAlignment="Top" Width="57" Height="35" Click="Equal_Click" Focusable="False"/>
 
     </Grid>
 </Window>

@@ -656,9 +656,18 @@ namespace 星火杯
             }//常规计算
         }
 
-        private void Equal_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            Equal_Click(sender, null);
+            switch (e.Key)
+            {
+                case Key.Delete:
+                    Delete_Click(sender, null);
+                    break;
+                case Key.Space:
+                    Equal_Click(sender, null);
+                    break;
+
+            }
         }
     }
 }
