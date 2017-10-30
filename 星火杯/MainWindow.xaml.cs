@@ -179,15 +179,15 @@ namespace 星火杯
             textBox1.Text = "%";
         }
         #endregion
-        class Polynomial:IComparer<Polynomial>
+        class Polynomial:IComparable<Polynomial>
         {
             public int exponent;
             public double coefficient;
             public string expression;
 
-            int IComparer<Polynomial>.Compare(Polynomial x, Polynomial y)
+            int IComparable<Polynomial>.CompareTo(Polynomial other)
             {
-                return x.exponent.CompareTo(y.exponent);
+                return other.exponent.CompareTo(exponent);
             }
         }
         static Queue<object> Transform (string expression)//中缀转后缀
@@ -542,8 +542,6 @@ namespace 星火杯
                 char temp;
                 for (int i = 0, j, r; i < expression.Length;)
                 {
-                    if (expression[i] == '+')
-                        ;
                     if (expression[i] == '(')
                             i++;
                     for (j = i; expression[j] >= '0' && expression[j] <= '9' || expression[j] == '.';)
@@ -576,9 +574,13 @@ namespace 星火杯
                     i = r + 1;
                     if (expressions.Contains(new Polynomial { exponent = temp_0 }))
                     {
-                        expressions[0].coefficient += temp_0;
+                        expressions[0].coefficient += temp_0_d;
                     }
                     expressions.Sort();
+                }
+                foreach(Polynomial s in expressions)
+                {
+                    textBox2.Text += s.expression;
                 }
             }//多项式
             if (expression.IndexOf("-") >= 0)
