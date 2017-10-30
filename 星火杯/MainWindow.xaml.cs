@@ -654,7 +654,12 @@ namespace 星火杯
                 }//干掉那些负号的影响！
                 textBox2.Text = Calculate(expression).ToString();
             }//常规计算
-        }       
+        }
+
+        private void Equal_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            Equal_Click(sender, null);
+        }
     }
 }
     

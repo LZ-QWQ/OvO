@@ -280,7 +280,7 @@
         <Button x:Name="__5" Content="%" HorizontalAlignment="Left" Margin="475,142,0,0" VerticalAlignment="Top" Width="80" Click="__5_Click" FontSize="24" Height="60"/>
         <Button x:Name="Buttom_subtraction" Content="-" HorizontalAlignment="Left" Margin="555,322,0,0" VerticalAlignment="Top" Width="80" Click="Buttom_subtraction_Click" Height="60" Style="{DynamicResource ButtonStyle4}" FontSize="24"/>
         <Button x:Name="_0" Content="0" HorizontalAlignment="Left" Margin="333,387,0,0" VerticalAlignment="Top" Width="115" Height="45" Click="_0_Click"/>
-        <Button x:Name="Equal" Content="=" HorizontalAlignment="Left" Margin="566,397,0,0" VerticalAlignment="Top" Width="57" Height="35" Click="Equal_Click"/>
+        <Button x:Name="Equal" Content="=" HorizontalAlignment="Left" Margin="566,397,0,0" VerticalAlignment="Top" Width="57" Height="35" Click="Equal_Click" KeyDown="Equal_KeyDown"/>
 
     </Grid>
 </Window>
