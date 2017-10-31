@@ -314,6 +314,7 @@ namespace 星火杯
                 int i = 0, j = 0, r = 0;
                 for (i = 0; i < expression.Length;)
                 {
+                    if (Isoperator(expression[i]))i++;
                     if (expression[i] == 'X')
                     {
                         temp_0_d = 1;
@@ -343,12 +344,6 @@ namespace 星火杯
                             break;
                         }
                     }
-                    expressions.Add(new Polynomial
-                    {
-                        exponent = temp_0,
-                        coefficient = temp_0_d,
-                        expression = expression.Substring(i, r - i)
-                    });
                     if (expressions.Contains(new Polynomial { exponent = temp_0 }))
                     {
                         int x;
@@ -363,13 +358,21 @@ namespace 星火杯
                         expressions.Remove(expressions[x]);
                         expressions.Add(u);
                     }
+                    expressions.Add(new Polynomial
+                    {
+                        exponent = temp_0,
+                        coefficient = temp_0_d,
+                        expression = expression.Substring(i, r - i)
+                    });
                     expressions.Sort();
                     i = r + 1;
                 }
+                string temp__ = null;
                 foreach (Polynomial s in expressions)
                 {
-                    textBox2.Text += s.expression;
+                    temp__ += s.expression;
                 }
+                textBox2.Text = temp__;
             }//多项式
             else
             {
