@@ -249,7 +249,7 @@
         <Button x:Name="Divide" Content="/" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,82,0,0" Click="CHUFA_Click" Height="60" FontSize="24" Style="{DynamicResource ButtonStyle8}" Focusable="False"/>
         <Button x:Name="CHENGFA" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,142,0,0" Height="60" Click="CHENGFA_Click" FontSize="24" Style="{DynamicResource ButtonStyle7}" Focusable="False"/>
         <Button x:Name="Button1" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="316,321.76,0,0" Click="Button1_Click" Height="60" FontSize="24" Focusable="False"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="36" TextWrapping="Wrap" VerticalAlignment="Top" Width="517" Margin="60.8,0,0,0" FontSize="24" IsEnabled="False" Focusable="False" />
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="36" TextWrapping="Wrap" VerticalAlignment="Top" Width="517" Margin="61,0,0,0" FontSize="24" Focusable="False" AllowDrop="False" />
         <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" VerticalAlignment="Top" Width="517" Margin="60.8,36,0,0" IsEnabled="False" FontSize="24" Focusable="False"/>
         <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="395,142,0,0" VerticalAlignment="Top" Width="80" Click="Delete_Click" FontSize="24" Height="60" Focusable="False"/>
         <Button x:Name="Point" Content="." HorizontalAlignment="Left" Margin="475,382,0,0" VerticalAlignment="Top" Width="80" Click="Point_Click" Height="60" FontSize="24" Focusable="False"/>

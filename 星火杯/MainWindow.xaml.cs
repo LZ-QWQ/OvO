@@ -6,8 +6,6 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
-
 namespace 星火杯
 {
     /// <summary>
@@ -312,9 +310,19 @@ namespace 星火杯
                 string temp_0_s = null, temp_1_s = null;
                 char temp;
                 int i = 0, j = 0, r = 0;
+                bool Hi;
                 for (i = 0; i < expression.Length;)
                 {
-                    if (Isoperator(expression[i]))i++;
+                    if (Isoperator(expression[i]))
+                    {
+                        if (expression[i] == '+')
+                            Hi = true;
+                        else if (expression[i] == '-')
+                            Hi = false;
+                        else
+                            MessageBox.Show("输入有误请重新输入(￢︿̫̿￢☆)", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                        i++;
+                    }
                     if (expression[i] == 'X')
                     {
                         temp_0_d = 1;
@@ -343,17 +351,19 @@ namespace 星火杯
                             temp_0 = Convert.ToInt32(temp_1_s);
                             break;
                         }
+                        else if (r == expression.Length)
+                            break;
                     }
                     if (expressions.Contains(new Polynomial { exponent = temp_0 }))
                     {
                         int x;
                         x = expressions.IndexOf(new Polynomial { exponent = temp_0 });
-                        expressions[x].coefficient += temp_0_d;
+
                         Polynomial u = new Polynomial
                         {
                             exponent = temp_0,
-                            coefficient = expressions[x].coefficient,
-                            expression = expressions[x].coefficient.ToString() + "X^" + temp_0.ToString()
+                            coefficient = expressions[x].coefficient+temp_0_d,
+                            expression = (expressions[x].coefficient + temp_0_d).ToString() + "X^" + temp_0.ToString()
                         };
                         expressions.Remove(expressions[x]);
                         expressions.Add(u);
@@ -726,10 +736,13 @@ namespace 星火杯
                 case Key.Divide:
                     CHUFA_Click(sender, null);
                     break;
+                case Key.X:
+                    X_Click(sender, null);
+                    break;
                 default:
                     break;
             }
-        }//键盘输入
+        }//键盘输入 有个超级大的问题！！
     }
 }
     
