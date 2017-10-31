@@ -21,7 +21,7 @@ namespace 星火杯
         }
         void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            MessageBox.Show("当前应用程序遇到一些问题~~~请重新输入", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("当前应用程序遇到一些问题~~~请重新输入(づ￣ 3￣)づ", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
             e.Handled = true;//告诉运行时，该异常被处理了，不再作为UnhandledException抛出了。 
         }
         void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

@@ -69,7 +69,6 @@ namespace 星火杯
         {
             textBox1.Text += "*";
         }
-
         private void Button_plus_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "+";
@@ -95,7 +94,6 @@ namespace 星火杯
             textBox1.Clear();
             textBox2.Clear();
         }
-
         private void Backspace_Click(object sender, RoutedEventArgs e)
         {
             if (textBox1.Text == "") ;
@@ -104,12 +102,10 @@ namespace 星火杯
                 textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - 1);
             }
         }
-
         private void X_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "X";
         }
-
         private void ___Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "^";
@@ -118,62 +114,50 @@ namespace 星火杯
         {
             textBox1.Text += "e";
         }
-
         private void π_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "π";
         }
-
         private void ln___Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "ln(";
         }
-
         private void log_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "log(";
         }
-
         private void lg_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "lg(";
         }
-
         private void sin___Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "sin(";
         }
-
         private void cos___Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "cos(";
         }
-
         private void tan___Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "tan(";
         }
-
         private void __4_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "√";
         }
-
         private void __1_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "(";
         }
-
         private void __2_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += ")";
         }
-
         private void __3_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text += "!";
         }
-
         private void __5_Click(object sender, RoutedEventArgs e)
         {
             textBox1.Text = "%";
@@ -655,7 +639,6 @@ namespace 星火杯
                 textBox2.Text = Calculate(expression).ToString();
             }//常规计算
         }
-
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             switch (e.Key)
@@ -663,10 +646,86 @@ namespace 星火杯
                 case Key.Delete:
                     Delete_Click(sender, null);
                     break;
-                case Key.Space:
+                case Key.Back:
+                    Backspace_Click(sender, null);
+                    break;
+                case Key.Enter:
                     Equal_Click(sender, null);
                     break;
-
+                case Key.NumPad0:
+                    _0_Click(sender, null);
+                    break;
+                case Key.D0:
+                    _0_Click(sender, null);
+                    break;
+                case Key.NumPad1:
+                    Button1_Click(sender, null);
+                    break;
+                case Key.D1:
+                    Button1_Click(sender, null);
+                    break;
+                case Key.NumPad2:
+                    Button2_Click(sender, null);
+                    break;
+                case Key.D2:
+                    Button2_Click(sender, null);
+                    break;
+                case Key.NumPad3:
+                    Button3_Click(sender, null);
+                    break;
+                case Key.D3:
+                    Button3_Click(sender, null);
+                    break;
+                case Key.NumPad4:
+                    Button4_Click(sender, null);
+                    break;
+                case Key.D4:
+                    Button4_Click(sender, null);
+                    break;
+                case Key.NumPad5:
+                    Button5_Click(sender, null);
+                    break;
+                case Key.D5:
+                    Button5_Click(sender, null);
+                    break;
+                case Key.NumPad6:
+                    Button6_Click(sender, null);
+                    break;
+                case Key.D6:
+                    Button6_Click(sender, null);
+                    break;
+                case Key.NumPad7:
+                    Button7_Click(sender, null);
+                    break;
+                case Key.D7:
+                    Button7_Click(sender, null);
+                    break;
+                case Key.NumPad8:
+                    Button8_Click(sender, null);
+                    break;
+                case Key.D8:
+                    Button8_Click(sender, null);
+                    break;
+                case Key.NumPad9:
+                    Button9_Click(sender, null);
+                    break;
+                case Key.D9:
+                    Button9_Click(sender, null);
+                    break;
+                case Key.Add:
+                    Button_plus_Click(sender, null);
+                    break;
+                case Key.Subtract:
+                    Buttom_subtraction_Click(sender, null);
+                    break;
+                case Key.Multiply:
+                    Button_plus_Click(sender, null);
+                    break;
+                case Key.Divide:
+                    CHUFA_Click(sender, null);
+                    break;
+                default:
+                    break;
             }
         }
     }
