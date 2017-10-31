@@ -5,7 +5,6 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
 using System.Windows.Input;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
@@ -639,7 +638,7 @@ namespace 星火杯
                 textBox2.Text = Calculate(expression).ToString();
             }//常规计算
         }
-        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
@@ -727,7 +726,7 @@ namespace 星火杯
                 default:
                     break;
             }
-        }
+        }//键盘输入
     }
 }
     
