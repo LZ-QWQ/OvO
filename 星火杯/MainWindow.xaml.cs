@@ -161,7 +161,7 @@ namespace 星火杯
         }
         #endregion
         class Polynomial:IComparable<Polynomial>
-        {
+        { 
             public int exponent;
             public double coefficient;
             public string expression;
@@ -170,6 +170,7 @@ namespace 星火杯
             {
                 return other.exponent.CompareTo(exponent);
             }
+
         }
         static Queue<object> Transform (string expression)//中缀转后缀
         {
@@ -310,7 +311,7 @@ namespace 星火杯
                 string temp_0_s = null, temp_1_s = null;
                 char temp;
                 int i = 0, j = 0, r = 0;
-                bool Hi;
+                bool Hi=true;
                 for (i = 0; i < expression.Length;)
                 {
                     if (Isoperator(expression[i]))
@@ -354,20 +355,18 @@ namespace 星火杯
                         else if (r == expression.Length)
                             break;
                     }
-                    if (expressions.Contains(new Polynomial { exponent = temp_0 }))
+                    foreach (Polynomial s in expressions)
                     {
-                        int x;
-                        x = expressions.IndexOf(new Polynomial { exponent = temp_0 });
-
-                        Polynomial u = new Polynomial
+                        if (s.exponent == temp_0)
                         {
-                            exponent = temp_0,
-                            coefficient = expressions[x].coefficient+temp_0_d,
-                            expression = (expressions[x].coefficient + temp_0_d).ToString() + "X^" + temp_0.ToString()
-                        };
-                        expressions.Remove(expressions[x]);
-                        expressions.Add(u);
+                            int x;
+                            x = expressions.IndexOf(s);
+                            expressions[x].coefficient = expressions[x].coefficient + temp_0_d;
+                            expressions[x].expression = (expressions[x].coefficient).ToString() + "X^" + temp_0.ToString();
+                            Hi = false;
+                        }                        
                     }
+                    if(Hi)
                     expressions.Add(new Polynomial
                     {
                         exponent = temp_0,
@@ -380,7 +379,7 @@ namespace 星火杯
                 string temp__ = null;
                 foreach (Polynomial s in expressions)
                 {
-                    temp__ += s.expression;
+                    temp__ += s.expression+"+";
                 }
                 textBox2.Text = temp__;
             }//多项式
