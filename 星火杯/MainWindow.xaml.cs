@@ -361,9 +361,14 @@ namespace 星火杯
                         {
                             int x;
                             x = expressions.IndexOf(s);
-                            expressions[x].coefficient = expressions[x].coefficient + temp_0_d;
-                            expressions[x].expression = (expressions[x].coefficient).ToString() + "X^" + temp_0.ToString();
-                            expressions[x].exponent = temp_0;
+                            temp_0_d = expressions[x].coefficient + temp_0_d;
+                            temp_0_s = (expressions[x].coefficient).ToString() + "X^" + temp_0.ToString();
+                            expressions.Add(new Polynomial
+                            {   exponent = temp_0,
+                                coefficient = temp_0_d,
+                                expression = temp_0_s
+                            });
+                            expressions.RemoveAt(x);
                             Hi = false;
                         }                        
                     }
