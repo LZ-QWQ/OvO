@@ -363,6 +363,7 @@ namespace 星火杯
                             x = expressions.IndexOf(s);
                             expressions[x].coefficient = expressions[x].coefficient + temp_0_d;
                             expressions[x].expression = (expressions[x].coefficient).ToString() + "X^" + temp_0.ToString();
+                            expressions[x].exponent = temp_0;
                             Hi = false;
                         }                        
                     }
@@ -375,6 +376,7 @@ namespace 星火杯
                     });
                     expressions.Sort();
                     i = r + 1;
+                    Hi = true;
                 }
                 string temp__ = null;
                 foreach (Polynomial s in expressions)
