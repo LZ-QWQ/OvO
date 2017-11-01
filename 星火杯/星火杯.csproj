@@ -103,5 +103,8 @@
   <ItemGroup>
     <Resource Include="sidebar[1].jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="e6d07062cc011b405cda866a5dc5d986_t01ff14b4dbf03e36ba.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
