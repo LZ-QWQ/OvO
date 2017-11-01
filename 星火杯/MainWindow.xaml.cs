@@ -764,6 +764,11 @@ namespace 星火杯
                     break;
             }
         }//键盘输入 有个超级大的问题！！
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("作者~~~杜渡~李政~（磊博士！)\n\t\t\t\t2017 O(∩_∩)O", "( •̀ ω •́ )y", MessageBoxButton.OK, MessageBoxImage.Information);
+        }//我就是搞事情
     }
 }
     

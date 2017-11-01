@@ -318,7 +318,7 @@
         <Button x:Name="Equal" Content="=" HorizontalAlignment="Left" Margin="555,382,0,0" VerticalAlignment="Top" Width="80" Height="59.76" Click="Equal_Click" Focusable="False" FontSize="24" Style="{DynamicResource ButtonStyle9}"/>
         <Image Margin="0,0,560.6,370.1" Source="966a8ecd6485b7ff4831dd27e64839b8_t01c3e7f41e92f10eae.png" Stretch="Fill" Width="76" Height="72.8" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Image Margin="0,72.8,0,0" Source="sidebar[1].jpg" Stretch="Fill" Width="76" Height="370.1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Button Content="西电星火杯" HorizontalAlignment="Left" Margin="76,72.8,0,0" VerticalAlignment="Top" Width="479" Height="69.2" FontSize="24" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}"/>
+        <Button Content="西电星火杯" HorizontalAlignment="Left" Margin="76,72.8,0,0" VerticalAlignment="Top" Width="479" Height="69.2" FontSize="24" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" Click="Button_Click"/>
         <Image Margin="555,0,0,360.9" Source="e6d07062cc011b405cda866a5dc5d986_t01ff14b4dbf03e36ba.jpg" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Width="81.6" Height="82"/>
 
     </Grid>
