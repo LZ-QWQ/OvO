@@ -326,7 +326,10 @@ namespace 星火杯
                     }
                     if (expression[i] == 'X')
                     {
-                        temp_0_d = 1;
+                        if (Hii)
+                            temp_0_d = 1;
+                        else if(Hii==false)
+                            temp_0_d = -1;
                         j = i;
                     }
                     else
@@ -337,7 +340,13 @@ namespace 星火杯
                             j++;
                             if (expression[j] == 'X')
                             {
+                                if(Hii)
                                 temp_0_d = Convert.ToInt32(temp_0_s);
+                                else
+                                {
+                                    temp_0_d = Convert.ToInt32(temp_0_s);
+                                    temp_0_d = -temp_0_d;
+                                }
                                 temp_0_s = null;
                                 break;
                             }
@@ -391,17 +400,19 @@ namespace 星火杯
                         expressions.RemoveAt(x);
                     }
                     expressions.Sort();
-                    i = r + 1;
+                    i = r;
                     Hi = true;
-                        
+                    Hii = true;    
                 }
                 string temp__ = null;
                 foreach (Polynomial s in expressions)
                 {
-                    if (expressions.IndexOf(s) == expressions.Count-1)
+                    if (expressions.IndexOf(s) == expressions.Count - 1)
                         temp__ += s.expression;
+                    else if (s.coefficient == 0)
+                        ;
                     else
-                    temp__ += s.expression+"+";
+                        temp__ += s.expression + "+";
                 }
                 textBox2.Text = temp__;
             }//多项式
