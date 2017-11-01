@@ -350,10 +350,15 @@ namespace 星火杯
                         if (r < expression.Length && Isoperator(expression[r]))
                         {
                             temp_0 = Convert.ToInt32(temp_1_s);
+                            temp_1_s = null;
                             break;
                         }
                         else if (r == expression.Length)
+                        {
+                            temp_0 = Convert.ToInt32(temp_1_s);
+                            temp_1_s = null;
                             break;
+                        }
                     }
                     foreach (Polynomial s in expressions)
                     {
