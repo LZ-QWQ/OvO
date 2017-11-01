@@ -310,7 +310,7 @@ namespace 星火杯
                 double temp_0_d = new double();
                 string temp_0_s = null, temp_1_s = null;
                 char temp;
-                int i = 0, j = 0, r = 0;
+                int i = 0, j = 0, r = 0,x;
                 bool Hi=true;
                 for (i = 0; i < expression.Length;)
                 {
@@ -364,7 +364,6 @@ namespace 星火杯
                     {
                         if (s.exponent == temp_0)
                         {
-                            int x;
                             x = expressions.IndexOf(s);
                             temp_0_d = expressions[x].coefficient + temp_0_d;
                             temp_0_s = (expressions[x].coefficient).ToString() + "X^" + temp_0.ToString();
@@ -373,7 +372,6 @@ namespace 星火杯
                                 coefficient = temp_0_d,
                                 expression = temp_0_s
                             });
-                            expressions.RemoveAt(x);
                             Hi = false;
                         }                        
                     }
@@ -742,7 +740,7 @@ namespace 星火杯
                     Buttom_subtraction_Click(sender, null);
                     break;
                 case Key.Multiply:
-                    Button_plus_Click(sender, null);
+                    CHENGFA_Click(sender, null);
                     break;
                 case Key.Divide:
                     CHUFA_Click(sender, null);
