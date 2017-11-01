@@ -303,23 +303,23 @@ namespace 星火杯
             string expression;
             expression = textBox1.Text;
 
-            if (expression.IndexOf("X^") >= 0)//多项式
+            if (expression.IndexOf("X") >= 0)//多项式
             {
                 List<Polynomial> expressions = new List<Polynomial>();
                 int temp_0 = new int();
                 double temp_0_d = new double();
                 string temp_0_s = null, temp_1_s = null;
                 char temp;
-                int i = 0, j = 0, r = 0,x;
-                bool Hi=true;
+                int i = 0, j = 0, r = 0,x=0;
+                bool Hi=true,Hii=true;
                 for (i = 0; i < expression.Length;)
                 {
                     if (Isoperator(expression[i]))
                     {
                         if (expression[i] == '+')
-                            Hi = true;
+                            Hii = true;
                         else if (expression[i] == '-')
-                            Hi = false;
+                            Hii = false;
                         else
                             MessageBox.Show("输入有误请重新输入(￢︿̫̿￢☆)", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
                         i++;
@@ -338,6 +338,7 @@ namespace 星火杯
                             if (expression[j] == 'X')
                             {
                                 temp_0_d = Convert.ToInt32(temp_0_s);
+                                temp_0_s = null;
                                 break;
                             }
                         }
@@ -366,29 +367,40 @@ namespace 星火杯
                         {
                             x = expressions.IndexOf(s);
                             temp_0_d = expressions[x].coefficient + temp_0_d;
-                            temp_0_s = (expressions[x].coefficient).ToString() + "X^" + temp_0.ToString();
-                            expressions.Add(new Polynomial
-                            {   exponent = temp_0,
-                                coefficient = temp_0_d,
-                                expression = temp_0_s
-                            });
+                            temp_0_s = temp_0_d.ToString() + "X^" + temp_0.ToString();
                             Hi = false;
                         }                        
                     }
-                    if(Hi)
-                    expressions.Add(new Polynomial
+                    if (Hi)
                     {
-                        exponent = temp_0,
-                        coefficient = temp_0_d,
-                        expression = expression.Substring(i, r - i)
-                    });
+                        expressions.Add(new Polynomial
+                        {
+                            exponent = temp_0,
+                            coefficient = temp_0_d,
+                            expression = expression.Substring(i, r - i)
+                        });
+                    }
+                    else
+                    {
+                        expressions.Add(new Polynomial
+                        {
+                            exponent = temp_0,
+                            coefficient = temp_0_d,
+                            expression = temp_0_s
+                        });
+                        expressions.RemoveAt(x);
+                    }
                     expressions.Sort();
                     i = r + 1;
                     Hi = true;
+                        
                 }
                 string temp__ = null;
                 foreach (Polynomial s in expressions)
                 {
+                    if (expressions.IndexOf(s) == expressions.Count-1)
+                        temp__ += s.expression;
+                    else
                     temp__ += s.expression+"+";
                 }
                 textBox2.Text = temp__;
