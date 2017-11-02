@@ -319,9 +319,11 @@ namespace 星火杯
                     if (expression[i] == '(')
                         y++;
                     else if (expression[i] == ')')
+                    {
                         y--;
-                    else if (y == 0 && i + 1 < expression.Length&&(expression[i + 1] == '*' || expression[i + 1] == '(') )
-                        Hiii = false;
+                        if (y == 0 && i + 1 < expression.Length && (expression[i + 1] == '*' || expression[i + 1] == '('))
+                            Hiii = false;
+                    }
                     i++;
                 }
                 if (Hiii)
