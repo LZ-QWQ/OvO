@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>765ff34d97979a3071fbb59fcc68306e_f16.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -105,6 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="e6d07062cc011b405cda866a5dc5d986_t01ff14b4dbf03e36ba.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="765ff34d97979a3071fbb59fcc68306e_f16.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
