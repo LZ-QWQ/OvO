@@ -312,7 +312,7 @@ namespace 星火杯
                 double temp_0_d = new double(),temp_0_0_d;
                 string temp_0_s = null, temp_1_s = null,temp_2_s=null,temp_0_0_s=null;
                 int i = 0, j = 0, r = 0, x = 0, y = 0, k = 0, l = 0;
-                bool Hi=true,Hii=true,Hiii=true,Hiiii=true;           
+                bool Hi=true,Hii=true,Hiii=true,Hiiii=true,kao=false;           
                 //Hi判断相同次数项，Hii判断系数符号，Hiii判断乘还是加减，Hiiii判断常数项
                 for (i = 0; i < expression.Length;)
                 {
@@ -337,7 +337,10 @@ namespace 星火杯
                             else if (expression[i] == '-')
                                 Hii = false;
                             else
+                            {
+                                kao = true;
                                 MessageBox.Show("输入有误请重新输入(￢︿̫̿￢☆)", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
                             i++;
                         }//判断运算符以处理系数符号
                         if (expression[i] == 'X')
@@ -431,13 +434,26 @@ namespace 星火杯
                             {
                                 x = expressions.IndexOf(s);
                                 temp_0_d = expressions[x].coefficient + temp_0_d;
-                                if (Hiiii == false)
-                                    temp_2_s = Math.Abs(temp_0_d).ToString();
-                                else if (temp_0 == 1)
-                                    temp_2_s = Math.Abs(temp_0_d).ToString() + "X";
+                                if (temp_0_d != 1)
+                                {
+                                    if (Hiiii == false)
+                                        temp_2_s = Math.Abs(temp_0_d).ToString();
+                                    else if (temp_0 == 1)
+                                        temp_2_s = Math.Abs(temp_0_d).ToString() + "X";
+                                    else
+                                        temp_2_s = Math.Abs(temp_0_d).ToString() + "X^" + temp_0.ToString();
+                                    Hi = false;
+                                }
                                 else
-                                    temp_2_s = Math.Abs(temp_0_d).ToString() + "X^" + temp_0.ToString();
-                                Hi = false;
+                                {
+                                    if (Hiiii == false)
+                                        temp_2_s = Math.Abs(temp_0_d).ToString();
+                                    else if (temp_0 == 1)
+                                        temp_2_s = "X";
+                                    else
+                                        temp_2_s = "X^" + temp_0.ToString();
+                                    Hi = false;
+                                }
                             }
                         }//合并同类项
                         if (Hi)
@@ -467,11 +483,11 @@ namespace 星火杯
                 }
                 else if (Hiii == false)
                 {
-                        i = 0;
-                    if (expression[i] == '(')
+                    i = 0;
+                    if (i<expression.Length && expression[i] == '(')
                     {
                         i++;
-                        for (i = 0; i < expression.Length;)
+                        for (; i < expression.Length;)
                         {
                             if (Isoperator(expression[i]))
                             {
@@ -548,7 +564,7 @@ namespace 星火杯
                                 {
                                     temp_1_s += expression[r];
                                     r++;
-                                    if (r < expression.Length && Isoperator(expression[r]))
+                                    if (r < expression.Length && (Isoperator(expression[r])||expression[j+1]==')'))
                                     {
                                         temp_0 = Convert.ToInt32(temp_1_s);
                                         temp_1_s = null;
@@ -562,7 +578,7 @@ namespace 星火杯
                                     }
                                 }
                             }
-                            else if (j + 1 <= expression.Length && (j + 1 == expression.Length || Isoperator(expression[j + 1])))
+                            else if (j + 1 <= expression.Length && (expression[j+1]==')'||Isoperator(expression[j + 1])))
                             {
                                 r = j;
                                 temp_0 = 1;
@@ -608,12 +624,13 @@ namespace 星火杯
                                 i++;
                                 break;
                             }
+                            Hi = true;
+                            Hii = true;
                         }
                         if (expression[i] == '*' && expression[i + 1] == '(')
                             i = i + 2;
                         for (; i < expression.Length && expression[i] != ')';)
                         {
-                            i = i + 2;
                             if (Isoperator(expression[i]))
                             {
                                 if (expression[i] == '+')
@@ -689,7 +706,7 @@ namespace 星火杯
                                 {
                                     temp_1_s += expression[r];
                                     r++;
-                                    if (r < expression.Length && Isoperator(expression[r]))
+                                    if (r < expression.Length && (Isoperator(expression[r])||expression[r]==')'))
                                     {
                                         temp_0 = Convert.ToInt32(temp_1_s);
                                         temp_1_s = null;
@@ -703,7 +720,7 @@ namespace 星火杯
                                     }
                                 }
                             }
-                            else if (j + 1 <= expression.Length && (j + 1 == expression.Length || Isoperator(expression[j + 1])))
+                            else if (j + 1 <= expression.Length && (j + 1 == expression.Length || Isoperator(expression[j + 1])||expression[j+1]==')'))
                             {
                                 r = j;
                                 temp_0 = 1;
@@ -744,53 +761,134 @@ namespace 星火杯
                                 expressions_1.RemoveAt(x);
                             }
                             i = r;
+                            Hi = true;
+                            Hii = true;
                         }
-                        for (k = 0; k < expressions_1.Count;)
+                        for (; k < expressions_1.Count;)
                         {
                             temp_0 = expressions_1[k].exponent;
                             temp_0_d = expressions_1[k].coefficient;
-                            for (j = 0; j < expressions.Count;)
+                            for (; l < expressions.Count;)
                             {
                                 temp_0_0 = temp_0 + expressions[l].exponent;
-                                temp_0_0_d = temp_0_d + expressions[l].coefficient;
-                                if (Hiiii == false)
-                                    temp_0_0_s = Math.Abs(temp_0_0_d).ToString();
-                                else if (temp_0 == 1)
-                                    temp_0_0_s = Math.Abs(temp_0_0_d).ToString() + "X";
-                                else
-                                    temp_0_0_s = Math.Abs(temp_0_0_d).ToString() + "X^" + temp_0.ToString();
-                                expressions_2.Add(new Polynomial
+                                temp_0_0_d = temp_0_d*expressions[l].coefficient;
+                                if (temp_0_0_d != 1)
                                 {
-                                    exponent = temp_0_0,
-                                    coefficient = temp_0_0_d,
-                                    expression = temp_0_0_s,
-                                });
+                                    if (temp_0_0 == 0)
+                                        temp_0_0_s = Math.Abs(temp_0_0_d).ToString();
+                                    else if (temp_0_0 == 1)
+                                        temp_0_0_s = Math.Abs(temp_0_0_d).ToString() + "X";
+                                    else
+                                        temp_0_0_s = Math.Abs(temp_0_0_d).ToString() + "X^" + temp_0_0.ToString();
+                                }
+                                else
+                                {
+                                    if (temp_0_0 == 0)
+                                        temp_0_0_s = Math.Abs(temp_0_0_d).ToString();
+                                    else if (temp_0_0 == 1)
+                                        temp_0_0_s = "X";
+                                    else
+                                        temp_0_0_s = "X^" + temp_0_0.ToString();
+                                }
+                                foreach (Polynomial s in expressions_2)
+                                {
+                                    if (s.exponent == temp_0_0)
+                                    {
+                                        x = expressions_2.IndexOf(s);
+                                        temp_0_0_d = expressions_2[x].coefficient + temp_0_0_d;
+                                        if (temp_0_0_d != 1)
+                                        {
+                                            if (temp_0_0 == 0)
+                                                temp_2_s = Math.Abs(temp_0_0_d).ToString();
+                                            else if (temp_0_0 == 1)
+                                                temp_2_s = Math.Abs(temp_0_0_d).ToString() + "X";
+                                            else
+                                                temp_2_s = Math.Abs(temp_0_0_d).ToString() + "X^" + temp_0_0.ToString();
+                                        }
+                                        else
+                                        {
+                                            if (temp_0_0 == 0)
+                                                temp_2_s = Math.Abs(temp_0_0_d).ToString();
+                                            else if (temp_0_0 == 1)
+                                                temp_2_s = "X";
+                                            else
+                                                temp_2_s = "X^" + temp_0_0.ToString();
+                                        }
+                                        Hi = false;
+                                    }
+                                }
+                                if (Hi)
+                                    expressions_2.Add(new Polynomial
+                                    {
+                                        exponent = temp_0_0,
+                                        coefficient = temp_0_0_d,
+                                        expression = temp_0_0_s,
+                                    });
+                                else
+                                {
+                                    expressions_2.Add(new Polynomial
+                                    {
+                                        exponent = temp_0_0,
+                                        coefficient = temp_0_0_d,
+                                        expression = temp_2_s
+                                    });
+                                    expressions_2.RemoveAt(x);
+                                }
+                                l++;
                             }
+                            l = 0;
+                            k++;
                         }
                     }
                     expressions_2.Sort();//排序
-                    Hi = true;
-                    Hii = true;
                 }
-                string temp__ = null;
-                foreach (Polynomial s in expressions)//输出，考虑符号
+                if (Hiii)
                 {
-                    if (s.coefficient > 0)
+                    string temp__ = null;
+                    foreach (Polynomial s in expressions)//输出，考虑符号
                     {
-                        if (expressions.IndexOf(s) == 0)
-                            temp__ += s.expression;
-                        else
-                            temp__ += "+" + s.expression;
+                        if (s.coefficient > 0)
+                        {
+                            if (expressions.IndexOf(s) == 0)
+                                temp__ += s.expression;
+                            else
+                                temp__ += "+" + s.expression;
+                        }
+                        else if (s.coefficient < 0)
+                            temp__ += "-" + s.expression;
+                        else if (s.coefficient == 0)
+                            ;
                     }
-                    else if (s.coefficient < 0)
-                        temp__ += "-" + s.expression;
-                    else if (s.coefficient == 0)
-                        ;
+                    if (kao)
+                        textBox2.Text = "乘法请用括号括起来计算/(ㄒoㄒ)/~~";
+                    else if (temp__ == null)
+                        textBox2.Text = "0";
+                    else
+                        textBox2.Text = temp__;
                 }
-                if (temp__ == null)
-                    textBox2.Text = "0";
-                else
-                    textBox2.Text = temp__;
+                else if (Hiii == false)
+                {
+                    string temp__ = null;
+                    foreach (Polynomial s in expressions_2)//输出，考虑符号
+                    {
+                        if (s.coefficient > 0)
+                        {
+                            if (expressions_2.IndexOf(s) == 0)
+                                temp__ += s.expression;
+                            else
+                                temp__ += "+" + s.expression;
+                        }
+                        else if (s.coefficient < 0)
+                            temp__ += "-" + s.expression;
+                        else if (s.coefficient == 0)
+                            ;
+                    }
+                    if (temp__ == null)
+                        textBox2.Text = "0";
+                    else
+                        textBox2.Text = temp__;
+                }
+               
             }//多项式
             else
             {
@@ -1146,6 +1244,9 @@ namespace 星火杯
                     break;
                 case Key.X:
                     X_Click(sender, null);
+                    break;
+                case Key.Decimal:
+                    Point_Click(sender, null);
                     break;
                 default:
                     break;
