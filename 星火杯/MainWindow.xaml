@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:星火杯"
         mc:Ignorable="d"
-        Title="MainWindow" Height="471.75" Width="644" KeyDown="Window_KeyDown">
+        Title="计算器(￣▽￣)&quot;" KeyDown="Window_KeyDown" ResizeMode="CanResizeWithGrip" SizeToContent="WidthAndHeight" VerticalContentAlignment="Stretch" Height="472" Width="644" HorizontalContentAlignment="Stretch">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -261,7 +261,7 @@
     </Window.Resources>
     <Grid Margin="0,0,2,-1" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="Button2" Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="395,322,0,0" Click="Button2_Click" FontSize="24" Height="60" Focusable="False"/>
         <Button x:Name="Button3" Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="475,322,0,0" Click="Button3_Click" Height="60" FontSize="24" Focusable="False"/>
@@ -271,12 +271,12 @@
         <Button x:Name="Button7" Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="316,202,0,0" Click="Button7_Click" Height="60" FontSize="24" Focusable="False"/>
         <Button x:Name="Button8" Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="395,202,0,0" Click="Button8_Click" Height="60" FontSize="24" Focusable="False"/>
         <Button x:Name="Button9" Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="475,202,0,0" Click="Button9_Click" Height="60" FontSize="24" Focusable="False"/>
-        <Button x:Name="Button_plus" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,262,0,-6" Height="60" Click="Button_plus_Click" Style="{DynamicResource ButtonStyle5}" FontSize="24" Focusable="False"/>
-        <Button x:Name="Divide" Content="/" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,202,0,0" Click="CHUFA_Click" Height="60" FontSize="24" Style="{DynamicResource ButtonStyle8}" Focusable="False"/>
-        <Button x:Name="CHENGFA" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,142,0,0" Height="60" Click="CHENGFA_Click" FontSize="24" Style="{DynamicResource ButtonStyle7}" Focusable="False"/>
-        <Button x:Name="Button1" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="316,321.76,0,0" Click="Button1_Click" Height="60.24" FontSize="24" Focusable="False"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="45" Width="479" Margin="76,0,0,0" FontSize="24" AllowDrop="True" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" MaxLines="1" Focusable="False" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="False" VerticalAlignment="Top" TextAlignment="Right" />
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="479" Margin="76,45,0,0" FontSize="24" Focusable="False" RenderTransformOrigin="0.5,0.5" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" AllowDrop="True" MaxLines="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" TextAlignment="Right">
+        <Button x:Name="Button_plus" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,262,-1,0" Height="60" Click="Button_plus_Click" Style="{DynamicResource ButtonStyle5}" FontSize="24" Focusable="False"/>
+        <Button x:Name="Divide" Content="/" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,202,-1,0" Click="CHUFA_Click" Height="60" FontSize="24" Style="{DynamicResource ButtonStyle8}" Focusable="False"/>
+        <Button x:Name="CHENGFA" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="555,142,-1,0" Height="60" Click="CHENGFA_Click" FontSize="24" Style="{DynamicResource ButtonStyle7}" Focusable="False"/>
+        <Button x:Name="Button1" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="316,322,0,0" Click="Button1_Click" Height="60" FontSize="24" Focusable="False"/>
+        <TextBox x:Name="textBox1" Margin="75,0,0,0" FontSize="24" AllowDrop="True" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" MaxLines="1" Focusable="False" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="False" TextAlignment="Right" Width="480" Height="45" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="480" Margin="75,45,0,0" FontSize="24" Focusable="False" RenderTransformOrigin="0.5,0.5" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" AllowDrop="True" MaxLines="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" TextAlignment="Right">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -291,8 +291,8 @@
         <Button x:Name="Backspace" Content="Backspace" HorizontalAlignment="Left" Margin="236,142,0,0" VerticalAlignment="Top" Width="160" Click="Backspace_Click" Height="60" Focusable="False" FontSize="18"/>
         <Button x:Name="sin__" Content="sin" HorizontalAlignment="Left" Margin="76,322,0,0" VerticalAlignment="Top" Width="80" Click="sin___Click" Height="60" FontSize="24" Focusable="False"/>
         <Button x:Name="e" Content="e" HorizontalAlignment="Left" Margin="236,322,0,0" VerticalAlignment="Top" Width="80" Click="e_Click" Height="60" FontSize="24" Focusable="False"/>
-        <Button x:Name="cos__" Content="cos" HorizontalAlignment="Left" Margin="156,321.76,0,0" VerticalAlignment="Top" Width="80" Click="cos___Click" Height="60" FontSize="24" Focusable="False"/>
-        <Button x:Name="tan__" Content="tan" HorizontalAlignment="Left" Margin="156,381.76,0,0" VerticalAlignment="Top" Width="80" Click="tan___Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="cos__" Content="cos" HorizontalAlignment="Left" Margin="156,322,0,0" VerticalAlignment="Top" Width="80" Click="cos___Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="tan__" Content="tan" HorizontalAlignment="Left" Margin="156,382,0,0" VerticalAlignment="Top" Width="80" Click="tan___Click" Height="60" FontSize="24" Focusable="False"/>
         <Button x:Name="ln__" Content="ln" HorizontalAlignment="Left" Margin="236,262,0,0" VerticalAlignment="Top" Width="80" Click="ln___Click" Height="60" FontSize="24" Focusable="False"/>
         <Button x:Name="log" Content="log" HorizontalAlignment="Left" Margin="76,202,0,0" VerticalAlignment="Top" Width="80" Click="log_Click" Height="60" FontSize="24" RenderTransformOrigin="0.5,0.5" Focusable="False">
             <Button.RenderTransform>
@@ -309,17 +309,17 @@
         <Button x:Name="__2" Content=")" HorizontalAlignment="Left" Margin="236,202,0,0" VerticalAlignment="Top" Width="80" Click="__2_Click" Height="60" FontSize="24" Focusable="False"/>
         <Button x:Name="π" Content="π" HorizontalAlignment="Left" Margin="236,382,0,0" VerticalAlignment="Top" Width="81" Click="π_Click" Height="60" FontSize="24" Focusable="False"/>
         <Button x:Name="__3" Content="！" HorizontalAlignment="Left" Margin="76,142,0,0" VerticalAlignment="Top" Width="160" Click="__3_Click" FontSize="24" Focusable="False" Height="60"/>
-        <Button x:Name="__4" Content="√" HorizontalAlignment="Left" Margin="76,381.76,0,0" VerticalAlignment="Top" Width="80" Click="__4_Click" Height="60" FontSize="24" Focusable="False"/>
-        <Button x:Name="X" Content="X" HorizontalAlignment="Left" Margin="555,82,0,0" VerticalAlignment="Top" Width="80" Click="X_Click" FontSize="24" Height="60" Style="{DynamicResource ButtonStyle6}" Focusable="False"/>
+        <Button x:Name="__4" Content="√" HorizontalAlignment="Left" Margin="76,382,0,0" VerticalAlignment="Top" Width="80" Click="__4_Click" Height="60" FontSize="24" Focusable="False"/>
+        <Button x:Name="X" Content="X" HorizontalAlignment="Left" Margin="555,82,-1,0" VerticalAlignment="Top" Width="80" Click="X_Click" FontSize="24" Height="60" Style="{DynamicResource ButtonStyle6}" Focusable="False"/>
         <Button x:Name="lg" Content="lg" HorizontalAlignment="Left" Margin="156,262,0,0" VerticalAlignment="Top" Width="80" Click="lg_Click" Height="60" FontSize="24" Focusable="False"/>
         <Button x:Name="__5" Content="%" HorizontalAlignment="Left" Margin="475,142,0,0" VerticalAlignment="Top" Width="80" Click="__5_Click" FontSize="24" Height="60" Focusable="False"/>
-        <Button x:Name="Buttom_subtraction" Content="-" HorizontalAlignment="Left" Margin="555,322,0,0" VerticalAlignment="Top" Width="80" Click="Buttom_subtraction_Click" Height="60" Style="{DynamicResource ButtonStyle4}" FontSize="24" Focusable="False"/>
+        <Button x:Name="Buttom_subtraction" Content="-" HorizontalAlignment="Left" Margin="555,322,-1,0" VerticalAlignment="Top" Width="80" Click="Buttom_subtraction_Click" Height="60" Style="{DynamicResource ButtonStyle4}" FontSize="24" Focusable="False"/>
         <Button x:Name="_0" Content="0" HorizontalAlignment="Left" Margin="316,382,0,0" VerticalAlignment="Top" Width="159" Height="60" Click="_0_Click" Focusable="False" FontSize="24"/>
-        <Button x:Name="Equal" Content="=" HorizontalAlignment="Left" Margin="555,382,0,0" VerticalAlignment="Top" Width="80" Height="59.76" Click="Equal_Click" Focusable="False" FontSize="24" Style="{DynamicResource ButtonStyle9}"/>
-        <Image Margin="0,0,0,370.1" Source="966a8ecd6485b7ff4831dd27e64839b8_t01c3e7f41e92f10eae.png" Stretch="Fill" Width="76" Height="72.8" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Image Margin="0,72.8,0,0" Source="sidebar[1].jpg" Stretch="Fill" Width="76" Height="370.1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Button Content="西电星火杯" HorizontalAlignment="Left" Margin="76,90,0,0" VerticalAlignment="Top" Width="479" Height="52" FontSize="24" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" Click="Button_Click"/>
-        <Image Margin="555,0,0,360.9" Source="e6d07062cc011b405cda866a5dc5d986_t01ff14b4dbf03e36ba.jpg" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Width="81.6" Height="82"/>
+        <Button x:Name="Equal" Content="=" HorizontalAlignment="Left" Margin="555,382,-1,0" VerticalAlignment="Top" Width="80" Height="60" Click="Equal_Click" Focusable="False" FontSize="24" Style="{DynamicResource ButtonStyle9}"/>
+        <Image Source="966a8ecd6485b7ff4831dd27e64839b8_t01c3e7f41e92f10eae.png" Stretch="Fill" Width="76" Height="73" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Image Margin="0,73,0,-1" Source="sidebar[1].jpg" Stretch="Fill" Width="76" Height="370" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Content="西电星火杯" HorizontalAlignment="Left" Margin="76,90,0,0" VerticalAlignment="Top" Width="479" Height="52" FontSize="24" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" Click="Button_Click" />
+        <Image Margin="555,0,-3,0" Source="e6d07062cc011b405cda866a5dc5d986_t01ff14b4dbf03e36ba.jpg" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" Height="82"/>
 
     </Grid>
 </Window>
