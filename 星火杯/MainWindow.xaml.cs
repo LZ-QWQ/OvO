@@ -456,6 +456,266 @@ namespace 星火杯
                             expressions.RemoveAt(x);
                         }
                     }
+                    else if (Hiii == false)
+                    {
+                        if (expression[i] == '(')
+                            i++;
+                        if (Isoperator(expression[i]))
+                        {
+                            if (expression[i] == '+')
+                                Hii = true;
+                            else if (expression[i] == '-')
+                                Hii = false;
+                            else
+                                MessageBox.Show("输入有误请重新输入(￢︿̫̿￢☆)", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                            i++;
+                        }//判断运算符以处理系数符号
+                        if (expression[i] == 'X')
+                        {
+                            if (Hii)
+                                temp_0_d = 1;
+                            else if (Hii == false)
+                                temp_0_d = -1;
+                            j = i;
+                        }//系数
+                        else
+                        {
+                            for (j = i; expression[j] >= '0' && expression[j] <= '9' || expression[j] == '.';)
+                            {
+                                temp_0_s += expression[j];
+                                j++;
+                                if (j == expression.Length)
+                                {
+                                    if (Hii)
+                                        temp_0_d = Convert.ToInt32(temp_0_s);
+                                    else
+                                    {
+                                        temp_0_d = Convert.ToInt32(temp_0_s);
+                                        temp_0_d = -temp_0_d;
+                                    }
+                                    temp_0_s = null;
+                                    Hiiii = false;
+                                    break;
+                                }
+                                else if (Isoperator(expression[j]))
+                                {
+                                    if (Hii)
+                                        temp_0_d = Convert.ToInt32(temp_0_s);
+                                    else
+                                    {
+                                        temp_0_d = Convert.ToInt32(temp_0_s);
+                                        temp_0_d = -temp_0_d;
+                                    }
+                                    temp_0_s = null;
+                                    Hiiii = false;
+                                    break;
+                                }
+                                else if (expression[j] == 'X')
+                                {
+                                    if (Hii)
+                                        temp_0_d = Convert.ToInt32(temp_0_s);
+                                    else
+                                    {
+                                        temp_0_d = Convert.ToInt32(temp_0_s);
+                                        temp_0_d = -temp_0_d;
+                                    }
+                                    temp_0_s = null;
+                                    break;
+                                }
+                            }
+                        }
+                        if (Hiiii == false)
+                        {
+                            temp_0 = 0;
+                            r = j;
+                        }//次数
+                        else if (j + 1 < expression.Length && expression[j + 1] == '^')
+                        {
+                            for (r = j + 2; r < expression.Length && (expression[r] >= '0' || expression[r] <= '9');)
+                            {
+                                temp_1_s += expression[r];
+                                r++;
+                                if (r < expression.Length && Isoperator(expression[r]))
+                                {
+                                    temp_0 = Convert.ToInt32(temp_1_s);
+                                    temp_1_s = null;
+                                    break;
+                                }
+                                else if (r == expression.Length)
+                                {
+                                    temp_0 = Convert.ToInt32(temp_1_s);
+                                    temp_1_s = null;
+                                    break;
+                                }
+                            }
+                        }
+                        else if (j + 1 <= expression.Length && (j + 1 == expression.Length || Isoperator(expression[j + 1])))
+                        {
+                            r = j;
+                            temp_0 = 1;
+                            r++;
+                        }
+                        foreach (Polynomial s in expressions)
+                        {
+                            if (s.exponent == temp_0)
+                            {
+                                x = expressions.IndexOf(s);
+                                temp_0_d = expressions[x].coefficient + temp_0_d;
+                                if (Hiiii == false)
+                                    temp_2_s = Math.Abs(temp_0_d).ToString();
+                                else if (temp_0 == 1)
+                                    temp_2_s = Math.Abs(temp_0_d).ToString() + "X";
+                                else
+                                    temp_2_s = Math.Abs(temp_0_d).ToString() + "X^" + temp_0.ToString();
+                                Hi = false;
+                            }
+                        }//合并同类项
+                        if (Hi)
+                        {
+                            expressions.Add(new Polynomial
+                            {
+                                exponent = temp_0,
+                                coefficient = temp_0_d,
+                                expression = expression.Substring(i, r - i)
+                            });
+                        }//加入项
+                        else
+                        {
+                            expressions.Add(new Polynomial
+                            {
+                                exponent = temp_0,
+                                coefficient = temp_0_d,
+                                expression = temp_2_s
+                            });
+                            expressions.RemoveAt(x);
+                        }
+                        if (expression[i] == ')')
+                            i++;
+                        if (expression[i] == '*'&&expression[i+1]=='(')
+                        {
+                            i = i + 2;
+                            List<Polynomial> expressions_1 = new List<Polynomial>();
+                            if (expression[i] == 'X')
+                            {
+                                if (Hii)
+                                    temp_0_d = 1;
+                                else if (Hii == false)
+                                    temp_0_d = -1;
+                                j = i;
+                            }//系数
+                            else
+                            {
+                                for (j = i; expression[j] >= '0' && expression[j] <= '9' || expression[j] == '.';)
+                                {
+                                    temp_0_s += expression[j];
+                                    j++;
+                                    if (j == expression.Length)
+                                    {
+                                        if (Hii)
+                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                        else
+                                        {
+                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                            temp_0_d = -temp_0_d;
+                                        }
+                                        temp_0_s = null;
+                                        Hiiii = false;
+                                        break;
+                                    }
+                                    else if (Isoperator(expression[j]))
+                                    {
+                                        if (Hii)
+                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                        else
+                                        {
+                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                            temp_0_d = -temp_0_d;
+                                        }
+                                        temp_0_s = null;
+                                        Hiiii = false;
+                                        break;
+                                    }
+                                    else if (expression[j] == 'X')
+                                    {
+                                        if (Hii)
+                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                        else
+                                        {
+                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                            temp_0_d = -temp_0_d;
+                                        }
+                                        temp_0_s = null;
+                                        break;
+                                    }
+                                }
+                            }
+                            if (Hiiii == false)
+                            {
+                                temp_0 = 0;
+                                r = j;
+                            }//次数
+                            else if (j + 1 < expression.Length && expression[j + 1] == '^')
+                            {
+                                for (r = j + 2; r < expression.Length && (expression[r] >= '0' || expression[r] <= '9');)
+                                {
+                                    temp_1_s += expression[r];
+                                    r++;
+                                    if (r < expression.Length && Isoperator(expression[r]))
+                                    {
+                                        temp_0 = Convert.ToInt32(temp_1_s);
+                                        temp_1_s = null;
+                                        break;
+                                    }
+                                    else if (r == expression.Length)
+                                    {
+                                        temp_0 = Convert.ToInt32(temp_1_s);
+                                        temp_1_s = null;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (j + 1 <= expression.Length && (j + 1 == expression.Length || Isoperator(expression[j + 1])))
+                            {
+                                r = j;
+                                temp_0 = 1;
+                                r++;
+                            }
+                            foreach (Polynomial s in expressions)
+                            {
+                                if (s.exponent == temp_0)
+                                {
+                                    x = expressions.IndexOf(s);
+                                    temp_0_d = expressions[x].coefficient + temp_0_d;
+                                    if (Hiiii == false)
+                                        temp_2_s = Math.Abs(temp_0_d).ToString();
+                                    else if (temp_0 == 1)
+                                        temp_2_s = Math.Abs(temp_0_d).ToString() + "X";
+                                    else
+                                        temp_2_s = Math.Abs(temp_0_d).ToString() + "X^" + temp_0.ToString();
+                                    Hi = false;
+                                }
+                            }//合并同类项
+                            if (Hi)
+                            {
+                                expressions.Add(new Polynomial
+                                {
+                                    exponent = temp_0,
+                                    coefficient = temp_0_d,
+                                    expression = expression.Substring(i, r - i)
+                                });
+                            }//加入项
+                            else
+                            {
+                                expressions.Add(new Polynomial
+                                {
+                                    exponent = temp_0,
+                                    coefficient = temp_0_d,
+                                    expression = temp_2_s
+                                });
+                                expressions.RemoveAt(x);
+                            }
+                        }
+                    }
                     expressions.Sort();//排序
                     i = r;
                     Hi = true;
