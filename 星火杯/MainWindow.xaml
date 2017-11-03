@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:星火杯"
         mc:Ignorable="d"
-        Title="计算器(￣▽￣)&quot;" KeyDown="Window_KeyDown" ResizeMode="CanResizeWithGrip" SizeToContent="WidthAndHeight" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="471" Width="645" AllowDrop="True">
+        Title="计算器(￣▽￣)&quot;" KeyDown="Window_KeyDown" ResizeMode="CanResizeWithGrip" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="645" Width="1004.5" AllowDrop="True">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -259,8 +259,8 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Viewbox Height="441" Margin="0" Width="635">
-        <Canvas Height="441" Width="635">
+    <Viewbox Margin="0">
+        <Canvas Height="440" Width="635">
             <Button x:Name="Button2" Content="2" Click="Button2_Click" FontSize="24" Height="60" Focusable="False" Canvas.Left="395" Canvas.Top="322" Width="80"/>
             <Button x:Name="Button3" Content="3" Width="80" Click="Button3_Click" Height="60" FontSize="24" Focusable="False" Canvas.Left="475" Canvas.Top="322"/>
             <Button x:Name="Button4" Content="4" Width="80" Click="Button4_Click" FontSize="24" Height="60" Focusable="False" Canvas.Left="316" Canvas.Top="262"/>
@@ -274,13 +274,13 @@
             <Button x:Name="CHENGFA" Content="*" Width="80" Height="60" Click="CHENGFA_Click" FontSize="24" Style="{DynamicResource ButtonStyle7}" Focusable="False" Canvas.Left="555" Canvas.Top="142"/>
             <Button x:Name="Button1" Content="1" Width="80" Click="Button1_Click" Height="60" FontSize="24" Focusable="False" Canvas.Left="316" Canvas.Top="322"/>
             <TextBox x:Name="textBox1" FontSize="24" AllowDrop="False" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" MaxLines="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="False" TextAlignment="Right" Height="45" Width="480" Focusable="False" Canvas.Left="76" />
-            <TextBox x:Name="textBox2" Height="45" Width="480" FontSize="24" Focusable="False" RenderTransformOrigin="0.5,0.5" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" AllowDrop="False" MaxLines="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" TextAlignment="Right" Canvas.Left="75" Canvas.Top="45">
+            <TextBox x:Name="textBox2" Height="45" Width="480" FontSize="24" Focusable="False" RenderTransformOrigin="0.5,0.5" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" AllowDrop="False" MaxLines="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" TextAlignment="Right" Canvas.Left="76" Canvas.Top="45">
                 <TextBox.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
-                        <SkewTransform AngleY="0.095"/>
-                        <RotateTransform/>
-                        <TranslateTransform Y="-0.398"/>
+                        <SkewTransform AngleY="0.095" AngleX="0.018"/>
+                        <RotateTransform Angle="-0.158"/>
+                        <TranslateTransform Y="-0.398" X="-0.007"/>
                     </TransformGroup>
                 </TextBox.RenderTransform>
             </TextBox>
@@ -316,7 +316,16 @@
             <Button x:Name="Equal" Content="=" Width="80" Height="60" Click="Equal_Click" Focusable="False" FontSize="24" Style="{DynamicResource ButtonStyle9}" Canvas.Left="555" Canvas.Top="382"/>
             <Image Source="966a8ecd6485b7ff4831dd27e64839b8_t01c3e7f41e92f10eae.png" Stretch="Fill" Width="76" Height="73" Margin="0"/>
             <Image Source="sidebar[1].jpg" Stretch="Fill" Width="76" Height="370" Canvas.Top="73"/>
-            <Button Content="西电星火杯" Width="479" Height="52" FontSize="24" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" Click="Button_Click" VerticalContentAlignment="Center" Focusable="False" Canvas.Left="76" Canvas.Top="90" />
+            <Button Content="西电星火杯" Width="480" Height="53" FontSize="24" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" Click="Button_Click" VerticalContentAlignment="Center" Focusable="False" Canvas.Left="76" Canvas.Top="90" RenderTransformOrigin="0.5,0.5" >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="0.08"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0.001"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
             <Image Source="e6d07062cc011b405cda866a5dc5d986_t01ff14b4dbf03e36ba.jpg" Stretch="Fill" Width="82" Height="82" Canvas.Left="555"/>
         </Canvas>
     </Viewbox>
