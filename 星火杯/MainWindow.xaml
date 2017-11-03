@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:星火杯"
         mc:Ignorable="d"
-        Title="计算器(￣▽￣)&quot;" KeyDown="Window_KeyDown" ResizeMode="CanResizeWithGrip" SizeToContent="WidthAndHeight" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="471" Width="645">
+        Title="计算器(￣▽￣)&quot;" KeyDown="Window_KeyDown" ResizeMode="CanResizeWithGrip" SizeToContent="WidthAndHeight" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="471" Width="645" AllowDrop="True">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -275,8 +275,8 @@
         <Button x:Name="Divide" Content="/" VerticalAlignment="Top" Width="80" Margin="555,202,0,0" Click="CHUFA_Click" Height="60" FontSize="24" Style="{DynamicResource ButtonStyle8}" Focusable="False" HorizontalAlignment="Left"/>
         <Button x:Name="CHENGFA" Content="*" VerticalAlignment="Top" Width="80" Margin="555,142,0,0" Height="60" Click="CHENGFA_Click" FontSize="24" Style="{DynamicResource ButtonStyle7}" Focusable="False" HorizontalAlignment="Left"/>
         <Button x:Name="Button1" Content="1" VerticalAlignment="Top" Width="80" Margin="316,322,0,0" Click="Button1_Click" Height="60" FontSize="24" Focusable="False" HorizontalAlignment="Left"/>
-        <TextBox x:Name="textBox1" Margin="76,0,0,0" FontSize="24" AllowDrop="True" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" MaxLines="1" Focusable="False" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="False" TextAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Height="45" Width="480" />
-        <TextBox x:Name="textBox2" Height="45" Width="480" Margin="75,45,0,0" FontSize="24" Focusable="False" RenderTransformOrigin="0.5,0.5" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" AllowDrop="True" MaxLines="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" TextAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <TextBox x:Name="textBox1" Margin="76,0,0,0" FontSize="24" AllowDrop="False" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" MaxLines="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="False" TextAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Height="45" Width="480" Focusable="False" />
+        <TextBox x:Name="textBox2" Height="45" Width="480" Margin="75,45,0,0" FontSize="24" Focusable="False" RenderTransformOrigin="0.5,0.5" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" AllowDrop="False" MaxLines="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" TextAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -318,7 +318,7 @@
         <Button x:Name="Equal" Content="=" Margin="555,382,0,0" VerticalAlignment="Top" Width="80" Height="60" Click="Equal_Click" Focusable="False" FontSize="24" Style="{DynamicResource ButtonStyle9}" HorizontalAlignment="Left"/>
         <Image Source="966a8ecd6485b7ff4831dd27e64839b8_t01c3e7f41e92f10eae.png" Stretch="Fill" Width="76" Height="73" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Image Margin="0,73,0,-1" Source="sidebar[1].jpg" Stretch="Fill" Width="76" Height="370" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Button Content="西电星火杯" Margin="76,90,0,0" VerticalAlignment="Top" Width="479" Height="52" FontSize="24" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" Click="Button_Click" VerticalContentAlignment="Center" HorizontalAlignment="Left" />
+        <Button Content="西电星火杯" Margin="76,90,0,0" VerticalAlignment="Top" Width="479" Height="52" FontSize="24" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" Click="Button_Click" VerticalContentAlignment="Center" HorizontalAlignment="Left" Focusable="False" />
         <Image Margin="555,0,0,0" Source="e6d07062cc011b405cda866a5dc5d986_t01ff14b4dbf03e36ba.jpg" Stretch="Fill" VerticalAlignment="Top" Width="82" Height="82" HorizontalAlignment="Left"/>
 
     </Grid>

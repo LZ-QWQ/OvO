@@ -321,19 +321,16 @@ namespace 星火杯
                     else if (expression[i] == ')')
                     {
                         y--;
-                        if (y == 0 && i + 1 < expression.Length && (expression[i + 1] == '*' && expression[i + 1] == '('))
+                        if (y == 0 && i + 1 < expression.Length && ((expression[i + 1] == '*' &&
+                            expression[i + 2] == '(') || expression[i + 1] == '('))
+                        {
                             Hiii = false;
-                        else if(y == 0 && i + 1 < expression.Length && (expression[i + 1] == '*' && expression[i + 1] != '('))
+                            break;
+                        }
+                        else
                         {
                             MessageBox.Show("输入有误请重新输入(￢︿̫̿￢☆)", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
                             expression = null;
-                            kao = true;
-                            break;
-                        }
-                        else if (y == 0 && i + 1 < expression.Length && (expression[i + 1] == '/'))
-                        {
-                            MessageBox.Show("输入有误请重新输入(￢︿̫̿￢☆)", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
-                            expression = null; 
                             kao = true;
                             break;
                         }
@@ -387,10 +384,10 @@ namespace 星火杯
                                 else if (Isoperator(expression[j]))
                                 {
                                     if (Hii)
-                                        temp_0_d = Convert.ToInt32(temp_0_s);
+                                        temp_0_d = Convert.ToDouble(temp_0_s);
                                     else
                                     {
-                                        temp_0_d = Convert.ToInt32(temp_0_s);
+                                        temp_0_d = Convert.ToDouble(temp_0_s);
                                         temp_0_d = -temp_0_d;
                                     }
                                     temp_0_s = null;
@@ -415,6 +412,7 @@ namespace 星火杯
                         {
                             temp_0 = 0;
                             r = j;
+                            Hiiii = true;
                         }//次数
                         else if (j + 1 < expression.Length && expression[j + 1] == '^')
                         {
@@ -543,7 +541,7 @@ namespace 星火杯
                                         Hiiii = false;
                                         break;
                                     }
-                                    else if (Isoperator(expression[j]))
+                                    else if (Isoperator(expression[j])||expression[j]==')')
                                     {
                                         if (Hii)
                                             temp_0_d = Convert.ToDouble(temp_0_s);
@@ -574,6 +572,7 @@ namespace 星火杯
                             {
                                 temp_0 = 0;
                                 r = j;
+                                Hiiii = true;
                             }
                             else if (j + 1 < expression.Length && expression[j + 1] == '^')
                             {
@@ -581,7 +580,7 @@ namespace 星火杯
                                 {
                                     temp_1_s += expression[r];
                                     r++;
-                                    if (r < expression.Length && (Isoperator(expression[r])||expression[j+1]==')'))
+                                    if (r < expression.Length && (Isoperator(expression[r])||expression[r]==')'))
                                     {
                                         temp_0 = Convert.ToInt32(temp_1_s);
                                         temp_1_s = null;
@@ -636,14 +635,15 @@ namespace 星火杯
                                 expressions.RemoveAt(x);
                             }
                             i = r;
+                            Hi = true;
+                            Hii = true;
                             if (expression[i] == ')')
                             {
                                 i++;
                                 break;
                             }
-                            Hi = true;
-                            Hii = true;
                         }
+                        expressions.Sort();
                         if (expression[i] == '*' && expression[i + 1] == '(')
                             i = i + 2;
                         else if (expression[i] == '(')
@@ -690,7 +690,7 @@ namespace 星火杯
                                         Hiiii = false;
                                         break;
                                     }
-                                    else if (Isoperator(expression[j]))
+                                    else if (Isoperator(expression[j])||expression[j]==')')
                                     {
                                         if (Hii)
                                             temp_0_d = Convert.ToDouble(temp_0_s);
@@ -721,6 +721,7 @@ namespace 星火杯
                             {
                                 temp_0 = 0;
                                 r = j;
+                                Hiiii = true;
                             }//次数
                             else if (j + 1 < expression.Length && expression[j + 1] == '^')
                             {
@@ -786,15 +787,16 @@ namespace 星火杯
                             Hi = true;
                             Hii = true;
                         }
-                        for (; k < expressions_1.Count;)
+                        expressions_1.Sort();
+                        foreach (Polynomial s_ in expressions_1)
                         {
-                            temp_0 = expressions_1[k].exponent;
-                            temp_0_d = expressions_1[k].coefficient;
-                            for (; l < expressions.Count;)
+                            temp_0 = s_.exponent;
+                            temp_0_d = s_.coefficient;
+                            foreach (Polynomial s__ in expressions)
                             {
-                                temp_0_0 = temp_0 + expressions[l].exponent;
-                                temp_0_0_d = temp_0_d*expressions[l].coefficient;
-                                if (temp_0_0_d != 1)
+                                temp_0_0 = temp_0 + s__.exponent;
+                                temp_0_0_d = temp_0_d*s__.coefficient;
+                                if (temp_0_0_d != 1&&temp_0_0_d != -1)
                                 {
                                     if (temp_0_0 == 0)
                                         temp_0_0_s = Math.Abs(temp_0_0_d).ToString();
@@ -817,8 +819,8 @@ namespace 星火杯
                                     if (s.exponent == temp_0_0)
                                     {
                                         x = expressions_2.IndexOf(s);
-                                        temp_0_0_d = expressions_2[x].coefficient + temp_0_0_d;
-                                        if (temp_0_0_d != 1)
+                                        temp_0_0_d = s.coefficient + temp_0_0_d;
+                                        if (temp_0_0_d != 1&&temp_0_0_d!=-1)
                                         {
                                             if (temp_0_0 == 0)
                                                 temp_2_s = Math.Abs(temp_0_0_d).ToString();
@@ -856,10 +858,8 @@ namespace 星火杯
                                     });
                                     expressions_2.RemoveAt(x);
                                 }
-                                l++;
+                                Hi = true;
                             }
-                            l = 0;
-                            k++;
                         }
                     }
                     expressions_2.Sort();//排序
