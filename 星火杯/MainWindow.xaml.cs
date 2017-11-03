@@ -350,7 +350,9 @@ namespace 星火杯
                             else
                             {
                                 kao = true;
+                                expression = null;
                                 MessageBox.Show("输入有误请重新输入(￢︿̫̿￢☆)", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                                break;
                             }
                             i++;
                         }//判断运算符以处理系数符号
@@ -446,12 +448,14 @@ namespace 星火杯
                             {
                                 x = expressions.IndexOf(s);
                                 temp_0_d = expressions[x].coefficient + temp_0_d;
-                                if (temp_0_d != 1)
+                                if (temp_0_d != 1&&temp_0_d!=-1)
                                 {
                                     if (Hiiii == false)
                                         temp_2_s = Math.Abs(temp_0_d).ToString();
                                     else if (temp_0 == 1)
                                         temp_2_s = Math.Abs(temp_0_d).ToString() + "X";
+                                    else if (temp_0 == 0)
+                                        temp_2_s = Math.Abs(temp_0_d).ToString();
                                     else
                                         temp_2_s = Math.Abs(temp_0_d).ToString() + "X^" + temp_0.ToString();
                                     Hi = false;
@@ -462,6 +466,8 @@ namespace 星火杯
                                         temp_2_s = Math.Abs(temp_0_d).ToString();
                                     else if (temp_0 == 1)
                                         temp_2_s = "X";
+                                    else if (temp_0 == 0)
+                                        temp_2_s = Math.Abs(temp_0_d).ToString();
                                     else
                                         temp_2_s = "X^" + temp_0.ToString();
                                     Hi = false;
@@ -510,7 +516,9 @@ namespace 星火杯
                                 else
                                 {
                                     kao = true;
+                                    expression = null;
                                     MessageBox.Show("输入有误请重新输入(￢︿̫̿￢☆)", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                                    break;
                                 }
                                 i++;
                             }
@@ -659,7 +667,9 @@ namespace 星火杯
                                 else
                                 {
                                     kao = true;
+                                    expression = null;
                                     MessageBox.Show("输入有误请重新输入(￢︿̫̿￢☆)", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                                    break;
                                 }
                                 i++;
                             }//判断运算符以处理系数符号
@@ -802,6 +812,8 @@ namespace 星火杯
                                         temp_0_0_s = Math.Abs(temp_0_0_d).ToString();
                                     else if (temp_0_0 == 1)
                                         temp_0_0_s = Math.Abs(temp_0_0_d).ToString() + "X";
+                                    else if (temp_0 == 0)
+                                        temp_0_0_s = Math.Abs(temp_0_d).ToString();
                                     else
                                         temp_0_0_s = Math.Abs(temp_0_0_d).ToString() + "X^" + temp_0_0.ToString();
                                 }
@@ -811,6 +823,8 @@ namespace 星火杯
                                         temp_0_0_s = Math.Abs(temp_0_0_d).ToString();
                                     else if (temp_0_0 == 1)
                                         temp_0_0_s = "X";
+                                    else if (temp_0 == 0)
+                                        temp_0_0_s = Math.Abs(temp_0_d).ToString();
                                     else
                                         temp_0_0_s = "X^" + temp_0_0.ToString();
                                 }
@@ -826,6 +840,8 @@ namespace 星火杯
                                                 temp_2_s = Math.Abs(temp_0_0_d).ToString();
                                             else if (temp_0_0 == 1)
                                                 temp_2_s = Math.Abs(temp_0_0_d).ToString() + "X";
+                                            else if (temp_0 == 0)
+                                                temp_0_0_s = Math.Abs(temp_0_d).ToString();
                                             else
                                                 temp_2_s = Math.Abs(temp_0_0_d).ToString() + "X^" + temp_0_0.ToString();
                                         }
@@ -835,6 +851,8 @@ namespace 星火杯
                                                 temp_2_s = Math.Abs(temp_0_0_d).ToString();
                                             else if (temp_0_0 == 1)
                                                 temp_2_s = "X";
+                                            else if (temp_0 == 0)
+                                                temp_0_0_s = Math.Abs(temp_0_d).ToString();
                                             else
                                                 temp_2_s = "X^" + temp_0_0.ToString();
                                         }
