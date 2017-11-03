@@ -321,8 +321,15 @@ namespace 星火杯
                     else if (expression[i] == ')')
                     {
                         y--;
-                        if (y == 0 && i + 1 < expression.Length && (expression[i + 1] == '*' || expression[i + 1] == '('))
+                        if (y == 0 && i + 1 < expression.Length && (expression[i + 1] == '*' && expression[i + 1] == '('))
                             Hiii = false;
+                        else if(y == 0 && i + 1 < expression.Length && (expression[i + 1] == '*' && expression[i + 1] != '('))
+                        {
+                            MessageBox.Show("输入有误请重新输入(￢︿̫̿￢☆)", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                            expression = null;
+                            kao = true;
+                            break;
+                        }
                         else if (y == 0 && i + 1 < expression.Length && (expression[i + 1] == '/'))
                         {
                             MessageBox.Show("输入有误请重新输入(￢︿̫̿￢☆)", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -367,10 +374,10 @@ namespace 星火杯
                                 if (j == expression.Length)
                                 {
                                     if (Hii)
-                                        temp_0_d = Convert.ToInt32(temp_0_s);
+                                        temp_0_d = Convert.ToDouble(temp_0_s);
                                     else
                                     {
-                                        temp_0_d = Convert.ToInt32(temp_0_s);
+                                        temp_0_d = Convert.ToDouble(temp_0_s);
                                         temp_0_d = -temp_0_d;
                                     }
                                     temp_0_s = null;
@@ -393,10 +400,10 @@ namespace 星火杯
                                 else if (expression[j] == 'X')
                                 {
                                     if (Hii)
-                                        temp_0_d = Convert.ToInt32(temp_0_s);
+                                        temp_0_d = Convert.ToDouble(temp_0_s);
                                     else
                                     {
-                                        temp_0_d = Convert.ToInt32(temp_0_s);
+                                        temp_0_d = Convert.ToDouble(temp_0_s);
                                         temp_0_d = -temp_0_d;
                                     }
                                     temp_0_s = null;
@@ -526,10 +533,10 @@ namespace 星火杯
                                     if (j == expression.Length)
                                     {
                                         if (Hii)
-                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                            temp_0_d = Convert.ToDouble(temp_0_s);
                                         else
                                         {
-                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                            temp_0_d = Convert.ToDouble(temp_0_s);
                                             temp_0_d = -temp_0_d;
                                         }
                                         temp_0_s = null;
@@ -539,10 +546,10 @@ namespace 星火杯
                                     else if (Isoperator(expression[j]))
                                     {
                                         if (Hii)
-                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                            temp_0_d = Convert.ToDouble(temp_0_s);
                                         else
                                         {
-                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                            temp_0_d = Convert.ToDouble(temp_0_s);
                                             temp_0_d = -temp_0_d;
                                         }
                                         temp_0_s = null;
@@ -552,10 +559,10 @@ namespace 星火杯
                                     else if (expression[j] == 'X')
                                     {
                                         if (Hii)
-                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                            temp_0_d = Convert.ToDouble(temp_0_s);
                                         else
                                         {
-                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                            temp_0_d = Convert.ToDouble(temp_0_s);
                                             temp_0_d = -temp_0_d;
                                         }
                                         temp_0_s = null;
@@ -673,10 +680,10 @@ namespace 星火杯
                                     if (j == expression.Length)
                                     {
                                         if (Hii)
-                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                            temp_0_d = Convert.ToDouble(temp_0_s);
                                         else
                                         {
-                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                            temp_0_d = Convert.ToDouble(temp_0_s);
                                             temp_0_d = -temp_0_d;
                                         }
                                         temp_0_s = null;
@@ -686,10 +693,10 @@ namespace 星火杯
                                     else if (Isoperator(expression[j]))
                                     {
                                         if (Hii)
-                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                            temp_0_d = Convert.ToDouble(temp_0_s);
                                         else
                                         {
-                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                            temp_0_d = Convert.ToDouble(temp_0_s);
                                             temp_0_d = -temp_0_d;
                                         }
                                         temp_0_s = null;
@@ -699,10 +706,10 @@ namespace 星火杯
                                     else if (expression[j] == 'X')
                                     {
                                         if (Hii)
-                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                            temp_0_d = Convert.ToDouble(temp_0_s);
                                         else
                                         {
-                                            temp_0_d = Convert.ToInt32(temp_0_s);
+                                            temp_0_d = Convert.ToDouble(temp_0_s);
                                             temp_0_d = -temp_0_d;
                                         }
                                         temp_0_s = null;
@@ -875,7 +882,7 @@ namespace 星火杯
                             ;
                     }
                     if (kao)
-                        textBox2.Text = "乘法请用括号括起来计算/(ㄒoㄒ)/~~暂不支持除法运算";
+                        textBox2.Text = "乘法请用括号,暂不支持多重括号，暂不支持除法运算";
                     else if (temp__ == null)
                         textBox2.Text = "0";
                     else
