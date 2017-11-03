@@ -323,18 +323,19 @@ namespace 星火杯
                         y--;
                         if (y == 0 && i + 1 < expression.Length && (expression[i + 1] == '*' || expression[i + 1] == '('))
                             Hiii = false;
-                        else if (y == 0 && i + 1 < expression.Length && (expression[i + 1] == '/' || expression[i + 1] == '('))
+                        else if (y == 0 && i + 1 < expression.Length && (expression[i + 1] == '/'))
                         {
                             MessageBox.Show("输入有误请重新输入(￢︿̫̿￢☆)", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
                             expression = null; 
                             kao = true;
+                            break;
                         }
                     }
                     i++;
                 }
                 if (Hiii)
                 {
-                    for (i = 0; i < expression.Length;)
+                    for (i = 0; expression!=null&&i < expression.Length;)
                     {
                         if (Isoperator(expression[i]))
                         {
@@ -638,6 +639,8 @@ namespace 星火杯
                         }
                         if (expression[i] == '*' && expression[i + 1] == '(')
                             i = i + 2;
+                        else if (expression[i] == '(')
+                            i = i + 1;
                         for (; i < expression.Length && expression[i] != ')';)
                         {
                             if (Isoperator(expression[i]))
