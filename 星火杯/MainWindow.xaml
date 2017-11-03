@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:星火杯"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+    <Viewbox Height="319" Width="515">
+        <Grid Height="95" Width="152">
+            <Button Content="Button" Margin="52,28,18,29"/>
+        </Grid>
+    </Viewbox>
 </Window>
