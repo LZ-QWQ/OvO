@@ -323,6 +323,12 @@ namespace 星火杯
                         y--;
                         if (y == 0 && i + 1 < expression.Length && (expression[i + 1] == '*' || expression[i + 1] == '('))
                             Hiii = false;
+                        else if (y == 0 && i + 1 < expression.Length && (expression[i + 1] == '/' || expression[i + 1] == '('))
+                        {
+                            MessageBox.Show("输入有误请重新输入(￢︿̫̿￢☆)", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                            expression = null; 
+                            kao = true;
+                        }
                     }
                     i++;
                 }
@@ -496,7 +502,10 @@ namespace 星火杯
                                 else if (expression[i] == '-')
                                     Hii = false;
                                 else
+                                {
+                                    kao = true;
                                     MessageBox.Show("输入有误请重新输入(￢︿̫̿￢☆)", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                                }
                                 i++;
                             }
                             if (expression[i] == 'X')
@@ -638,7 +647,10 @@ namespace 星火杯
                                 else if (expression[i] == '-')
                                     Hii = false;
                                 else
+                                {
+                                    kao = true;
                                     MessageBox.Show("输入有误请重新输入(￢︿̫̿￢☆)", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                                }
                                 i++;
                             }//判断运算符以处理系数符号
                             if (expression[i] == 'X')
@@ -860,7 +872,7 @@ namespace 星火杯
                             ;
                     }
                     if (kao)
-                        textBox2.Text = "乘法请用括号括起来计算/(ㄒoㄒ)/~~";
+                        textBox2.Text = "乘法请用括号括起来计算/(ㄒoㄒ)/~~暂不支持除法运算";
                     else if (temp__ == null)
                         textBox2.Text = "0";
                     else
@@ -883,7 +895,9 @@ namespace 星火杯
                         else if (s.coefficient == 0)
                             ;
                     }
-                    if (temp__ == null)
+                    if (kao)
+                        textBox2.Text = "乘法请用括号括起来计算/(ㄒoㄒ)/~~暂不支持除法运算";
+                    else if (temp__ == null)
                         textBox2.Text = "0";
                     else
                         textBox2.Text = temp__;
