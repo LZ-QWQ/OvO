@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:星火杯"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Viewbox Height="319" Width="515">
-        <Grid Height="95" Width="152">
-            <Button Content="Button" Margin="52,28,18,29"/>
-        </Grid>
+    <Viewbox Margin="0,2,2,1">
+        <Canvas Height="315" Width="525">
+            <Button Content="Button" Canvas.Left="252" Canvas.Top="144" Width="115" Height="81"/>
+        </Canvas>
     </Viewbox>
 </Window>
