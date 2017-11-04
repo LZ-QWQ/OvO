@@ -157,7 +157,7 @@ namespace 星火杯
         }
         private void __5_Click(object sender, RoutedEventArgs e)
         {
-            textBox1.Text = "%";
+            textBox1.Text += "%";
         }
         #endregion
         class Polynomial:IComparable<Polynomial>
@@ -1235,61 +1235,31 @@ namespace 星火杯
                 case Key.NumPad0:
                     _0_Click(sender, null);
                     break;
-                case Key.D0:
-                    _0_Click(sender, null);
-                    break;
                 case Key.NumPad1:
-                    Button1_Click(sender, null);
-                    break;
-                case Key.D1:
                     Button1_Click(sender, null);
                     break;
                 case Key.NumPad2:
                     Button2_Click(sender, null);
                     break;
-                case Key.D2:
-                    Button2_Click(sender, null);
-                    break;
                 case Key.NumPad3:
-                    Button3_Click(sender, null);
-                    break;
-                case Key.D3:
                     Button3_Click(sender, null);
                     break;
                 case Key.NumPad4:
                     Button4_Click(sender, null);
                     break;
-                case Key.D4:
-                    Button4_Click(sender, null);
-                    break;
                 case Key.NumPad5:
-                    Button5_Click(sender, null);
-                    break;
-                case Key.D5:
                     Button5_Click(sender, null);
                     break;
                 case Key.NumPad6:
                     Button6_Click(sender, null);
                     break;
-                case Key.D6:
-                    Button6_Click(sender, null);
-                    break;
                 case Key.NumPad7:
-                    Button7_Click(sender, null);
-                    break;
-                case Key.D7:
                     Button7_Click(sender, null);
                     break;
                 case Key.NumPad8:
                     Button8_Click(sender, null);
                     break;
-                case Key.D8:
-                    Button8_Click(sender, null);
-                    break;
                 case Key.NumPad9:
-                    Button9_Click(sender, null);
-                    break;
-                case Key.D9:
                     Button9_Click(sender, null);
                     break;
                 case Key.Add:
