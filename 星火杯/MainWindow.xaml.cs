@@ -1205,6 +1205,22 @@ namespace 星火杯
         }
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyStates == Keyboard.GetKeyStates(Key.D6) && Keyboard.Modifiers == ModifierKeys.Shift)
+            {
+                ___Click(sender, null);
+            }
+            if (e.KeyStates == Keyboard.GetKeyStates(Key.D5) && Keyboard.Modifiers == ModifierKeys.Shift)
+            {
+                __5_Click(sender, null);
+            }
+            if (e.KeyStates == Keyboard.GetKeyStates(Key.D9) && Keyboard.Modifiers == ModifierKeys.Shift)
+            {
+                __1_Click(sender, null);
+            }
+            if (e.KeyStates == Keyboard.GetKeyStates(Key.D0) && Keyboard.Modifiers == ModifierKeys.Shift)
+            {
+                __2_Click(sender, null);
+            }
             switch (e.Key)
             {
                 case Key.Delete:
